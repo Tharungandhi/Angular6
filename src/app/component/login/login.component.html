@@ -1,0 +1,44 @@
+
+    <div fxLayout="row" fxLayoutAlign="center center" >
+        <mat-card fxFlex="30%;" fxFlex.xs="50%" fxFlex.sm="50%" fxFlex.md="40%">
+                <div fxLayout="row" fxLayoutAlign="center center" >  
+        <img src="./assets/image/index.jpeg" style="width: 200px;height:200px;">    
+ </div>
+ <div fxLayout="row" fxLayoutAlign="center center" >  
+       
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)"> 
+                <h2>Login</h2>
+         <div class="form-group" class="container">
+     <mat-form-field appearance="outline">
+        <mat-label for="emailId">Email ID</mat-label>
+        <input matInput placeholder="Enter the Email ID" formControlName="emailId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.emailId.errors }">
+    <mat-error *ngIf="submitted && f.emailId.errors" class="invalid-feedback">
+    <mat-error *ngIf="f.emailId.errors.required">EmailId is required</mat-error>
+</mat-error>
+</mat-form-field>
+    </div>
+    <div class="form-group" class="container"> 
+        <mat-form-field appearance="outline">
+       <mat-label for="password">Password</mat-label>
+       <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'"formControlName="password" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+       <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    <mat-error *ngIf="submitted && f.password.errors" class="invalid-feedback">
+     <mat-error *ngIf="f.password.errors.required">Password is required</mat-error>
+</mat-error>
+</mat-form-field>
+</div>
+    <div class="form-group" class="container">
+        <button mat-button color="btn-primary">Login</button>
+        <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        <div> <b>Not yet registered? </b>
+        <a  [routerLink]="['/registration']" class="btn btn-link">Sign UP</a></div>
+    </div>
+
+</form>
+
+</div>
+</mat-card>
+</div>
+
+
+

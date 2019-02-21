@@ -1,0 +1,23 @@
+button {
+    background-color:orange;
+    color: black;
+    padding: 10px 10px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    }
+    
+    
+    
+    button:hover {
+    opacity: 0.5;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+    .container > * {
+        width: 100%;
+    }
