@@ -13,6 +13,9 @@ import { MatMenuModule} from '@angular/material/menu';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
+import {MatExpansionModule} from '@angular/material/expansion';
+
+
 
 @NgModule({
   declarations: [],
@@ -34,7 +37,8 @@ import {MatListModule} from '@angular/material/list';
     MatMenuModule,
     MatSidenavModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    MatExpansionModule
     ],
   exports:[
     MatFormFieldModule,
@@ -51,7 +55,8 @@ import {MatListModule} from '@angular/material/list';
     MatMenuModule,
     MatSidenavModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    MatExpansionModule
     
 
   ]

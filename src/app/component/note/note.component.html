@@ -1,19 +1,55 @@
 
-<div fxLayout="row" fxLayoutAlign="center center">
-    <mat-toolbar color="" class="example-toolbar" fxFlex="100%;" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="100%">
-        <mat-toolbar-row>
+<div fxLayout="column" fxLayoutAlign="space-evently center">
 
-
-
-
-
-
-
-        </mat-toolbar-row>
-</mat-toolbar>
-
-
-
-
-
+                   
+            <mat-accordion>
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                        Notes
+                        </mat-panel-title>
+                        <button mat-button [matMenuTriggerFor]="user" matTooltip="assignment_turned_in" title="New List">
+                        <mat-icon>assignment_turned_in</mat-icon>
+                    </button>
+                    <button mat-button [matMenuTriggerFor]="user" matTooltip="colorized" title="colorized">
+                        <mat-icon>colorized </mat-icon>
+                    </button>
+                        <button mat-button [matMenuTriggerFor]="user" matTooltip="photo " title="photo ">
+                        <mat-icon>photo </mat-icon>
+                    </button>
+                      </mat-expansion-panel-header>
+                  
+                      <mat-form-field>
+                        <input matInput placeholder="Title">
+                      </mat-form-field>
+                  
+                      <mat-form-field>
+                        <input matInput placeholder="Take a Note">
+                      </mat-form-field>
+                     <div>
+                      <mat-form-field>
+                            <input matInput placeholder="" style="width: 500px;">
+                            <button mat-button [matMenuTriggerFor]="user" matTooltip="Remind_me" title="Remind_me">
+                                    <mat-icon>notifications_active</mat-icon>
+                                </button> 
+                                &nbsp;&nbsp;&nbsp;
+                                <button mat-button [matMenuTriggerFor]="user" matTooltip="collaborator" title="collaborator">
+                                        <mat-icon>person_add</mat-icon>
+                                    </button> 
+                                </mat-form-field>
+                                    <mat-form-field>
+                                            <input matInput placeholder="" style="width: 500px;">
+                                    <button mat-button [matMenuTriggerFor]="user" matTooltip="change colour" title="change colour">
+                                            <mat-icon>palette</mat-icon>
+                                        </button> 
+                                        
+                                        <button mat-button [matMenuTriggerFor]="user" matTooltip="image_icon" title="image_icon">
+                                                <mat-icon>image_icon</mat-icon>
+                                            </button> 
+                          </mat-form-field>
+                        </div>
+                      </mat-expansion-panel>
+                    </mat-accordion>
+              
+              
 </div>

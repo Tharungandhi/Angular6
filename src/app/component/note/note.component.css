@@ -1,0 +1,27 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 10%
+  }
+  
+  .slinput input {
+    padding:10px;
+    width:80%;
+    border:1px solid #ccc;
+    padding-left:31px;
+    padding-right:30px;
+    color:black;
+    font-family: arial,sans-serif;
+    font-size: 16px;
+  }
+  
+ 
+  
+  
+  
+  
+  
+  
