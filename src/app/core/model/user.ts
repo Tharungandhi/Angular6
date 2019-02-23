@@ -1,7 +1,7 @@
-export class User {
+export interface User {
    
-   "name": string;
-    "emailId": string;
+   name: string;
+    emailId: string;
     "password": string;
     "mobileNumber":string;
    

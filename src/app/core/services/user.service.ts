@@ -10,23 +10,12 @@ export class UserService {
 
   constructor(private http: HttpService,private router: Router) { }
 
-  login(user) {
-    this.http.postService(environment.url + 'login', user).subscribe(response => {
-      console.log(response);
-      if (response.status == 200) {
-        console.log("login in");
-        localStorage.setItem('Autorization', response.headers.get('token'));
-        this.router.navigate(['/homepage']);
-       
-      }
-      else {
-        console.log("login Unsuccessfull");
-      }
-    });
+  login(user): any {
+    return this.http.postService(environment.url + 'login', user);
   }
 
   register(user) {
-    this.http.postService(environment.url + 'register', user).subscribe(response => {
+   return this.http.postService(environment.url + 'register', user).subscribe(response => {
       console.log(response);
       if (response.status == 200) {
         console.log(response.body.headers);

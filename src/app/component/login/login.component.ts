@@ -9,11 +9,11 @@ import { UserService } from 'src/app/core/services/user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
+ public loginForm: FormGroup;
   loading = false;
   submitted = false;
   returnUrl: string;
-  hide = true;
+ private hide = true;
  
 
   constructor(private formBuilder: FormBuilder,
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
 
   get f() { return this.loginForm.controls; }
 
-  onSubmit(user) {
+ public onSubmit(user) {
     this.submitted = true;
 
     // stop here if form is invalid
@@ -39,6 +39,12 @@ export class LoginComponent implements OnInit {
 
     }
     console.log(user);
-    this.userService.login(user);
+    this.userService.login(user).subscribe(response => {
+      console.log(response);
+          localStorage.setItem('Authorization', response.headers.get('token'));
+        this.router.navigate(['/homepage']);
+    }, (error) => {
+      console.log("login Unsuccessfull", error);
+    });;
   }
 }
