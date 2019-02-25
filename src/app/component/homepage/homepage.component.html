@@ -1,23 +1,3 @@
-<!-- <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<body> -->
-<!-- <div class="w3-container">
-<div class="w3-bar w3-light-white w3-border">
-<a href="#" class="w3-bar-item w3-button w3-mobile">Home</a>
-<a style="padding-right: 0%" href='#' class='w3-bar-item w3-button w3-mobile'></a>
-
-<img src="./assets/image/sponsorLoginImage.jpg" height=5% width=5%>
-<a style="padding-bottom:25px;" href='#'><i class='w3-bar-item w3-button w3-mobile'></i></a>
-<a href="#" class="w3-bar-item w3-button w3-mobile">Link 1</a>
-<a style="padding-left:50px;" href='#'><i class='w3-bar-item w3-button w3-mobile'></i></a>
-<a href="#" class="w3-bar-item w3-button w3-mobile">Link 2</a>
-<a style="padding-left:50px;" href='#'><i class='w3-bar-item w3-button w3-mobile'></i></a>
-<input type="text" class="w3-bar-item w3-input w3-white w3-mobile" placeholder="Search..">
-<a style="padding-left:20px;" href='#'><i class='w3-bar-item w3-input w3-white w3-mobile'></i></a>
-<button class="w3-bar-item w3-button w3-green w3-mobile">Go</button>
-<a style="padding-right:0px;" href='#'><i class='w3-bar-item w3-button w3-green w3-mobile'></i></a> -->
-
-
 
 <div fxLayout="row" fxLayoutAlign="center center">
   <mat-toolbar color="" class="example-toolbar" fxFlex="100%;" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="100%">
@@ -31,11 +11,7 @@
         <font size="5" face="arial">Keep</font>
       </span>
       &nbsp;&nbsp;&nbsp;
-      <!-- <a mat-raised-button matTooltip="Search"></a>
-      <input matmatInput placeholder="Search..." style="width:500px;">
-      <button mat-button>
-        <mat-icon>search</mat-icon>
-      </button> -->
+     
  
 <!-- Search form -->
 <div class="slinput" ng-init="">
@@ -131,6 +107,11 @@
         <mat-icon>delete</mat-icon>
         <span>Trash</span>
       </button>
+
+      <div> 
+          <a [routerLink]="['/userdetails']" class="btn btn-link">User Details !!</a></div>
+ 
+
     </mat-nav-list>
 
   </mat-sidenav>

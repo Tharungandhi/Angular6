@@ -8,6 +8,9 @@ import { RegistrationComponent } from './component/registration/registration.com
 import {AppMaterialModule} from './app-material.module';
 import { HomepageComponent } from './component/homepage/homepage.component';
 import { NoteComponent } from './component/note/note.component';
+import { ResetpasswordComponent } from './component/resetpassword/resetpassword.component';
+import { ForgotpasswordComponent } from './component/forgotpassword/forgotpassword.component';
+import { UserdetailsComponent } from './component/userdetails/userdetails.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { NoteComponent } from './component/note/note.component';
     LoginComponent,
     RegistrationComponent,
     HomepageComponent,
-    NoteComponent
+    NoteComponent,
+    ResetpasswordComponent,
+    ForgotpasswordComponent,
+    UserdetailsComponent
   ],
   imports: [
     BrowserModule,
