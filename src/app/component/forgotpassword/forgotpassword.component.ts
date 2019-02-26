@@ -33,7 +33,7 @@ export class ForgotpasswordComponent implements OnInit {
 
     }
     console.log(user);
-    this.userService.forgotPassword(user);
+    this.userService.forgotpassword(user);
   
   }
 }

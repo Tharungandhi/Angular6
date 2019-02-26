@@ -1,4 +1,42 @@
-<div fxLayout="column" fxLayoutAlign="space-evently center">
+<mat-accordion  fxFlex="80%;" fxFlex.xs="100%" fxFlex.sm="10%" fxFlex.md="100%">
+      <mat-expansion-panel (opened)="showHeader = false" (closed)="showHeader = true" style="width: 600px">
+        <mat-expansion-panel-header>
+          <ng-container *ngIf="showHeader;else tempTtext">
+            <mat-panel-title>
+              <h5>Take a note..</h5>
+
+              <div style="text-align:right; width:100%;">
+                <button mat-icon-button matTooltip="new list">
+                  <mat-icon>check_box</mat-icon>
+                </button>
+
+
+
+                <button mat-icon-button matTooltip="new note with image">
+                  <mat-icon>image</mat-icon>
+                </button>
+              </div>
+              
+
+
+            </mat-panel-title>
+          </ng-container>
+          <ng-template #tempTtext>
+
+          </ng-template>
+        </mat-expansion-panel-header>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div fxLayout="column" fxLayoutAlign="space-evently center">
 
 
   <mat-accordion>
@@ -77,4 +115,4 @@
   </mat-accordion>
 
 
-</div>
+</div> -->

@@ -44,13 +44,7 @@ export class UserService {
 }
 
 
-forgotPassword(user) {
-    this.http.postService(environment.url + 'forgotpassword', user).subscribe(response => {
-      console.log("reset password mail sent to your email");
-    }, error => {
-      this.snackBar.open("error", "please enter the registered email", { duration: 2000 })
-    });
-  }
+
 
   resetPassword(user, id) {
     this.http.putService(environment.url + 'resetpassword/'+id, user, id).subscribe(response => {

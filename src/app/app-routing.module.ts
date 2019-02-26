@@ -6,22 +6,21 @@ import { HomepageComponent } from './component/homepage/homepage.component';
 import { NoteComponent } from './component/note/note.component';
 import { ResetpasswordComponent } from './component/resetpassword/resetpassword.component';
 import { ForgotpasswordComponent } from './component/forgotpassword/forgotpassword.component';
-import { UserdetailsComponent } from './component/userdetails/userdetails.component';
+import { AddnotesComponent } from './component/addnotes/addnotes.component';
 
 const appRoutes: Routes = [
 
   { path: 'login', component: LoginComponent },
   { path:'forgotpassword', component: ForgotpasswordComponent},
   { path:'resetpassword/:id' , component:ResetpasswordComponent},
-{path:'userdetails',component:UserdetailsComponent},
-
   { path: 'registration', component: RegistrationComponent },
   {
     path: 'homepage', component: HomepageComponent,
     children:
       [
-        { path: '',  component: NoteComponent },
-        
+      
+        { path: '' , component :AddnotesComponent }
+     
       ]
   },
 
