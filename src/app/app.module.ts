@@ -11,6 +11,7 @@ import { NoteComponent } from './component/note/note.component';
 import { ResetpasswordComponent } from './component/resetpassword/resetpassword.component';
 import { ForgotpasswordComponent } from './component/forgotpassword/forgotpassword.component';
 import { AddnotesComponent } from './component/addnotes/addnotes.component';
+import { CreateNoteComponent } from './component/create-note/create-note.component';
 
 
 
@@ -23,10 +24,8 @@ import { AddnotesComponent } from './component/addnotes/addnotes.component';
     NoteComponent,
     ResetpasswordComponent,
     ForgotpasswordComponent,
-   
-
-   
-    AddnotesComponent
+    AddnotesComponent,
+    CreateNoteComponent
     
   ],
   imports: [

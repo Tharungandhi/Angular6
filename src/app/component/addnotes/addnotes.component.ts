@@ -10,7 +10,7 @@ import { Note } from 'src/app/core/model/note';
   styleUrls: ['./addnotes.component.css']
 })
 export class AddnotesComponent implements OnInit {
-  public mytoken = localStorage.getItem('token')
+  mytoken:String
   public notes: Note[] = [];
   constructor(private noteService: NoteService) { }
 
@@ -18,6 +18,7 @@ export class AddnotesComponent implements OnInit {
     this.getNotes();
   }
   getNotes() {
+    this.mytoken = localStorage.getItem('token')
     console.log("token", this.mytoken);
     this.noteService.retrieveNotes(this.mytoken).subscribe(newNote => {
       this.notes = newNote;

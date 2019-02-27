@@ -1,0 +1,69 @@
+<!-- <mat-card class="card">
+    <mat-accordion *ngFor="let notes of notes">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <div class="container">
+                        <mat-form-field>
+                            <input matInput placeholder="Title" value={{products.title}} [formControl]="title" required>
+                        </mat-form-field>
+                    </div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-panel-description>
+            </mat-panel-description>
+             </mat-expansion-panel-header> 
+            <div class="container">
+                <mat-form-field>
+                    <input matInput placeholder="Description" value="{{products.discription}}"
+                        [formControl]="description" required>
+                </mat-form-field>
+            </div><br>
+            Icons here
+            <mat-card-actions>
+                <div id="signButton"><button mat-button (click)="update(products.title, products.discription)">update
+                    </button>
+                    <button mat-button (click)="delete(products.title)">delete</button></div>
+
+            </mat-card-actions>
+
+        </mat-expansion-panel>
+        <br> <br> <br> <br> <br>
+    </mat-accordion>
+</mat-card> -->
+
+
+
+
+        <form [formGroup]="createNoteForm" (ngSubmit)="onSubmit(createNoteForm.value)">
+          <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <div class="form-group">
+                    <input matInput placeholder="Title" formControlName="title" class="form-control">
+                  </div>
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <mat-form-field>
+                <div class="form-group">
+                  <input matInput placeholder="Take a note..." formControlName="discription" class="form-control">
+                </div>
+              </mat-form-field>
+           
+          
+          
+          <mat-card-actions>
+              <div class="form-group">
+                  <button mat-button color="btn-primary" [disabled]="loading" class="btn btn-primary">save</button> 
+                 
+                
+              </div>
+            
+          </mat-card-actions>
+        </mat-expansion-panel>
+        </mat-accordion>
+        </form>
+      

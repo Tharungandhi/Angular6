@@ -18,8 +18,9 @@ const appRoutes: Routes = [
     path: 'homepage', component: HomepageComponent,
     children:
       [
-      
         { path: '' , component :AddnotesComponent }
+      
+       
      
       ]
   },

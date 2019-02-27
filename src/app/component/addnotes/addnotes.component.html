@@ -1,9 +1,24 @@
+<div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5%">
 
 
-<mat-card>
+<app-note></app-note>
+
+<app-create-note></app-create-note>
+
+
   <ul>
+      <b>Notes Available are</b>
     <li *ngFor="let notes of notes">
-      {{note.title}}, {{note.discription}}
+     
+        <mat-card fxFlex="100%;" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="100%">
+          
+      {{notes.title}}, 
+      {{notes.discription}}
+    </mat-card>
     </li>
   </ul>
-</mat-card>
+
+
+
+
+</div>
