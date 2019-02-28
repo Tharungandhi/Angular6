@@ -1,0 +1,29 @@
+<!-- <form [formGroup]="updateNoteForm" (ngSubmit)="onSubmit(updateNoteForm.value)">
+  
+    <div class="notecard"  [ngStyle]="{'background-color':notes.color}">
+        <div mat-dialog-title contenteditable="true" id="title" class="textarea" [innerHTML]=notes.title></div>
+        <p mat-dialog-content contenteditable="true" id="discription"class="textarea" [innerHTML]=notes.discription></p>
+        <button  mat-button (click)="closeClick(notes.title, notes.discription );" style="float:right">Close</button>
+      </div>
+
+</form> -->
+
+
+<div>
+  <div>
+    <input matInput [(ngModel)]="data.title" [value]=data.title placeholder="Title">
+  </div>
+
+  <br>
+  <br>
+  <div>
+
+    <textarea matInput [(ngModel)]="data.discription" [value]=data.discription placeholder="Discription"></textarea>
+
+    </div>
+
+    <br>
+    <br>
+    <button mat-button (click)="updateNote(data,data.id)" style="float:right">Close</button>
+  </div>
+

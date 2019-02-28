@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar,MatDialog } from '@angular/material';
 import { HttpHeaders } from "@angular/common/http";
 import { Observable } from 'rxjs';
 
@@ -15,7 +15,10 @@ import { Observable } from 'rxjs';
 export class NoteService {
 
 
-  constructor(private httpUtil: HttpService, private router: Router, public snackBar: MatSnackBar) { }
+  constructor(private http: HttpService,
+     private router: Router,
+     private dialog :MatDialog,
+      public snackBar: MatSnackBar) { }
 
   retrieveNotes(token):Observable<any>
   {
@@ -25,22 +28,43 @@ export class NoteService {
         'token': token
       })
     };
-    return this.httpUtil.getService(environment.note_url + 'retrievenote',httpheaders);
+    return this.http.getService(environment.note_url + 'retrievenote',httpheaders);
   }
 
-  save(note) {
-    var token = localStorage.getItem('token')
+  
+
+  createNote(notes): Observable<any> {
+    var token = localStorage.getItem('token');
     var httpheaders = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        //application/x-www-form-urlencoded
         'token': token
       })
     };
-    this.httpUtil.postWithBody(environment.note_url + 'createnote', note, httpheaders).subscribe(response => {
-      console.log(response);
-    }, (error) => console.log(error));
+    return this.http.postWithBody(`${environment.note_url}createnote`,notes, httpheaders);
   }
+
+  removeNote(id): Observable<any> {
+  var token=localStorage.getItem('token');
+  var httpheaders={
+   headers:new HttpHeaders({
+     'Content-Type':'application/json',
+     'token':token
+   })
+  };
+    return this.http.deleteService(`${environment.note_url}deletenote/`+id, httpheaders);
+  }
+
+
+  updateNote(notes,id): Observable<any>{
+    var httpheaders={
+      headers:new HttpHeaders({
+        'Content-Type':'application/json'
+      })
+    };
+      return this.http.postWithUpdate(`${environment.note_url}updatenote`,notes,httpheaders)
+  }
+
 
 
 

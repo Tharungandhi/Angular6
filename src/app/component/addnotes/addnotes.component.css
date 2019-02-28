@@ -1,0 +1,18 @@
+.title{
+    background-color: cadetblue;
+    margin: 5px;
+  border-radius: 10px;
+}
+
+.description{
+
+    background-color: cadetblue;
+    margin: 5px;
+  border-radius: 10px;
+}
+
+.example-card{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

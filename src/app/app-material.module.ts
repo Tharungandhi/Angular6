@@ -16,7 +16,8 @@ import {MatListModule} from '@angular/material/list';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatChipsModule} from '@angular/material/chips';
-
+import { MatDialogModule} from '@angular/material';
+import { UpdateNoteComponent } from './component/update-note/update-note.component';
 @NgModule({ 
   declarations: [],
   imports: [
@@ -40,8 +41,9 @@ import {MatChipsModule} from '@angular/material/chips';
     MatListModule,
     MatExpansionModule,
     MatSnackBarModule,
-    MatChipsModule
-    ],
+    MatChipsModule,
+    MatDialogModule
+      ],
   exports:[
     MatFormFieldModule,
     FormsModule,
@@ -60,6 +62,7 @@ import {MatChipsModule} from '@angular/material/chips';
     MatListModule,
     MatExpansionModule,
     MatChipsModule
+    
   ]
 })
 export class AppMaterialModule { }

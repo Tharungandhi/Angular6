@@ -12,6 +12,7 @@ import { ResetpasswordComponent } from './component/resetpassword/resetpassword.
 import { ForgotpasswordComponent } from './component/forgotpassword/forgotpassword.component';
 import { AddnotesComponent } from './component/addnotes/addnotes.component';
 import { CreateNoteComponent } from './component/create-note/create-note.component';
+import { UpdateNoteComponent } from './component/update-note/update-note.component';
 
 
 
@@ -25,7 +26,8 @@ import { CreateNoteComponent } from './component/create-note/create-note.compone
     ResetpasswordComponent,
     ForgotpasswordComponent,
     AddnotesComponent,
-    CreateNoteComponent
+    CreateNoteComponent,
+    UpdateNoteComponent
     
   ],
   imports: [
@@ -34,6 +36,9 @@ import { CreateNoteComponent } from './component/create-note/create-note.compone
     AppMaterialModule
     
   ],
+   entryComponents:[
+    UpdateNoteComponent
+   ],
   providers: [],
   bootstrap: [AppComponent]
 })

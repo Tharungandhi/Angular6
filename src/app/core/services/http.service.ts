@@ -34,4 +34,9 @@ export class HttpService {
     return this.http.post<any>(url,object,header);
   }
 
+  postWithUpdate(url,object,header){
+    return this.http.post<any>(url,object,header);
+  }
+  
+  
 }

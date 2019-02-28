@@ -1,8 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-
+import {MatDialog} from '@angular/material';
 import { NoteService } from 'src/app/core/services/note.service';
 import { Note } from 'src/app/core/model/note';
+import { UpdateNoteComponent } from 'src/app/component/update-note/update-note.component';
+import { MatSnackBar } from '@angular/material';
 
+export interface DialogData {
+  animal: string;
+  name: string;
+}
 
 @Component({
   selector: 'app-addnotes',
@@ -12,7 +18,9 @@ import { Note } from 'src/app/core/model/note';
 export class AddnotesComponent implements OnInit {
   mytoken:String
   public notes: Note[] = [];
-  constructor(private noteService: NoteService) { }
+  constructor(private noteService: NoteService,
+    private dialog:MatDialog,
+    public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.getNotes();
@@ -25,5 +33,29 @@ export class AddnotesComponent implements OnInit {
     }
     )
   }
+  openDialog(notes): void {
+    const dialogRef = this.dialog.open(UpdateNoteComponent, {
+      width: '500px',
+      data: notes
 
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+    });
+  }
+
+
+  deleteNote(notes) {
+    console.log(notes.id);
+    this.noteService.removeNote(notes.id).subscribe(response => {
+      this.snackBar.open('Note deleted successfully', 'OK', { duration: 2000 });
+    }),
+      error => { 
+        console.log(error);
+        this.snackBar.open('Note cannot be deleted', 'Error in note retrieval', { duration: 2000 });
+      }
+  }
+  
 }

@@ -1,0 +1,8 @@
+.notecard{
+    /* height: 150px; */
+    word-wrap: break-word;
+}
+
+.textarea{
+    outline: none;
+}
