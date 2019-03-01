@@ -20,6 +20,8 @@ export class NoteService {
      private dialog :MatDialog,
       public snackBar: MatSnackBar) { }
 
+
+
   retrieveNotes(token):Observable<any>
   {
     var httpheaders = {
@@ -32,6 +34,7 @@ export class NoteService {
   }
 
   
+
 
   createNote(notes): Observable<any> {
     var token = localStorage.getItem('token');
@@ -55,17 +58,19 @@ export class NoteService {
     return this.http.deleteService(`${environment.note_url}deletenote/`+id, httpheaders);
   }
 
-
-  updateNote(notes,id): Observable<any>{
-    var httpheaders={
-      headers:new HttpHeaders({
-        'Content-Type':'application/json'
-      })
-    };
-      return this.http.postWithUpdate(`${environment.note_url}updatenote`,notes,httpheaders)
-  }
-
-
+  
+  updateNote(note,id) {
+    this.http.putService(`${environment.note_url}updatenote/`,note,{
+    params: {
+      id: id,
+    token:localStorage.getItem('token'),
+    },
+    observe: 'response'
+    }
+    ).subscribe(response => {
+    console.log(response);
+    }, (error) => console.log(error));
+    }
 
 
 

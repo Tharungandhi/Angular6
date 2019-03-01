@@ -1,0 +1,17 @@
+
+
+<mat-card class="notescard" *ngFor="let notes of archiveList" id="cardover" [ngStyle]="{'background-color':data.color}">
+    
+  <div>
+  <mat-card-title (click)= openDialog(notes)>{{notes.title}}</mat-card-title>
+  </div>
+      
+  <div>
+  <mat-card-content (click)= openDialog(notes)>{{notes.description}}</mat-card-content>
+</div>
+<mat-chip-list>
+  <span *ngFor="let notes of data.notes">
+    <span class="labelnames">{{notedata.label}}<mat-icon style="font-size: 15px" (click)="deletelabel(data.id,notedata.id)">clear</mat-icon></span>
+  </span>
+</mat-chip-list>
+</mat-card>
