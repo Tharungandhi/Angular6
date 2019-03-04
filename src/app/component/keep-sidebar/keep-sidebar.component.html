@@ -1,0 +1,46 @@
+  <!-- side navigation bar -->
+<mat-sidenav-container class="keep-sidebar-container">
+    <mat-sidenav #drawer mode="side" opened role="navigation">
+      <mat-nav-list>
+        <!-- notes -->
+        <button mat-menu-item (click)="notes()">
+          <mat-icon>note_add</mat-icon>
+          <span>Notes</span>
+        </button>
+        <!-- remainder -->
+        <button mat-menu-item>
+          <mat-icon>notifications</mat-icon>
+          <span>Remainder</span>
+        </button>
+        <mat-divider></mat-divider><br>
+        <!-- label name -->
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span>
+          <font size="1" face="arial">LABELS</font>
+        </span>
+        <!-- edit labels -->
+        <button mat-menu-item>
+          <mat-icon>edit</mat-icon>
+          <span>Edit Labels</span>
+        </button>
+        <mat-divider></mat-divider>
+        <!-- archive -->
+        
+        <button mat-menu-item   [routerLink]="['/homepage/archive']">
+          <mat-icon>archive</mat-icon>
+          <span>Archive</span>
+        </button>
+        <!-- delete -->
+        <button mat-menu-item>
+          <mat-icon>delete</mat-icon>
+          <span>Trash</span>
+        </button>
+      </mat-nav-list>
+    </mat-sidenav>
+    
+    <mat-sidenav-content >
+    
+        <router-outlet></router-outlet>
+        <app-retrieve-notes></app-retrieve-notes>
+    </mat-sidenav-content>
+    </mat-sidenav-container>

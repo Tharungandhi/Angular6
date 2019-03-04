@@ -143,10 +143,10 @@
 
 
 
-  <div fxLayout="row" fxLayoutAlign="center center">
+   <div fxLayout="row" fxLayoutAlign="center center"> 
       <form [formGroup]="createNoteForm">
         <mat-accordion>
-        <mat-card>
+        
           
           <mat-expansion-panel [expanded]=true (opened)="showHeader = false" (closed)="onSubmit(createNoteForm.value)"
             (closed)="showHeader = true" hideToggle="true">
@@ -208,9 +208,9 @@
               </button>
             </mat-panel-description>
           </mat-expansion-panel>
-        </mat-card>
+      
         </mat-accordion>
       </form>
       
-    </div>
+     </div> 
       

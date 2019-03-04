@@ -1,0 +1,71 @@
+ 
+<div fxLayout="row" fxLayoutAlign="center center">
+  <mat-toolbar color="" class="example-toolbar" fxFlex="100%;" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="100%">
+    <mat-toolbar-row>
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="toggle()" matTooltip="Menu">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span><img src="./assets/image/index.jpeg" style="width:50px;"></span>
+      &nbsp;&nbsp;&nbsp;
+      <span>
+        <font size="5" face="arial">Keep</font>
+      </span>
+      &nbsp;&nbsp;&nbsp;
+     
+ 
+<div class="slinput" ng-init="">
+    <i class="fa fa-search left-icon"></i> 
+    <input type="search" placeholder="Search here" ng-model="searchInputVal" /> 
+    <i ng-class="{'fa' : true, 'fa-close' : true, 'right-icon' : true, active : (searchInputVal.length > 0)}" ng-click="searchInputVal = ''"></i>
+    <button mat-button>
+        <mat-icon>search</mat-icon>
+      </button> 
+  </div>
+
+      <a mat-button routerLink="/homepage" routerLinkActive="active" matTooltip="Refresh" title="Refresh">
+        <mat-icon>refresh</mat-icon>
+      </a>
+
+      <a mat-button r routerLinkActive="active" matTooltip="Lists" title="lists">
+        <mat-icon>dns</mat-icon>
+      </a>
+
+      <a mat-button routerLinkActive="active" matTooltip="notification" title="notification">
+          <mat-icon>notification_important</mat-icon>
+        </a>
+      <button mat-button [matMenuTriggerFor]="settings" matTooltip="Settings" title="Settings">
+        <mat-icon>settings</mat-icon>
+      </button>
+      <mat-menu #settings="matMenu">
+        <button mat-menu-item>
+          <span>Settings</span>
+        </button>
+        <button mat-menu-item>
+          <span>Send Feedback</span>
+        </button>
+        <button mat-menu-item>
+          <span>Help</span>
+        </button>
+        <button mat-menu-item>
+          <span>App Download</span>
+        </button>
+        <button mat-menu-item>
+          <span>KeyBoard ShortCut</span>
+        </button>
+      </mat-menu>
+      <button mat-button [matMenuTriggerFor]="user" matTooltip="User Details" title="User Details">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #user="matMenu">
+        <button mat-menu-item>
+          <mat-icon>logout</mat-icon>
+          <a mat-button routerLink="/login">
+            <span>Logout</span>
+          </a>
+        </button>
+      </mat-menu>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
+
+

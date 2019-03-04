@@ -115,7 +115,7 @@
 </div>
 
 <div *ngFor="let notes of notes">
-    <mat-card>
+    <mat-card *ngIf="!notes.archive">
       <mat-card-header>
         <mat-card-title (click)= openDialog(notes)>
 
@@ -137,6 +137,10 @@
         </button>
         <button mat-icon-button matTooltip="Add image">
           <mat-icon>image</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Archive">
+         <mat-icon>archive</mat-icon>
+
         </button>
         <button mat-icon-button class="icon-button" id="more" [matMenuTriggerFor]="more" matTooltip="more">
             <i id="accountcircle" class="material-icons">more_vert</i></button>

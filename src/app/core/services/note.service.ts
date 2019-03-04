@@ -16,8 +16,8 @@ export class NoteService {
 
 
   constructor(private http: HttpService,
-     private router: Router,
-     private dialog :MatDialog,
+    //  private router: Router,
+    //  private dialog :MatDialog,
       public snackBar: MatSnackBar) { }
 
 
@@ -60,16 +60,14 @@ export class NoteService {
 
   
   updateNote(note,id) {
-    this.http.putService(`${environment.note_url}updatenote/`,note,{
+   return this.http.putService(`${environment.note_url}updatenote/`,note,{
     params: {
       id: id,
     token:localStorage.getItem('token'),
     },
     observe: 'response'
     }
-    ).subscribe(response => {
-    console.log(response);
-    }, (error) => console.log(error));
+    )
     }
 
 

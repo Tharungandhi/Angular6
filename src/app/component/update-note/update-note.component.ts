@@ -2,7 +2,7 @@ import { Component, OnInit,Inject } from '@angular/core';
 import { FormGroup,FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import {NoteService} from 'src/app/core/services/note.service';
-import { DialogData } from '../addnotes/addnotes.component';
+import { DialogData } from '../retrieve-notes/retrieve-notes.component';
 
 
 

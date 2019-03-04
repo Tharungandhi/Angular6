@@ -1,17 +1,42 @@
 
 
-<mat-card class="notescard" *ngFor="let notes of archiveList" id="cardover" [ngStyle]="{'background-color':data.color}">
-    
-  <div>
-  <mat-card-title (click)= openDialog(notes)>{{notes.title}}</mat-card-title>
+<div class="container" fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
+    <div *ngFor="let notes of notes" >
+      <mat-card *ngIf="notes.archive ">
+          <!-- && !note.inTrash && !note.pinned -->
+        <mat-card-header>
+          <mat-card-title (click)=openDialog(note)>
+            {{notes.title}}
+          </mat-card-title>
+          <button mat-icon-button matTooltip="pin" (click)=pinned(notes) style="float:right">
+            <mat-icon>colorize</mat-icon>
+          </button>
+        </mat-card-header>
+        <mat-card-content (click)=openDialog(notes)>
+          {{notes.discription}}
+        </mat-card-content>
+        <div class="mouseover">
+          <button mat-icon-button matTooltip="Remind me">
+            <mat-icon>add_alert</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="Collaborator">
+            <mat-icon>person_add</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="Change color">
+            <mat-icon>palette</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="Add image">
+            <mat-icon>image</mat-icon>
+          </button>
+          <button mat-icon-button (click)="updateArchiveNote(notes)"matTooltip="Undo Archive">
+              <mat-icon>archive</mat-icon>
+            </button>
+          <button mat-icon-button class="icon-button" id="more" [matMenuTriggerFor]="more">
+            <i id="accountcircle" class="material-icons">more_vert</i></button>
+          <mat-menu #more="matMenu" class="morecard">
+            <button mat-button (click)=moveToTrash(note)>Delete Note</button>
+          </mat-menu>
+        </div>
+      </mat-card>
+    </div>
   </div>
-      
-  <div>
-  <mat-card-content (click)= openDialog(notes)>{{notes.description}}</mat-card-content>
-</div>
-<mat-chip-list>
-  <span *ngFor="let notes of data.notes">
-    <span class="labelnames">{{notedata.label}}<mat-icon style="font-size: 15px" (click)="deletelabel(data.id,notedata.id)">clear</mat-icon></span>
-  </span>
-</mat-chip-list>
-</mat-card>

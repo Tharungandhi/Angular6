@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NoteService } from 'src/app/core/services/note.service';
+import { MatSnackBar, MatDialog } from '@angular/material';
+import { UpdateNoteComponent } from '../update-note/update-note.component';
+import { Note } from 'src/app/core/model/note';
 
 @Component({
   selector: 'app-archive',
@@ -9,24 +12,66 @@ import { NoteService } from 'src/app/core/services/note.service';
 export class ArchiveComponent implements OnInit {
   public mytoken = localStorage.getItem('token');
   public archiveList=[];
+  public notes: Note[] = [];
 
-  constructor(private noteService: NoteService) { }
+  constructor(private noteService: NoteService, public snackBar: MatSnackBar,
+    public dialog: MatDialog) { }
 
+  
   ngOnInit() {
-    this.getArchiveNotes;
+    this.getNotes();
   }
 
+  getNotes() {
+    this.noteService.retrieveNotes(this.mytoken).subscribe(newNote => {
+      this.notes = newNote;
+    }, error => {
+      this.snackBar.open("error", "error to retrieve notes", { duration: 2000 });
+    }
+    )
+  }
 
-  getArchiveNotes(){
-    this.noteService.retrieveNotes(this.mytoken)
-    .subscribe(response=>{;
+  openDialog(notes): void {
+    const dialogRef = this.dialog.open(UpdateNoteComponent, {
+      width: '500px',
+      data: notes
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.noteService.updateNote(notes, notes.id).subscribe(response => {
+        console.log(response);
+      },
+        error => {
+          console.log("error");
+        })
+      console.log('The dialog was closed');
+    });
+  }
+
+  updateMethod(notes) {
+    this.noteService.updateNote(notes, notes.id).subscribe(response => {
       console.log(response);
-      for(var i=0; i<response['data'].data.length; i++)
-      {
-        this.archiveList.push(response['data'].data[i])
-      }
-    })
-}
+    },
+      error => {
+        console.log("error");
+      })
+  }
+
+  
+
+  updateArchiveNote(notes) {
+    notes.archive = 0;
+    this.updateMethod(notes);
+  }
+
+//   pinned(notes) {
+//     notes.pinned = 1;
+//     this.updateMethod(notes);
+// }
+
+// moveToTrash(notes) {
+//   notes.inTrash = 1;
+//   this.updateMethod(notes);
+// }
 
 }
 

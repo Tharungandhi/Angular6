@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ForgotpasswordComponent } from './forgotpassword.component';
+import { KeepSidebarComponent } from './keep-sidebar.component';
 
-describe('ForgotpasswordComponent', () => {
-  let component: ForgotpasswordComponent;
-  let fixture: ComponentFixture<ForgotpasswordComponent>;
+describe('KeepSidebarComponent', () => {
+  let component: KeepSidebarComponent;
+  let fixture: ComponentFixture<KeepSidebarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ForgotpasswordComponent ]
+      declarations: [ KeepSidebarComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ForgotpasswordComponent);
+    fixture = TestBed.createComponent(KeepSidebarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

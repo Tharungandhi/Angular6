@@ -11,9 +11,9 @@ export interface DialogData {
 }
 
 @Component({
-  selector: 'app-addnotes',
-  templateUrl: './addnotes.component.html',
-  styleUrls: ['./addnotes.component.css']
+  selector: 'app-retrieve-notes',
+  templateUrl: './retrieve-notes.component.html',
+  styleUrls: ['./retrieve-notes.component.css']
 })
 export class AddnotesComponent implements OnInit {
   mytoken:String
@@ -57,5 +57,22 @@ export class AddnotesComponent implements OnInit {
         this.snackBar.open('Note cannot be deleted', 'Error in note retrieval', { duration: 2000 });
       }
   }
+
+  updateArchiveNote(notes) {
+    notes.archive = 1;
+    this.updateMethod(notes);
+}
+
+
+updateMethod(notes) {
+  this.noteService.updateNote(notes, notes.id).subscribe(response => {
+    console.log(response);
+  },
+    error => {
+      console.log("error");
+    })
+}
+  
   
 }
+  

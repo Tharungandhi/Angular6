@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RegistrationComponent } from './component/registration/registration.component';
 import { LoginComponent } from './component/login/login.component';
-import { HomepageComponent } from './component/homepage/homepage.component';
-import { ResetpasswordComponent } from './component/resetpassword/resetpassword.component';
-import { ForgotpasswordComponent } from './component/forgotpassword/forgotpassword.component';
-import { AddnotesComponent } from './component/addnotes/addnotes.component';
+import { HomepageComponent } from './component/home-page/home-page.component';
+import { ResetpasswordComponent } from './component/reset-password/reset-password.component';
+import { ForgotpasswordComponent } from './component/forgot-password/forgot-password.component';
+import { AddnotesComponent } from './component/retrieve-notes/retrieve-notes.component';
+import { ArchiveComponent } from './component/archive/archive.component';
+
 
 const appRoutes: Routes = [
 
@@ -17,10 +19,13 @@ const appRoutes: Routes = [
     path: 'homepage', component: HomepageComponent,
     children:
       [
-        { path: '' , component :AddnotesComponent }
-      
-       
-     
+        { path: 'retrievenotes' , component :AddnotesComponent },
+        { path:'archive' ,component: ArchiveComponent},
+        {
+          path: '',
+          redirectTo: 'retrievenotes',
+          pathMatch: 'full'
+        }
       ]
   },
 

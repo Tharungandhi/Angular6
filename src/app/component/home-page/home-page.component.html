@@ -1,5 +1,4 @@
-
-<div fxLayout="row" fxLayoutAlign="center center">
+<!-- <div fxLayout="row" fxLayoutAlign="center center">
   <mat-toolbar color="" class="example-toolbar" fxFlex="100%;" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="100%">
     <mat-toolbar-row>
       <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" matTooltip="Menu">
@@ -13,7 +12,6 @@
       &nbsp;&nbsp;&nbsp;
      
  
-<!-- Search form -->
 <div class="slinput" ng-init="">
     <i class="fa fa-search left-icon"></i> 
     <input type="search" placeholder="Search here" ng-model="searchInputVal" /> 
@@ -71,38 +69,31 @@
 
 <mat-divider></mat-divider>
 
-<!-- side navigation bar -->
 <mat-sidenav-container class="example-container">
   <mat-sidenav #drawer mode="side" opened role="navigation">
     <mat-nav-list>
-      <!-- notes -->
-      <button mat-menu-item>
+      <button mat-menu-item (click)="notes()">
         <mat-icon>note_add</mat-icon>
         <span>Notes</span>
       </button>
-      <!-- remainder -->
       <button mat-menu-item>
         <mat-icon>notifications</mat-icon>
         <span>Remainder</span>
       </button>
       <mat-divider></mat-divider><br>
-      <!-- label name -->
       &nbsp;&nbsp;&nbsp;&nbsp;
       <span>
         <font size="1" face="arial">LABELS</font>
       </span>
-      <!-- edit labels -->
       <button mat-menu-item>
         <mat-icon>edit</mat-icon>
         <span>Edit Labels</span>
       </button>
       <mat-divider></mat-divider>
-      <!-- archive -->
-      <button mat-menu-item>
+      <button mat-menu-item (click)="archive()" >
         <mat-icon>archive</mat-icon>
         <span>Archive</span>
       </button>
-      <!-- delete -->
       <button mat-menu-item>
         <mat-icon>delete</mat-icon>
         <span>Trash</span>
@@ -119,4 +110,22 @@
       <router-outlet></router-outlet>
     </main>
   </mat-sidenav-content>
-</mat-sidenav-container>
+</mat-sidenav-container>  -->
+
+
+
+
+ 
+<div class="keep-body" style="width: 100%; height: 100%;">
+    <div class="keep-header">
+        <keep-header (toggleEvent)="onToggleSidebar()"></keep-header>
+    </div>
+    <div class="keep-sidebar">
+        <keep-sidebar [keepSidebar]="toggleNav"></keep-sidebar>
+    </div>
+    
+    </div>
+
+
+
+  
