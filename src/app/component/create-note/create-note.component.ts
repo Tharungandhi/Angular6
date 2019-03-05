@@ -69,6 +69,22 @@ this.noteService.createNote(note).subscribe(response => {
   });
 })
 }
+
+pinned(notes) {
+  notes.pinned=1;
+  this.updateMethod(notes);
+}
+
+updateMethod(notes) {
+  this.noteService.updateNote(notes, notes.id).subscribe(response => {
+    console.log(response);
+  },
+    error => {
+      console.log("error");
+    })
+}
+
+
 }
 
 

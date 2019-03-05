@@ -5,22 +5,33 @@ import { UpdateNoteComponent } from '../update-note/update-note.component';
 import { Note } from 'src/app/core/model/note';
 
 @Component({
-  selector: 'app-archive',
-  templateUrl: './archive.component.html',
-  styleUrls: ['./archive.component.css']
+  selector: 'app-pin-notes',
+  templateUrl: './pin-notes.component.html',
+  styleUrls: ['./pin-notes.component.css']
 })
-export class ArchiveComponent implements OnInit {
-  public mytoken = localStorage.getItem('token');
-  public archiveList=[];
+export class PinNotesComponent implements OnInit {
   public notes: Note[] = [];
+  public mytoken=localStorage.getItem('token');
+  constructor(private noteService: NoteService,
+    public snackBar:MatSnackBar,public dialog: MatDialog) { }
 
-  constructor(private noteService: NoteService, public snackBar: MatSnackBar,
-    public dialog: MatDialog) { }
-
-  
   ngOnInit() {
     this.getNotes();
   }
+
+
+  // openDialog(notes): void {
+  //   const dialogRef = this.dialog.open(UpdateNoteComponent, {
+  //     width: '500px',
+  //     data: notes
+
+  //   });
+
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log('The dialog was closed');
+
+  //   });
+  // }
 
   getNotes() {
     this.noteService.retrieveNotes(this.mytoken).subscribe(newNote => {
@@ -31,22 +42,6 @@ export class ArchiveComponent implements OnInit {
     )
   }
 
-  openDialog(notes): void {
-    const dialogRef = this.dialog.open(UpdateNoteComponent, {
-      width: '500px',
-      data: notes
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      this.noteService.updateNote(notes, notes.id).subscribe(response => {
-        console.log(response);
-      },
-        error => {
-          console.log("error");
-        })
-      console.log('The dialog was closed');
-    });
-  }
-
   updateMethod(notes) {
     this.noteService.updateNote(notes, notes.id).subscribe(response => {
       console.log(response);
@@ -55,23 +50,21 @@ export class ArchiveComponent implements OnInit {
         console.log("error");
       })
   }
-
   
-
-  updateArchiveNote(notes) {
-    notes.archive = 0;
+  pinnedNotes(notes) {
+    notes.pinned=0;
     this.updateMethod(notes);
-  }
-
-
+}
 
 moveToTrash(notes) {
   notes.inTrash = 1;
   this.updateMethod(notes);
 }
 
+updateArchiveNote(notes) {
+  notes.archive=1;
+  notes.pinned=0;
+  this.updateMethod(notes);
 }
 
-
-
-
+}

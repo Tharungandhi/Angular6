@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
 import { environment } from 'src/environments/environment';
-import { Router } from '@angular/router';
 import { MatSnackBar,MatDialog } from '@angular/material';
 import { HttpHeaders } from "@angular/common/http";
 import { Observable } from 'rxjs';
@@ -59,8 +58,8 @@ export class NoteService {
   }
 
   
-  updateNote(note,id) {
-   return this.http.putService(`${environment.note_url}updatenote/`,note,{
+  updateNote(notes,id) {
+   return this.http.putService(`${environment.note_url}updatenote/`,notes,{
     params: {
       id: id,
     token:localStorage.getItem('token'),

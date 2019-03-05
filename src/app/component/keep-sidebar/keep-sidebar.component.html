@@ -1,4 +1,5 @@
   <!-- side navigation bar -->
+  
 <mat-sidenav-container class="keep-sidebar-container">
     <mat-sidenav #drawer mode="side" opened role="navigation">
       <mat-nav-list>
@@ -31,7 +32,7 @@
           <span>Archive</span>
         </button>
         <!-- delete -->
-        <button mat-menu-item>
+        <button mat-menu-item [routerLink]="['/homepage/trash']">
           <mat-icon>delete</mat-icon>
           <span>Trash</span>
         </button>
@@ -41,6 +42,6 @@
     <mat-sidenav-content >
     
         <router-outlet></router-outlet>
-        <app-retrieve-notes></app-retrieve-notes>
+        <!-- <app-retrieve-notes></app-retrieve-notes> -->
     </mat-sidenav-content>
     </mat-sidenav-container>

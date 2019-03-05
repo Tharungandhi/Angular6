@@ -21,7 +21,7 @@ export class HomepageComponent implements OnInit {
   public toggleNav: Subject<any> = new Subject();
 
   constructor(private service: NoteService, private dialog: MatDialog,
-    private router: Router) { }
+    private router: Router, public noteService: NoteService) { }
 
   ngOnInit() {
   }
@@ -44,9 +44,26 @@ export class HomepageComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
-  
+
   sidebar() {
     this.router.navigate(['homepage/sidebar'])
   }
 
+  updateArchiveNote(note) {
+    note.archive = 1;
+    this.updateMethod(note);
+  }
+
+  updateMethod(note) {
+    this.noteService.updateNote(note, note.noteId).subscribe(response => {
+      console.log(response);
+    },
+      error => {
+        console.log("error");
+      })
+  }
+  moveToTrash(notes) {
+    notes.inTrash = 1;
+    this.updateMethod(notes);
+  }
 }

@@ -4,10 +4,11 @@ import { NoteService } from 'src/app/core/services/note.service';
 import { Note } from 'src/app/core/model/note';
 import { UpdateNoteComponent } from 'src/app/component/update-note/update-note.component';
 import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 export interface DialogData {
-  animal: string;
-  name: string;
+  dis: string;
+  title: string;
 }
 
 @Component({
@@ -20,7 +21,8 @@ export class AddnotesComponent implements OnInit {
   public notes: Note[] = [];
   constructor(private noteService: NoteService,
     private dialog:MatDialog,
-    public snackBar: MatSnackBar) { }
+    public snackBar: MatSnackBar,
+    public router: Router) { }
 
   ngOnInit() {
     this.getNotes();
@@ -65,14 +67,26 @@ export class AddnotesComponent implements OnInit {
 
 
 updateMethod(notes) {
+  console.log("archive"+ notes.archive)
   this.noteService.updateNote(notes, notes.id).subscribe(response => {
+    this.snackBar.open('Note successfully updated', 'OK', { duration: 2000 });
     console.log(response);
-  },
+  })                                                                                                                                                                                                                                                              ,
     error => {
       console.log("error");
-    })
+      this.snackBar.open('Denied in update', 'OK', { duration: 2000 });
+    }
 }
-  
-  
+
+moveToTrash(notes) {
+  notes.inTrash = 1;
+  this.updateMethod(notes);
+}
+
+pinnedNotes(notes) {
+  notes.pinned=1;
+  this.updateMethod(notes);
+}
+
 }
   

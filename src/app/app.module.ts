@@ -16,6 +16,8 @@ import { UpdateNoteComponent } from './component/update-note/update-note.compone
 import { ArchiveComponent } from './component/archive/archive.component';
 import { KeepHeaderComponent } from './component/keep-header/keep-header.component';
 import { KeepSidebarComponent } from './component/keep-sidebar/keep-sidebar.component';
+import { TrashComponent } from './component/trash/trash.component';
+import { PinNotesComponent } from './component/pin-notes/pin-notes.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { KeepSidebarComponent } from './component/keep-sidebar/keep-sidebar.comp
     UpdateNoteComponent,
     ArchiveComponent,
     KeepHeaderComponent,
-    KeepSidebarComponent    
+    KeepSidebarComponent,
+    TrashComponent,
+    PinNotesComponent    
   ],
   imports: [
     BrowserModule,

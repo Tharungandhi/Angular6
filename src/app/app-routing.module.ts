@@ -7,6 +7,8 @@ import { ResetpasswordComponent } from './component/reset-password/reset-passwor
 import { ForgotpasswordComponent } from './component/forgot-password/forgot-password.component';
 import { AddnotesComponent } from './component/retrieve-notes/retrieve-notes.component';
 import { ArchiveComponent } from './component/archive/archive.component';
+import { TrashComponent } from './component/trash/trash.component';
+import { PinNotesComponent } from './component/pin-notes/pin-notes.component';
 
 
 const appRoutes: Routes = [
@@ -21,6 +23,8 @@ const appRoutes: Routes = [
       [
         { path: 'retrievenotes' , component :AddnotesComponent },
         { path:'archive' ,component: ArchiveComponent},
+        { path: 'trash',component:TrashComponent},
+        { path:'pin-notes',component:PinNotesComponent},
         {
           path: '',
           redirectTo: 'retrievenotes',

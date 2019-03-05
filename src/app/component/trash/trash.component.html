@@ -1,0 +1,25 @@
+<div class="container" fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center" >
+   <!-- <b> Notes in the Recycle Bin are deleted after 7 days. </b>
+   <button mat-button (click)="deleteNote(notes)">Empty Bin</button> -->
+    <div *ngFor="let notes of notes" >
+      <mat-card *ngIf="notes.inTrash" style="width:250px;">
+        <mat-card-header>
+          <mat-card-title (click)=openDialog(notes)>
+            {{notes.title}}
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content (click)=openDialog(notes)>
+          {{notes.discription}}
+        </mat-card-content>
+        <div class="mouseover">
+          <button mat-icon-button class="icon-button" id="more" [matMenuTriggerFor]="more">
+            <i id="accountcircle" class="material-icons">more_vert</i></button>
+          <mat-menu #more="matMenu" class="morecard">
+            <button mat-button (click)=deleteNote(notes)>Delete Permanently</button>
+            <div>
+            <button mat-button (click)=restore(notes)>Restore</button></div>
+          </mat-menu>
+        </div>
+      </mat-card>
+    </div>
+  </div>
