@@ -18,6 +18,7 @@ import { KeepHeaderComponent } from './component/keep-header/keep-header.compone
 import { KeepSidebarComponent } from './component/keep-sidebar/keep-sidebar.component';
 import { TrashComponent } from './component/trash/trash.component';
 import { PinNotesComponent } from './component/pin-notes/pin-notes.component';
+import { EditLabelComponent } from './component/edit-label/edit-label.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { PinNotesComponent } from './component/pin-notes/pin-notes.component';
     KeepHeaderComponent,
     KeepSidebarComponent,
     TrashComponent,
-    PinNotesComponent    
+    PinNotesComponent,
+    EditLabelComponent    
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,8 @@ import { PinNotesComponent } from './component/pin-notes/pin-notes.component';
     
   ],
    entryComponents:[
-    UpdateNoteComponent
+    UpdateNoteComponent,
+    EditLabelComponent
    ],
   providers: [],
   bootstrap: [AppComponent]

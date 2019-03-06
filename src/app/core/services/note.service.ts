@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class NoteService {
-
+public token=localStorage.getItem('token');
 
   constructor(private http: HttpService,
     //  private router: Router,
@@ -69,6 +69,58 @@ export class NoteService {
     )
     }
 
+    retrieveLabels():Observable<any>
+    {
+      var httpheaders = {
+            headers:new HttpHeaders({
+              'Content-Type': 'application/x-www-form-urlencoded',
+              'token':this.token
+            })
+          };
+          return this.http.getService(`${environment.note_url}retrievelabel/`,httpheaders);
+    }
+
+    createLabels(labels): Observable<any> {
+      var httpheaders = {
+        headers:new HttpHeaders({
+          'Content-Type': 'application/json',
+          'token':this.token
+        })
+      };
+      return this.http.labelCreateService(`${environment.note_url}createlabel/`,labels,httpheaders);
+  }
+  
+    updateLabel(label, id):Observable<any> {
+      var httpheaders = {
+        headers:new HttpHeaders({
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'token':this.token
+        })
+      };
+      return this.http.labelCreateService(`${environment.note_url}updatelabel/`+ id, label,httpheaders);
+    }
+  
+    removeLabel(id):Observable<any> {
+      var httpheaders = {
+        headers:new HttpHeaders({
+          'Content-Type': 'application/json',
+          'token':this.token
+        })
+      };
+      return this.http.labelDeleteService(`${environment.note_url}deletelabel/`+ id, httpheaders);
+    }
+  
+    
 
 
-}
+
+
+
+
+
+
+
+    
+    }
+
+

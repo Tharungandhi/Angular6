@@ -9,6 +9,7 @@ import { AddnotesComponent } from './component/retrieve-notes/retrieve-notes.com
 import { ArchiveComponent } from './component/archive/archive.component';
 import { TrashComponent } from './component/trash/trash.component';
 import { PinNotesComponent } from './component/pin-notes/pin-notes.component';
+import { EditLabelComponent } from './component/edit-label/edit-label.component';
 
 
 const appRoutes: Routes = [

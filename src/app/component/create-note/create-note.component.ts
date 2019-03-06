@@ -30,26 +30,13 @@ export class CreateNoteComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-//     this.createNoteForm = this.formBuilder.group({
-//       title: ['', Validators.required],
-//       discription: ['', Validators.required]
-//     });
-//   };
-//   get f() { return this.createNoteForm.controls; }
-//   public onSubmit(note) {
-//     this.submitted = true;
-//     console.log(this.createNoteForm.value)
-//     if (this.createNoteForm.invalid) {
-//       return;
-//     }
-//     this.NoteService.save(note);
-//   }
-// }
 this.createNoteForm = this.formBuilder.group({
   title: ['',Validators.required],
   discription: ['',Validators.required]
 });
 }
+
+
 get f() { return this.createNoteForm.controls; }
 
 onSubmit(note) {

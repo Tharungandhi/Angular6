@@ -38,5 +38,15 @@ export class HttpService {
     return this.http.post<any>(url,object,header);
   }
   
-  
+  labelUpdateService(url,object,header){
+    return this.http.put<any>(url,object,header);
+  }
+
+  labelDeleteService(url,header){
+    return this.http.delete<any>(url,header);
+  }
+
+  labelCreateService(url,object,header){
+    return this.http.post<any>(url,object,header);
+}
 }
