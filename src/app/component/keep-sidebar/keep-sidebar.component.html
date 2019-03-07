@@ -1,10 +1,10 @@
 <!-- side navigation bar -->
 
 <mat-sidenav-container class="keep-sidebar-container">
-  <mat-sidenav #drawer mode="side" opened role="navigation">
-    <mat-nav-list>
+  <mat-sidenav #drawer mode="side" opened role="navigation" class="sidebar">
+    <mat-nav-list class="colour_place">
       <!-- notes -->
-      <button mat-menu-item (click)="notes()">
+      <button mat-menu-item (click)="notes()" >
         <mat-icon>note_add</mat-icon>
         <span>Notes</span>
       </button>
@@ -15,19 +15,26 @@
       </button>
       <mat-divider></mat-divider><br>
 
-      &nbsp;&nbsp;&nbsp;&nbsp;
+
       <span>
         <font size="1" face="arial">LABELS</font>
       </span>
-      <!-- <div>
-            <span style="margin-left: 10px">
-              <font face="arial">Label</font>
-            </span>
-    </div> -->
+    
       <!-- <div (updateClick)="refresh($event)"> -->
 
-      <!-- </div> -->
+    
      
+      <div *ngFor="let label of labels">
+        <div fxLayout=row fxLayoutGap="10%">
+          <button mat-button class=labelbutton >
+            <div fxFlex="5%">
+            <mat-icon>label</mat-icon></div>
+            <div fxFlex="90%" class="txtt">{{label.labelName}}</div>
+          </button>
+        </div>
+</div>
+
+
       <button mat-menu-item (click)="openDialog()">
         <mat-icon>edit</mat-icon>
         <span>Edit Labels</span>
@@ -36,15 +43,7 @@
         <mat-icon>label</mat-icon>
           {{label.labelName}}
         </div> -->
-        <div *ngFor="let label of labels">
-            <div fxLayout=row fxLayoutGap="10%">
-              <button mat-button class=labelbutton >
-                <div fxFlex="5%">
-                <mat-icon>label</mat-icon></div>&nbsp;&nbsp;&nbsp;&nbsp;
-                <div fxFlex="90%" class="txtt">{{label.labelName}}</div>
-              </button>
-            </div>
-    </div>
+       
       <mat-divider></mat-divider>
       <!-- archive -->
 

@@ -6,3 +6,19 @@
 .textarea{
     outline: none;
 }
+.update{
+      
+    text-align: left;
+    width: 100%;
+      height: 100%;
+      font-size:12pt;
+      font-style: bold;
+      border: hidden;
+      display: flex;
+      outline: none;
+  }
+
+  .align{
+
+    text-align: center;
+  }

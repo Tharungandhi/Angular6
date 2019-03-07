@@ -1,3 +1,83 @@
 .keep-sidebar-container{
 height: 100% ;
 }
+.sidebar{
+   border-right: 5px solid rgba(235, 120, 27, 0.5);
+}
+
+.colour_place{
+    place-content: 5px solid rgba(235, 120, 27, 0.5);
+    color: rgb(26, 27, 4) !important;
+   /* background-color: rgb(202, 101, 18); */
+}
+
+.navbar{
+    display: flex;
+}
+
+#input{
+    width: 91%;
+    height: 75%;
+    border: hidden;
+    display: flex;
+    outline: none
+
+}
+#text{
+    margin-left: 20px
+}
+
+#searchbox{
+    margin-left: 30px;
+    width: 100%;
+    height: 74%;
+}
+#refresh{
+    margin-right: 18px;
+    margin-left: 80px;
+}
+#viewstream{
+    margin-right: 45px
+}
+#apps{
+    margin-right: 24px
+}
+#notification{
+    margin-right: 15px
+}
+#accountcircle{
+    margin-right: 0px
+}
+#insidenave{
+    width: 250px;
+}
+#button{
+    border-style: none;
+    width: 100%;
+    font-family: sans-serif;
+    height: 56px;
+    padding: 5px
+}
+
+    .labelsbutton{
+        border-style: none;
+    }
+    .txtt{
+        white-space: nowrap;
+        text-overflow:ellipsis;
+        overflow: hidden !important;
+    }
+    .buttonn{
+    
+        border: none;
+        width: 250px;   
+    }
+    .labelbutton{
+        width: 250px;
+        border: none;
+    }
+    .txtt{
+        margin-top: -2px;
+    }
+    
+    

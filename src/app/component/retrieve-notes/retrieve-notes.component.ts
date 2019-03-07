@@ -43,6 +43,12 @@ export class AddnotesComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.noteService.updateNote(notes,notes.id).subscribe(response => {
+        console.log(response);
+      },
+        error => {
+          console.log("error");
+        })
       console.log('The dialog was closed');
 
     });

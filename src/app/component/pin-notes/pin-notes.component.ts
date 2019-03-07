@@ -20,18 +20,18 @@ export class PinNotesComponent implements OnInit {
   }
 
 
-  // openDialog(notes): void {
-  //   const dialogRef = this.dialog.open(UpdateNoteComponent, {
-  //     width: '500px',
-  //     data: notes
+  openDialog(notes): void {
+    const dialogRef = this.dialog.open(UpdateNoteComponent, {
+      width: '500px',
+      data: notes
 
-  //   });
+    });
 
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log('The dialog was closed');
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
 
-  //   });
-  // }
+    });
+  }
 
   getNotes() {
     this.noteService.retrieveNotes(this.mytoken).subscribe(newNote => {

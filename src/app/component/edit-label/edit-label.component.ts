@@ -39,12 +39,12 @@ public closeDailog()
 
 public updateLabel(labels,labelName)
   {
-    var labelName=labelName.innerHTML;
-    console.log(labelName);
+    var name=labelName.innerHTML;
+    console.log(name);
     var newLabel=
     {
       ...labels,
-      "labelName" : labelName
+      labelName : name
     }
     this.noteService.updateLabel(newLabel,newLabel.id).subscribe(response => {
       this.ngOnInit();

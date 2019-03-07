@@ -15,8 +15,6 @@ export class NoteService {
 public token=localStorage.getItem('token');
 
   constructor(private http: HttpService,
-    //  private router: Router,
-    //  private dialog :MatDialog,
       public snackBar: MatSnackBar) { }
 
 
@@ -36,38 +34,39 @@ public token=localStorage.getItem('token');
 
 
   createNote(notes): Observable<any> {
-    var token = localStorage.getItem('token');
     var httpheaders = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'token': token
+        'token': this.token
       })
     };
     return this.http.postWithBody(`${environment.note_url}createnote`,notes, httpheaders);
   }
 
   removeNote(id): Observable<any> {
-  var token=localStorage.getItem('token');
+ 
   var httpheaders={
    headers:new HttpHeaders({
      'Content-Type':'application/json',
-     'token':token
+     'token':this.token
    })
   };
     return this.http.deleteService(`${environment.note_url}deletenote/`+id, httpheaders);
   }
 
   
-  updateNote(notes,id) {
-   return this.http.putService(`${environment.note_url}updatenote/`,notes,{
-    params: {
-      id: id,
-    token:localStorage.getItem('token'),
-    },
-    observe: 'response'
+   
+  updateNote(notes, id) {
+    var httpheaders = {
+    headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'token':this.token
+    })
+    };
+    return this.http.putService(`${environment.note_url}updatenote/`+id, notes, httpheaders)
     }
-    )
-    }
+  
+
 
     retrieveLabels():Observable<any>
     {
@@ -93,11 +92,11 @@ public token=localStorage.getItem('token');
     updateLabel(label, id):Observable<any> {
       var httpheaders = {
         headers:new HttpHeaders({
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
           'token':this.token
         })
       };
-      return this.http.labelCreateService(`${environment.note_url}updatelabel/`+ id, label,httpheaders);
+      return this.http.putService(`${environment.note_url}updatelabel/`+ id, label,httpheaders);
     }
   
     removeLabel(id):Observable<any> {
@@ -107,7 +106,7 @@ public token=localStorage.getItem('token');
           'token':this.token
         })
       };
-      return this.http.labelDeleteService(`${environment.note_url}deletelabel/`+ id, httpheaders);
+      return this.http.deleteService(`${environment.note_url}deletelabel/`+ id, httpheaders);
     }
   
     

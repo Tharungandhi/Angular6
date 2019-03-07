@@ -19,6 +19,8 @@ import { KeepSidebarComponent } from './component/keep-sidebar/keep-sidebar.comp
 import { TrashComponent } from './component/trash/trash.component';
 import { PinNotesComponent } from './component/pin-notes/pin-notes.component';
 import { EditLabelComponent } from './component/edit-label/edit-label.component';
+import { NoteFilterPipe } from './core/pipe/note-filter.pipe';
+
 
 
 @NgModule({
@@ -38,7 +40,11 @@ import { EditLabelComponent } from './component/edit-label/edit-label.component'
     KeepSidebarComponent,
     TrashComponent,
     PinNotesComponent,
-    EditLabelComponent    
+    EditLabelComponent,
+    NoteFilterPipe,
+    
+
+        
   ],
   imports: [
     BrowserModule,

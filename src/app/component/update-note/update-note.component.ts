@@ -19,51 +19,26 @@ export class UpdateNoteComponent implements OnInit {
  constructor(
   public dialogRef: MatDialogRef<UpdateNoteComponent>,
   @Inject(MAT_DIALOG_DATA) public data: DialogData,
-  private service: NoteService,
+  private noteService: NoteService,
   private formBuilder:FormBuilder) {}
 
   ngOnInit() {
     this.updateNoteForm=this.formBuilder.group({});
-    
+  
   }
   
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
+  // onNoClick(): void {
+  //   this.dialogRef.close();
+  // }
+
   updateNote(note,id) {
     console.log(note);
-    this.service.updateNote(note,id)
-  }
-        
-
-
-
-
-
- 
-
-//   ngOnInit() {
-//     this.updateNoteForm = this.formBuilder.group({
-//     });
-//   }
-
-//   closeClick(title, description) {
-//     var note = {
-//       'title': title,
-//       'description': description,
-//       'noteId': this.note.noteId
-//     }
-
-//     this.noteService.updateNote(note, this.token).subscribe(response => {
-//       console.log(response);
-//     },
-//       error => {
-//         console.log('error');
-//       });
-//   }
-//   // update() {
-//   //   this.dialogRef.close();
-//   // }
-
-}
+    this.noteService.updateNote(note,id).subscribe(response => {
+      console.log(response);
+    },
+      error => {
+        console.log("error");
+      })
+    this.dialogRef.close();
+  }}

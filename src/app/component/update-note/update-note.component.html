@@ -1,17 +1,31 @@
-
-<mat-label for="title"><b>title</b></mat-label>
+<mat-label for="title"><b>Title</b></mat-label>
   <div>
-    <input matInput [(ngModel)]="data.title" [value]=data.title placeholder="Title">
+    <input matInput class="note" [(ngModel)]="data.title" [value]=data.title placeholder="Title">
   </div>
   <br>
-  <mat-label for="discription"><b>description</b></mat-label>
+  <mat-label for="discription"><b>Description</b></mat-label>
   <div>
-    <textarea matInput [(ngModel)]="data.discription" [value]=data.discription placeholder="Discription"></textarea>
+    <textarea matInput class="note"[(ngModel)]="data.discription" [value]=data.discription placeholder="Discription"></textarea>
 
     </div>
+    <button mat-icon-button matTooltip="Remind me">
+        <mat-icon>add_alert</mat-icon>
+      </button>
+      <button mat-icon-button matTooltip="Collaborator">
+        <mat-icon>person_add</mat-icon>
+      </button>
+      <button mat-icon-button matTooltip="Change color">
+        <mat-icon>palette</mat-icon>
+      </button>
+      <button mat-icon-button matTooltip="Add image">
+        <mat-icon>image</mat-icon>
+      </button>
 
-  
-    <br>
+      <button mat-icon-button matTooltip="undo">
+          <mat-icon>undo</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="redo">
+          <mat-icon>redo</mat-icon>
+        </button>
+   
     <button mat-button (click)="updateNote(data,data.id)" style="float:right">Close</button>
-
-
