@@ -20,6 +20,7 @@ import { TrashComponent } from './component/trash/trash.component';
 import { PinNotesComponent } from './component/pin-notes/pin-notes.component';
 import { EditLabelComponent } from './component/edit-label/edit-label.component';
 import { NoteFilterPipe } from './core/pipe/note-filter.pipe';
+import { AddlabelNotesComponent } from './component/addlabel-notes/addlabel-notes.component';
 
 
 
@@ -42,6 +43,7 @@ import { NoteFilterPipe } from './core/pipe/note-filter.pipe';
     PinNotesComponent,
     EditLabelComponent,
     NoteFilterPipe,
+    AddlabelNotesComponent,
     
 
         
@@ -54,7 +56,8 @@ import { NoteFilterPipe } from './core/pipe/note-filter.pipe';
   ],
    entryComponents:[
     UpdateNoteComponent,
-    EditLabelComponent
+    EditLabelComponent,
+    AddlabelNotesComponent
    ],
   providers: [],
   bootstrap: [AppComponent]

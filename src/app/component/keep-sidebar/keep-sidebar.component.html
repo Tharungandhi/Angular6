@@ -1,14 +1,12 @@
-<!-- side navigation bar -->
+
 
 <mat-sidenav-container class="keep-sidebar-container">
   <mat-sidenav #drawer mode="side" opened role="navigation" class="sidebar">
     <mat-nav-list class="colour_place">
-      <!-- notes -->
       <button mat-menu-item (click)="notes()" >
         <mat-icon>note_add</mat-icon>
         <span>Notes</span>
       </button>
-      <!-- remainder -->
       <button mat-menu-item>
         <mat-icon>notifications</mat-icon>
         <span>Remainder</span>
@@ -39,19 +37,15 @@
         <mat-icon>edit</mat-icon>
         <span>Edit Labels</span>
       </button>
-      <!-- <div *ngFor="let label of labels">
-        <mat-icon>label</mat-icon>
-          {{label.labelName}}
-        </div> -->
        
       <mat-divider></mat-divider>
-      <!-- archive -->
+ 
 
       <button mat-menu-item [routerLink]="['/homepage/archive']">
         <mat-icon>archive</mat-icon>
         <span>Archive</span>
       </button>
-      <!-- delete -->
+
       <button mat-menu-item [routerLink]="['/homepage/trash']">
         <mat-icon>delete</mat-icon>
         <span>Trash</span>

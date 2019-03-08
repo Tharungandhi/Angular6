@@ -36,21 +36,7 @@ height: 100% ;
     margin-right: 18px;
     margin-left: 80px;
 }
-#viewstream{
-    margin-right: 45px
-}
-#apps{
-    margin-right: 24px
-}
-#notification{
-    margin-right: 15px
-}
-#accountcircle{
-    margin-right: 0px
-}
-#insidenave{
-    width: 250px;
-}
+
 #button{
     border-style: none;
     width: 100%;
@@ -80,4 +66,8 @@ height: 100% ;
         margin-top: -2px;
     }
     
-    
+    .mat-menu-item:hover {
+        background-color: rgb(255, 136, 0);
+        border-radius: 30px;
+        color: wheat;
+    }

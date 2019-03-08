@@ -5,6 +5,8 @@ import { Note } from 'src/app/core/model/note';
 import { UpdateNoteComponent } from 'src/app/component/update-note/update-note.component';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
+import { AddlabelNotesComponent } from '../addlabel-notes/addlabel-notes.component';
+import { label } from 'src/app/core/model/label';
 
 export interface DialogData {
   dis: string;
@@ -17,8 +19,9 @@ export interface DialogData {
   styleUrls: ['./retrieve-notes.component.css']
 })
 export class AddnotesComponent implements OnInit {
-  mytoken:String
+  public mytoken = localStorage.getItem('token');
   public notes: Note[] = [];
+  public label:label[]=[];
   constructor(private noteService: NoteService,
     private dialog:MatDialog,
     public snackBar: MatSnackBar,
@@ -28,7 +31,6 @@ export class AddnotesComponent implements OnInit {
     this.getNotes();
   }
   getNotes() {
-    this.mytoken = localStorage.getItem('token')
     console.log("token", this.mytoken);
     this.noteService.retrieveNotes(this.mytoken).subscribe(newNote => {
       this.notes = newNote;
@@ -93,6 +95,57 @@ pinnedNotes(notes) {
   notes.pinned=1;
   this.updateMethod(notes);
 }
+
+
+openDialogLabels(notes): void {
+  const dialogRef = this.dialog.open(AddlabelNotesComponent, {
+    width: '500px',
+    data: notes
+
+  });
+console.log(dialogRef)
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(this.label)
+});
+}
+
+// public onClickCheckbox(event, label, note) {
+//   event.stopPropagation();
+//   this.noteService.addLabelToNote(note.noteId, label).subscribe(response => {
+//     console.log("adding check in database");
+//     const data = { note };
+//     // this.getNotes();
+//     this.eventAddNoteLabel.emit(data);
+//   }, (error) => console.log(error));
+// }
+
+// public getLabels() {
+//   this.noteService.retrieveLabels().subscribe(newLabel => {
+//     this.labels = newLabel;
+//     console.log(this.labels);
+//   }, error => {
+//     this.snackBar.open("error", "error to retrieve labels", { duration: 2000 });
+//   }
+//   )
+// }
+
+// public labelFilter(event, noteLabels) {
+//   event.stopPropagation();
+//   this.newLabels.length = 0;
+//   var k = 0;
+//   for (var i = 0; i < this.labels.length; i++) {
+//     var present = 0;
+//     for (var j = 0; j < noteLabels.length; j++) {
+//       if (this.labels[i].labelId === noteLabels[j].labelId && present === 0) {
+//         present = 1;
+//       }
+//     }
+//     if (present === 0) {
+//       this.newLabels[k] = this.labels[i];
+//       k++;
+//     }
+//   }
+// }
 
 }
   

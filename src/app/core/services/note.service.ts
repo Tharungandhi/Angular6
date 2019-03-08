@@ -17,16 +17,20 @@ public token=localStorage.getItem('token');
   constructor(private http: HttpService,
       public snackBar: MatSnackBar) { }
 
-
+      getHeader() {
+        var token = localStorage.getItem('token')
+        const httpheaders = {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            'token': token
+          })
+        };
+        return httpheaders;
+    }
 
   retrieveNotes(token):Observable<any>
   {
-    var httpheaders = {
-      headers:new HttpHeaders({
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'token': token
-      })
-    };
+    var httpheaders=this.getHeader();
     return this.http.getService(environment.note_url + 'retrievenote',httpheaders);
   }
 
@@ -34,35 +38,19 @@ public token=localStorage.getItem('token');
 
 
   createNote(notes): Observable<any> {
-    var httpheaders = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'token': this.token
-      })
-    };
+    var httpheaders=this.getHeader();
     return this.http.postWithBody(`${environment.note_url}createnote`,notes, httpheaders);
   }
 
   removeNote(id): Observable<any> {
- 
-  var httpheaders={
-   headers:new HttpHeaders({
-     'Content-Type':'application/json',
-     'token':this.token
-   })
-  };
+    var httpheaders=this.getHeader();
     return this.http.deleteService(`${environment.note_url}deletenote/`+id, httpheaders);
   }
 
   
    
   updateNote(notes, id) {
-    var httpheaders = {
-    headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-    'token':this.token
-    })
-    };
+    var httpheaders=this.getHeader();
     return this.http.putService(`${environment.note_url}updatenote/`+id, notes, httpheaders)
     }
   
@@ -70,47 +58,32 @@ public token=localStorage.getItem('token');
 
     retrieveLabels():Observable<any>
     {
-      var httpheaders = {
-            headers:new HttpHeaders({
-              'Content-Type': 'application/x-www-form-urlencoded',
-              'token':this.token
-            })
-          };
+      var httpheaders=this.getHeader();
           return this.http.getService(`${environment.note_url}retrievelabel/`,httpheaders);
     }
 
     createLabels(labels): Observable<any> {
-      var httpheaders = {
-        headers:new HttpHeaders({
-          'Content-Type': 'application/json',
-          'token':this.token
-        })
-      };
+      var httpheaders=this.getHeader();
       return this.http.labelCreateService(`${environment.note_url}createlabel/`,labels,httpheaders);
   }
   
     updateLabel(label, id):Observable<any> {
-      var httpheaders = {
-        headers:new HttpHeaders({
-          'Content-Type': 'application/json',
-          'token':this.token
-        })
-      };
+      var httpheaders=this.getHeader();
       return this.http.putService(`${environment.note_url}updatelabel/`+ id, label,httpheaders);
     }
   
     removeLabel(id):Observable<any> {
-      var httpheaders = {
-        headers:new HttpHeaders({
-          'Content-Type': 'application/json',
-          'token':this.token
-        })
-      };
+      var httpheaders=this.getHeader();
       return this.http.deleteService(`${environment.note_url}deletelabel/`+ id, httpheaders);
     }
   
     
-
+    mapLabelTONote(noteId,label){
+      var header = this.getHeader()
+      // var noteId= note.id
+      // var labelId=label.id
+      return this.http.putService(`${environment.note_url}mapnotelabel/`+noteId,label, { observe: 'response' });
+  }
 
 
 

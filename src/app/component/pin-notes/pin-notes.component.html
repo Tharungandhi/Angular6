@@ -1,4 +1,4 @@
-<div class="container" fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
+<div  *ngIf="notes!=null" class="container"  fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
     Pinned
     <div *ngFor="let notes of notes">
       <mat-card *ngIf="notes.pinned && !notes.inTrash && !notes.archive" [style.backgroundColor]="'orange'">
@@ -33,6 +33,8 @@
             <i id="accountcircle" class="material-icons">more_vert</i></button>
           <mat-menu #more="matMenu" class="morecard">
             <button mat-button (click)=moveToTrash(notes)>Delete Note</button>
+            <br>
+            <button mat-button (click)=openDialogLabels(notes)>Add Label</button>
           </mat-menu>
         </div>
       </mat-card>

@@ -3,6 +3,8 @@ import { NoteService } from 'src/app/core/services/note.service';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
 import { Note } from 'src/app/core/model/note';
+import { AddlabelNotesComponent } from '../addlabel-notes/addlabel-notes.component';
+import { label } from 'src/app/core/model/label';
 
 @Component({
   selector: 'app-archive',
@@ -13,6 +15,8 @@ export class ArchiveComponent implements OnInit {
   public mytoken = localStorage.getItem('token');
   public archiveList=[];
   public notes: Note[] = [];
+  public label:label[]=[];
+
 
   constructor(private noteService: NoteService, public snackBar: MatSnackBar,
     public dialog: MatDialog) { }
@@ -69,7 +73,17 @@ moveToTrash(notes) {
   notes.inTrash = 1;
   this.updateMethod(notes);
 }
+openDialogLabels(notes): void {
+  const dialogRef = this.dialog.open(AddlabelNotesComponent, {
+    width: '500px',
+    data: notes
 
+  });
+console.log(dialogRef)
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(this.label)
+});
+}
 }
 
 

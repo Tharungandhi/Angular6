@@ -11,7 +11,7 @@
     </div>
 </div>
 
-<div *ngFor="let label of labels">
+<div *ngFor="let label of labels" class="editLabel">
     <div fxLayout=row>
         <div fxFlex=10%>
             <mat-icon class="icon" (click)=deleteLabel(label)>delete</mat-icon>
