@@ -14,7 +14,7 @@ export interface DialogData {
 @Component({
   selector: 'homepage',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css']
+  styleUrls: ['./home-page.component.scss']
 })
 export class HomepageComponent implements OnInit {
   public isOpen = false;

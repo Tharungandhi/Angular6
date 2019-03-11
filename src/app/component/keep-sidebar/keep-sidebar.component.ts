@@ -9,11 +9,12 @@ import { label } from 'src/app/core/model/label';
 @Component({
   selector: 'keep-sidebar',
   templateUrl: './keep-sidebar.component.html',
-  styleUrls: ['./keep-sidebar.component.css']
+  styleUrls: ['./keep-sidebar.component.scss']
 })
 export class KeepSidebarComponent implements OnInit {
   @ViewChild('drawer') public drawer;
-  @Input() public keepSidebar: Subject<any>;;
+  @Input() public keepSidebar: Subject<any>;
+  
   public labels: label[] = [];
 
   constructor(private router: Router, public dialog: MatDialog,

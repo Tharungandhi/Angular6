@@ -26,9 +26,12 @@
         <mat-icon>refresh</mat-icon>
       </a>
 
-      <a mat-button r routerLinkActive="active" matTooltip="Lists" title="lists">
-        <mat-icon>dns</mat-icon>
-      </a>
+     
+      <button mat-icon-button (click)="viewGrid()"   fxHide.xs="true" fxShow.sm="false"
+        fxShow.md="true" fxShow.lg="true"  >
+      <mat-icon *ngIf="!grid">view_stream</mat-icon>
+      <mat-icon  *ngIf="grid">view_module</mat-icon>
+      </button>
 
       <a mat-button routerLinkActive="active" matTooltip="notification" title="notification">
           <mat-icon>notification_important</mat-icon>

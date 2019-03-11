@@ -1,6 +1,6 @@
 
 
-<div class="container" fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
+<div class="container" fxLayout="column" fxLayoutGap="10%" fxLayoutAlign="center center">
     <div *ngFor="let notes of notes" >
       <mat-card *ngIf="notes.archive " [style.backgroundColor]="'orange'">
           <!-- && !note.inTrash && !note.pinned -->

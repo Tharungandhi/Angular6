@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/core/services/user.service';
@@ -7,12 +7,14 @@ import { NoteService } from 'src/app/core/services/note.service';
 import { MatSnackBar } from '@angular/material';
 
 
+
 @Component({
   selector: 'app-create-note',
   templateUrl: './create-note.component.html',
-  styleUrls: ['./create-note.component.css']
+  styleUrls: ['./create-note.component.scss']
 })
 export class CreateNoteComponent implements OnInit {
+  @Output()  eventEmitter= new EventEmitter();
   public showHeader = true;
   createNoteForm: FormGroup;
   loginForm: FormGroup;
@@ -51,6 +53,7 @@ if (this.createNoteForm.value.title === "" && this.createNoteForm.value.discript
 console.log(this.mytoken);
 console.log(note);
 this.noteService.createNote(note).subscribe(response => {
+  this.eventEmitter.emit(true);
   this.snackBar.open("Note has been created successfully", "OK", {
     duration: 2000
   });

@@ -1,4 +1,4 @@
-<div  *ngIf="notes!=null" class="container"  fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
+<!-- <div  *ngIf="notes!=null" class="container"  fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
     Pinned
     <div *ngFor="let notes of notes">
       <mat-card *ngIf="notes.pinned && !notes.inTrash && !notes.archive" [style.backgroundColor]="'orange'">
@@ -39,4 +39,109 @@
         </div>
       </mat-card>
     </div>
+  </div> -->
+  <div class="container" fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
+    <div class="notegrid" [ngClass]="grid ? 'notegrid-grid-view': 'notegrid-list-view'">
+  
+    <div *ngFor="let notes of notes">
+      <mat-card class="notegrid-container">
+        <!-- *ngIf="!notes.archive && !notes.inTrash && notes.pinned" style="background-color: aqua">  -->
+  
+        <mat-card-header>
+  
+  
+          <button *ngIf="notes.pinned" mat-icon-button (click)="pinnedNotes('unpinned',notes)" class="pinned-icon">
+            <img src="./assets/image/Pin-icon.png">
+          </button>
+          <button *ngIf="!notes.pinned" mat-icon-button (click)="pinnedNotes('pinned',notes)">
+            <img src="./assets/image/Pin-icon.png">
+  
+          </button>
+  
+          <mat-card-title (click)=openDialog(notes)>
+  
+            {{notes.title}}
+          </mat-card-title>
+  
+        </mat-card-header>
+  
+        <mat-card-header>
+          <mat-card-subtitle (click)=openDialog(notes)>
+            {{notes.discription}}
+  
+  
+            <!-- <button *ngIf="notes.pinned" mat-icon-button (click)="pinnedNotes('unpinned',notes)" style="background-color:orange"  >
+                <img src="./assets/images/pin-icon.jpg" style="width:30px;">
+              </button> -->
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-chip-list #chipList>
+          <mat-chip *ngFor="let label of notes.labels" [removable]="removable" (removed)="remove(label,notes)">
+            {{label.labelName}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+        </mat-chip-list>
+  
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <div>
+          <button mat-icon-button class="hoverwrapper" matTooltip="Remind me">
+            <mat-icon>add_alert</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="Collaborator">
+            <mat-icon>person_add</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="Change color">
+            <mat-icon>palette</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="Add image">
+            <mat-icon>image</mat-icon>
+          </button>
+  
+  
+          <button mat-icon-button (click)="updateArchiveNote(notes)" matTooltip="Undo Archive">
+            <mat-icon>archive</mat-icon>
+          </button>
+          <button mat-icon-button class="icon-button" id="more" [matMenuTriggerFor]="more" matTooltip="more">
+            <i id="accountcircle" class="material-icons">more_vert</i></button>
+          <!-- <mat-menu #more="matMenu" class="morecard">
+              <button mat-button (click)=trashNote(notes)>Delete Note</button>
+            </mat-menu> -->
+  
+  
+          <mat-menu #more="matMenu" class="morecard">
+            <button mat-button (click)=trashNote(notes)>Delete Note</button>
+            <div>
+                <button mat-button [matMenuTriggerFor]="menu" (click)="labelFilter($event,notes.labels)">Add Label</button>
+                <mat-menu #menu="matMenu">
+                  <div fxLayout="row">
+                    <input type="input" placeholder="Seach for labels">
+                  </div>
+                  <div *ngFor="let label of newLabels">
+                    <mat-checkbox (click)="addLabelToNote($event,label,notes)">{{label.labelName}}</mat-checkbox>
+                  </div>
+                </mat-menu>
+              </div>
+          </mat-menu>
+  
+  
+  
+          <!-- 
+          <button mat-icon-button (click)="updateArchiveNote(notes)" matTooltip="Undo Archive">
+              <mat-icon>map-pin</mat-icon>
+            </button>  -->
+  
+          <button mat-icon-button matTooltip="undo">
+            <mat-icon>undo</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="redo">
+            <mat-icon>redo</mat-icon>
+          </button>
+  
+  
+  
+        </div>
+      </mat-card>
+    </div>
   </div>
+  </div>
+ 

@@ -85,6 +85,17 @@ public token=localStorage.getItem('token');
       return this.http.putService(`${environment.note_url}mapnotelabel/`+noteId,label, { observe: 'response' });
   }
 
+  deletenotelabel(labelId,noteId){
+    return  this.http.deleteService( `${environment.note_url}deletenotelabel/`,{
+      params: {
+         noteId: noteId,
+         labelId:labelId
+      },
+      observe: 'response'
+      }
+      )
+    }
+
 
 
 

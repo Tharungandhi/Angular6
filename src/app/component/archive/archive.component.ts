@@ -9,7 +9,7 @@ import { label } from 'src/app/core/model/label';
 @Component({
   selector: 'app-archive',
   templateUrl: './archive.component.html',
-  styleUrls: ['./archive.component.css']
+  styleUrls: ['./archive.component.scss']
 })
 export class ArchiveComponent implements OnInit {
   public mytoken = localStorage.getItem('token');

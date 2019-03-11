@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import{ MatButtonModule,MatRippleModule,MatSelectModule,MatInputModule } from '@angular/material';
+import{ MatButtonModule,MatRippleModule,MatSelectModule,MatInputModule, MatCheckboxModule } from '@angular/material';
 import {MatIconModule} from '@angular/material/icon'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule} from'@angular/material/card';
@@ -42,7 +42,8 @@ import { MatDialogModule} from '@angular/material';
     MatExpansionModule,
     MatSnackBarModule,
     MatChipsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule
       ],
   exports:[
     MatFormFieldModule,
@@ -61,7 +62,8 @@ import { MatDialogModule} from '@angular/material';
     MatDividerModule,
     MatListModule,
     MatExpansionModule,
-    MatChipsModule
+    MatChipsModule,
+    MatCheckboxModule
     
   ]
 })

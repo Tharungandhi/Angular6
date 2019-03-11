@@ -1,4 +1,12 @@
-.note{
+
+:host
+{
+  .mainClass{
+   
+    border-radius: 30px;
+    color: wheat;
+  }
+  .note{
       
     text-align: left;
     width: 100%;
@@ -9,8 +17,11 @@
       display: flex;
       outline: none;
   }
-
   .align{
 
     text-align: center;
   }
+  img {
+    width:25px;
+   }
+}

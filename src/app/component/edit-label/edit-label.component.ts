@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, EventEmitter,Output} from '@angular/core';
 import { NoteService } from 'src/app/core/services/note.service';
 import { MatSnackBar, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { label } from 'src/app/core/model/label';
@@ -6,11 +6,13 @@ import { label } from 'src/app/core/model/label';
 @Component({
   selector: 'app-edit-label',
   templateUrl: './edit-label.component.html',
-  styleUrls: ['./edit-label.component.css']
+  styleUrls: ['./edit-label.component.scss']
 })
 export class EditLabelComponent implements OnInit {
+  @Output() eventEmitter=new EventEmitter();
 public labels:label[]=[];
 public token=localStorage.getItem('token');
+
 
   constructor( @Inject(MAT_DIALOG_DATA) public data,public refDialog: MatDialogRef<EditLabelComponent>,
     public noteService: NoteService, public snackBar:MatSnackBar
@@ -47,6 +49,7 @@ public updateLabel(labels,labelName)
       labelName : name
     }
     this.noteService.updateLabel(newLabel,newLabel.id).subscribe(response => {
+      this.eventEmitter.emit(true);
       this.ngOnInit();
       this.snackBar.open("label updated", "Ok", { duration: 2000 });
     }, (error) => {

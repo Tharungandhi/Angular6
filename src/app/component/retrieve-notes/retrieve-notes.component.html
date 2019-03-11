@@ -1,4 +1,4 @@
-
+<!-- 
 <div class="container" fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
       <div fxFlex="80%" >
 <app-create-note></app-create-note>
@@ -24,12 +24,12 @@
         {{notes.discription}}
       </mat-card-content>
       
-      
-
-
-
-
-
+      <mat-chip-list #chipList>
+        <mat-chip *ngFor="let label of notes.labels" [removable]="removable" (removed)="remove(label,notes)">
+          {{label.labelName}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
       <div>
         <button mat-icon-button matTooltip="Remind me">
           <mat-icon>add_alert</mat-icon>
@@ -67,5 +67,19 @@
 </div>
 
 <router-outlet></router-outlet>
+
+ -->
+ <div class="container" fxLayout="column" fxLayoutGap="10%" fxLayoutAlign="center center">
+  <div fxFlex="80%">
+    <app-create-note (eventCreate)="refresh($event)"></app-create-note>
+    <p>Pinned Notes</p>
+    <app-pin-notes class="pinnedNotes" [notes]="notes | noteFilter:'pinned'" (updateEvent)="onClickUpdate($event)" [grid]="grid" (updateNoteEvent)="updateNoteToGrid($event)"></app-pin-notes>
+    <p>Others</p>
+    <app-pin-notes class="otherNotes" [notes]="notes | noteFilter" (updateEvent)="onClickUpdate($event)"[grid]="grid" (updateNoteEvent)="updateNoteToGrid($event)"></app-pin-notes>
+  
+</div>
+</div>
+
+
 
 

@@ -80,5 +80,14 @@ export class TrashComponent implements OnInit {
         console.log("error");
       })
 }
+onClickUpdate(data) {
+  this.updateMethod(data.notes);
+}
 
+
+refresh(event) {
+  if (event) {
+    this.getNotes();
+  }
+}
 }

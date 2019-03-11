@@ -1,147 +1,3 @@
-<!-- <mat-card class="card">
-    <mat-accordion *ngFor="let notes of notes">
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    <div class="container">
-                        <mat-form-field>
-                            <input matInput placeholder="Title" value={{notes.title}} [formControl]="title" required>
-                        </mat-form-field>
-                    </div>
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <mat-panel-description>
-            </mat-panel-description>
-             
-            <div class="container">
-                <mat-form-field>
-                    <input matInput placeholder="Description" value="{{notes.discription}}"
-                        [formControl]="description" required>
-                </mat-form-field>
-            </div><br>
-            Icons here
-            <mat-card-actions>
-                <div id="signButton"><button mat-button (click)="update(products.title, products.discription)">update
-                    </button>
-                    <button mat-button (click)="delete(products.title)">delete</button></div>
-
-            </mat-card-actions>
-
-        </mat-expansion-panel>
-        <br> <br> <br> <br> <br>
-    </mat-accordion>
-</mat-card> -->
-
-
-
-
-        <!-- <form [formGroup]="createNoteForm" (ngSubmit)="onSubmit(createNoteForm.value)">
-          <mat-accordion>
-            <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  <div class="form-group">
-                    <input matInput placeholder="Title" formControlName="title" class="form-control">
-                  </div>
-                </mat-panel-title>
-                <mat-panel-description>
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <mat-form-field>
-                <div class="form-group">
-                  <input matInput placeholder="Take a note..." formControlName="discription" class="form-control">
-                </div>
-              </mat-form-field>
-           
-          
-          
-          <mat-card-actions>
-              <div class="form-group">
-                  <button mat-button color="btn-primary" [disabled]="loading" class="btn btn-primary">create</button> 
-                 
-                
-              </div>
-            
-          </mat-card-actions>
-        </mat-expansion-panel>
-        </mat-accordion>
-        </form> -->
-
-
-
-        <!-- <div fxLayout="row" fxLayoutAlign="center center">
-    <form [formGroup]="createNoteForm">
-      <mat-accordion>
-      <mat-card>
-        
-        <mat-expansion-panel [expanded]=true (opened)="showHeader = false" (closed)="onSubmit(createNoteForm.value)"
-          (closed)="showHeader = true" hideToggle="true">
-         
-          <mat-expansion-panel-header>
-            <ng-container *ngIf="showHeader;else tempTtext">
-              <mat-panel-title >
-                Take a note..
-                <div style="text-align:right; width:100%;">
-                  <button mat-icon-button matTooltip="new list">
-                    <mat-icon>check_box</mat-icon>
-                  </button>
-                  <button mat-icon-button matTooltip="new note with image">
-                    <mat-icon>image</mat-icon>
-                  </button>
-                </div>
-              </mat-panel-title>
-            </ng-container>
-            <ng-template #tempTtext>
-  
-            </ng-template>
-          </mat-expansion-panel-header>
-          <mat-panel-description>
-            <input matInput class="note" placeholder="Title" formControlName="title" 
-              [ngClass]="{ 'is-invalid': submitted && f.title.errors }" style="width: 500 px;">
-            <button mat-icon-button matTooltip="Pin note">
-              <mat-icon>pin_drop</mat-icon>
-            </button>
-          </mat-panel-description>
-          <mat-panel-description>
-            <textarea matInput class="note" placeholder="Take a note.." formControlName="description"
-             [ngClass]="{ 'is-invalid': submitted && f.description.errors }"
-              style="width: 500px;"></textarea>
-          </mat-panel-description>
-          <mat-panel-description>
-            <button mat-icon-button matTooltip="Remind me">
-              <mat-icon>add_alert</mat-icon>
-            </button>
-            <button mat-icon-button matTooltip="Collaborator">
-              <mat-icon>person_add</mat-icon>
-            </button>
-            <button mat-icon-button matTooltip="Change color">
-              <mat-icon>palette</mat-icon>
-            </button>
-            <button mat-icon-button matTooltip="Add image">
-              <mat-icon>image</mat-icon>
-            </button>
-            <button mat-icon-button matTooltip="more">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <button mat-icon-button matTooltip="undo">
-              <mat-icon>undo</mat-icon>
-            </button>
-            <button mat-icon-button matTooltip="redo">
-              <mat-icon>redo</mat-icon>
-            </button>
-            <button mat-button (click)="showHeader = true">
-              <span>close</span>
-            </button>
-          </mat-panel-description>
-        </mat-expansion-panel>
-      </mat-card>
-      </mat-accordion>
-    </form>
-    
-  </div> -->
-
-
-
 
    <div fxLayout="row" fxLayoutAlign="center center"> 
       <form [formGroup]="createNoteForm" >
@@ -149,7 +5,7 @@
         
           
           <mat-expansion-panel [expanded]=true (opened)="showHeader = false" (closed)="onSubmit(createNoteForm.value)"
-            (closed)="showHeader = true" hideToggle="true" [style.backgroundColor]="'saffron'">
+            (closed)="showHeader = true" hideToggle="true"  class="mainClass">
            
             <mat-expansion-panel-header>
               <ng-container *ngIf="showHeader;else tempTtext" >
@@ -172,9 +28,9 @@
             <mat-panel-description>
               <input matInput class="note" placeholder="Title" formControlName="title" 
                 [ngClass]="{ 'is-invalid': submitted && f.title.errors }" style="width: 500 px;">
-              <button mat-icon-button matTooltip="Pin_note" (click)=pinned(notes) title="Pin note" style="text-align:right;" >
-              
-                    <mat-icon>pin_drop</mat-icon>
+              <button mat-icon-button matTooltip="Pin_note" (click)=pinned(notes) title="Pin note" style="text-align:right;"  class="pinNotes">
+              <img src="./assets/image/Pin-icon.png">
+                   
                 
               </button>
             </mat-panel-description>
