@@ -22,6 +22,8 @@ export class AddnotesComponent implements OnInit {
   public grid = false;
   mytoken: string;
   public notes: Note[] = [];
+
+  
   constructor(private noteService: NoteService,
     public snackBar: MatSnackBar,
     private dialog: MatDialog,
@@ -34,6 +36,8 @@ export class AddnotesComponent implements OnInit {
     this.keepHelperService.getTheme().subscribe((resp) =>
       this.grid = resp
 );
+
+
   }
   getNotes() {
     this.mytoken = localStorage.getItem('token')

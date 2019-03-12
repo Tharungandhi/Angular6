@@ -13,14 +13,33 @@
       &nbsp;&nbsp;&nbsp;
      
  
-<div class="slinput" ng-init="">
+<!-- <div class="slinput" ng-init="">
     <i class="fa fa-search left-icon"></i> 
     <input type="search" placeholder="Search here" ng-model="searchInputVal" /> 
     <i ng-class="{'fa' : true, 'fa-close' : true, 'right-icon' : true, active : (searchInputVal.length > 0)}" ng-click="searchInputVal = ''"></i>
     <button mat-button>
         <mat-icon>search</mat-icon>
       </button> 
-  </div>
+  </div> -->
+  <div class="slinput" fxLayoutGap="2%">
+    <div fxFlex="0%">
+      <button mat-icon-button (click)="searchtest()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+    <div fxFlex="100%">
+      <input matInput id="input" type="text" placeholder="Search" name="searchString" (click)="searchtest()"
+        [(ngModel)]="searchString">
+    </div>
+    <div>
+      <button mat-button *ngIf="searchString" matSuffix mat-icon-button class="button" (click)="clearSearch()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+</div>
+
+
+
 
       <a mat-button routerLink="/homepage" routerLinkActive="active" matTooltip="Refresh" title="Refresh">
         <mat-icon>refresh</mat-icon>

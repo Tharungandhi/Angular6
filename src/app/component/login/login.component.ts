@@ -32,8 +32,6 @@ export class LoginComponent implements OnInit {
 
  public onSubmit(user) {
     this.submitted = true;
-
-    // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
 

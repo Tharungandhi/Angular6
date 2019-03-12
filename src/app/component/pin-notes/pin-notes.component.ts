@@ -68,16 +68,12 @@ export class PinNotesComponent implements OnInit {
     this.updateEvent.emit(data);
   }
 
-  trashNote(notes) {
+ public trashNote(notes) {
     notes.inTrash = 1;
     console.log(notes.inTrash)
     const data = { notes }
     this.updateEvent.emit(data);
   }
-
-
-
-
 
   remove(label, notes) {
     this.noteService.deletenotelabel(label.id, notes.id).subscribe(response => {

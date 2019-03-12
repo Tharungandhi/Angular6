@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { NoteService } from 'src/app/core/services/note.service';
 import { Note } from 'src/app/core/model/note';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
+import { EventEmitter } from 'events';
 
 
 @Component({
@@ -11,6 +12,7 @@ import { UpdateNoteComponent } from '../update-note/update-note.component';
   styleUrls: ['./trash.component.css']
 })
 export class TrashComponent implements OnInit {
+  @Output() eventEmitter= new EventEmitter();
   public notes: Note[] = [];
   public mytoken=localStorage.getItem('token');
 
@@ -22,22 +24,21 @@ export class TrashComponent implements OnInit {
   }
 
 
-  openDialog(notes): void {
+ public openDialog(notes): void {
     const dialogRef = this.dialog.open(UpdateNoteComponent, {
       width: '500px',
       data: notes
-
     });
-
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
 
     });
   }
 
-  getNotes() {
+public  getNotes() {
     this.noteService.retrieveNotes(this.mytoken).subscribe(newNote => {
       this.notes = newNote;
+      console.log(this.notes)
     }, error => {
       this.snackBar.open("error", "error to retrieve notes", { duration: 2000 });
     }
@@ -48,6 +49,7 @@ export class TrashComponent implements OnInit {
   deleteNote(notes) {
     console.log(notes.id);
     this.noteService.removeNote(notes.id).subscribe(response => {
+      this.refresh(event);
       this.snackBar.open('Note deleted successfully', 'OK', { duration: 2000 });
     }),
       error => { 
@@ -74,6 +76,7 @@ export class TrashComponent implements OnInit {
     console.log(notes);
     this.noteService.updateNote(notes,notes.id).subscribe(response => {
       console.log(response);
+      this.refresh(event);
       this.snackBar.open("Restored", "Ok", { duration: 2000 });
     },
       error => {
