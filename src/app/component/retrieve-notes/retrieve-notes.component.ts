@@ -23,7 +23,7 @@ export class AddnotesComponent implements OnInit {
   mytoken: string;
   public notes: Note[] = [];
 
-  
+
   constructor(private noteService: NoteService,
     public snackBar: MatSnackBar,
     private dialog: MatDialog,
@@ -36,6 +36,15 @@ export class AddnotesComponent implements OnInit {
     this.keepHelperService.getTheme().subscribe((resp) =>
       this.grid = resp
 );
+this.keepHelperService.getSearchNote().subscribe((query) => {
+  console.log('response', query);
+  if(!query){
+    this.getNotes(); 
+    return;
+  }
+  this.notes = this.notes.filter((item) => 
+  item.title.toLowerCase().includes(query.toLowerCase()));
+});
 
 
   }

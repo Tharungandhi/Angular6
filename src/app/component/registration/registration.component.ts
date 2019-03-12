@@ -31,10 +31,7 @@ export class RegistrationComponent implements OnInit {
 
   onSubmit(user) {
     this.submitted = true;
-
     this.userService.register(user)
-    
-    // stop here if form is invalid
     if (this.registerForm.invalid) {
       console.log("Invalid Entry")
     }

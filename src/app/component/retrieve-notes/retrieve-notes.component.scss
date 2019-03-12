@@ -1,20 +1,16 @@
-.title{
-    background-color: cadetblue;
-    margin: 5px;
-  border-radius: 10px;
-}
 
-.discription{
 
-    background-color: cadetblue;
-    margin: 5px;
-  border-radius: 10px;
+:host{
+  .container{
+    padding-top: 50px;
+    margin: 20px;
+    padding-block-end: 20px;
+    padding-block-start: 20px;
+  
+  .class{
+    text-align: center;
+  }
 }
-.container{
-  padding-top: 50px;
-  margin: 20px;
-  padding-block-end: 20px;
-  padding-block-start: 20px;
 }
 
 
