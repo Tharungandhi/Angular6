@@ -10,6 +10,7 @@ import { ArchiveComponent } from './component/archive/archive.component';
 import { TrashComponent } from './component/trash/trash.component';
 import { PinNotesComponent } from './component/pin-notes/pin-notes.component';
 import { EditLabelComponent } from './component/edit-label/edit-label.component';
+import { SearchNoteComponent } from './component/search-note/search-note.component';
 
 
 const appRoutes: Routes = [
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
         { path:'archive' ,component: ArchiveComponent},
         { path: 'trash',component:TrashComponent},
         { path:'pin-notes',component:PinNotesComponent},
+        {path:'search-note',component:SearchNoteComponent},
         {
           path: '',
           redirectTo: 'retrievenotes',

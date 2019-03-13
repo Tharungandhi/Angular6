@@ -24,11 +24,7 @@
 
   
   <div class="slinput" fxLayoutGap="2%">
-    <div fxFlex="0%">
-      <button mat-icon-button (click)="searchtest()">
-        <mat-icon>search</mat-icon>
-      </button>
-    </div>
+    
     <div fxFlex="100%">
       <input matInput id="input" type="text" placeholder="Search" name="searchString" (click)="searchtest()"
         [(ngModel)]="searchString">
@@ -36,6 +32,11 @@
     <div>
       <button mat-button *ngIf="searchString" matSuffix mat-icon-button class="button" (click)="clearSearch()">
         <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div fxFlex="0%">
+      <button mat-icon-button (click)="searchtest()">
+        <mat-icon>search</mat-icon>
       </button>
     </div>
 </div>
@@ -86,6 +87,9 @@
           <mat-icon>logout</mat-icon>
           <a mat-button routerLink="/login">
             <span>Logout</span>
+          </a>
+          <a mat-button routerLink="/login">
+            <span>add_image</span>
           </a>
         </button>
       </mat-menu>

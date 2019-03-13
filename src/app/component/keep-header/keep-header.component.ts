@@ -32,13 +32,13 @@ public viewGrid() {
 
 public searchtest() {
   this.keepHelperService.setSearchNote(this.searchString);
- // this.router.navigate(['homepage/search'])
+  this.router.navigate(['homepage/search-note'])
 }
 
 clearSearch()
 {
   this.searchString='';
-  //this.router.navigate(['homepage/retrievenotes'])
+  this.router.navigate(['homepage/retrievenotes'])
 }
 
 }

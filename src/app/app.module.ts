@@ -21,6 +21,8 @@ import { PinNotesComponent } from './component/pin-notes/pin-notes.component';
 import { EditLabelComponent } from './component/edit-label/edit-label.component';
 import { NoteFilterPipe } from './core/pipe/note-filter.pipe';
 import { AddlabelNotesComponent } from './component/addlabel-notes/addlabel-notes.component';
+import { SearchNoteComponent } from './component/search-note/search-note.component';
+import { SearchFilterPipe } from './core/pipe/search-note-filter.pipe';
 
 
 
@@ -44,6 +46,8 @@ import { AddlabelNotesComponent } from './component/addlabel-notes/addlabel-note
     EditLabelComponent,
     NoteFilterPipe,
     AddlabelNotesComponent,
+    SearchNoteComponent,
+    SearchFilterPipe,
     
 
         

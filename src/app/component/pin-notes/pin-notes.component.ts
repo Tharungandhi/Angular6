@@ -15,7 +15,7 @@ export class PinNotesComponent implements OnInit {
   @Input() public grid = false;
   public labels: label[]=[];
   public newLabels:label[]=[];
-  public mytoken: string;
+  public mytoken: string; 
   removable = true;
   
   
@@ -109,7 +109,7 @@ export class PinNotesComponent implements OnInit {
     event.stopPropagation();
     console.log(noteLabels);
     console.log(this.labels);
-    this.newLabels.length = 0;
+    this.newLabels.length = 0 && this.newLabels.length !=null ;
     var k = 0;
     for (var i = 0; i < this.labels.length; i++) {
       var present = 0;
