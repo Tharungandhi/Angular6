@@ -23,6 +23,7 @@ import { NoteFilterPipe } from './core/pipe/note-filter.pipe';
 import { AddlabelNotesComponent } from './component/addlabel-notes/addlabel-notes.component';
 import { SearchNoteComponent } from './component/search-note/search-note.component';
 import { SearchFilterPipe } from './core/pipe/search-note-filter.pipe';
+import { UploadImageComponent } from './component/upload-image/upload-image.component';
 
 
 
@@ -48,6 +49,7 @@ import { SearchFilterPipe } from './core/pipe/search-note-filter.pipe';
     AddlabelNotesComponent,
     SearchNoteComponent,
     SearchFilterPipe,
+    UploadImageComponent,
     
 
         

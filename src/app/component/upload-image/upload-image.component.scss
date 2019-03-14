@@ -1,0 +1,18 @@
+:host{
+    .image_upload{
+        width:200px;
+        height: 100px;
+        font-size:12px;
+      font-style: bold;
+      border: hidden;
+      display: flex;
+      outline: none;
+    }
+    .button{
+        border-style: none;
+        width: 100%;
+        font-family: sans-serif;
+        height: 56px;
+        padding: 5px
+    }
+}

@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class HttpService {
+ 
   constructor(private http: HttpClient) { }
   
     putService(url, object,header) {
@@ -46,5 +47,13 @@ export class HttpService {
 
   labelCreateService(url,object,header){
     return this.http.post<any>(url,object,header);
+}
+
+postForImage(url,object,header){
+  return this.http.post<any>(url,object,header);
+}
+
+request(req){
+  return this.http.request<any>(req);
 }
 }

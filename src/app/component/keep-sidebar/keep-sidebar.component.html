@@ -4,11 +4,11 @@
   <mat-sidenav #drawer mode="side" opened role="navigation" class="sidebar">
     <mat-nav-list class="colour_place">
       <button mat-menu-item (click)="notes()" >
-        <mat-icon>note_add</mat-icon>
+        <mat-icon>lightbulb_outline</mat-icon>
         <span>Notes</span>
       </button>
       <button mat-menu-item>
-        <mat-icon>notifications</mat-icon>
+        <mat-icon>notifications_none</mat-icon>
         <span>Remainder</span>
       </button>
       <mat-divider></mat-divider><br>
@@ -47,7 +47,7 @@
       </button>
 
       <button mat-menu-item [routerLink]="['/homepage/trash']">
-        <mat-icon>delete</mat-icon>
+        <mat-icon>delete_outline</mat-icon>
         <span>Trash</span>
       </button>
     </mat-nav-list>

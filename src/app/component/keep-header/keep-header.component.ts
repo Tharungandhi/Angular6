@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { KeepHelperService } from 'src/app/core/services/keep-helper.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { UploadImageComponent } from '../upload-image/upload-image.component';
 
 
 @Component({
@@ -16,7 +18,8 @@ public show=true;
 public searchString = '';
 
   constructor( private keepHelperService: KeepHelperService,
-    private router: Router) { }
+    private router: Router,
+    private dialog:MatDialog) { }
 
   ngOnInit() {
   }
@@ -40,5 +43,34 @@ clearSearch()
   this.searchString='';
   this.router.navigate(['homepage/retrievenotes'])
 }
+
+imageupload()
+{
+  this.router.navigate(['homepage/image'])
+}
+
+// onClickUpdate(data) {
+//   this.router.navigate(['homepage/image'])
+// }
+
+openDialog(): void {
+      const dialogRef = this.dialog.open(UploadImageComponent, {
+        width: '500px',
+       
+  
+      });}
+  
+    //   dialogRef.afterClosed().subscribe(result => {
+    //     this.noteService.updateNote(notes,notes.id).subscribe(response => {
+    //       console.log(response);
+    //     },
+    //       error => {
+    //         console.log("error");
+    //       })
+    //     console.log('The dialog was closed');
+  
+    //   });
+    // }
+    
 
 }

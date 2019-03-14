@@ -66,8 +66,13 @@ height: 100% ;
         margin-top: -2px;
     }
     
-    .mat-menu-item:hover {
-        background-color:#faf4d3;
-        border-radius: 30px;
-        color:black;
-    }
+    // .mat-menu-item:hover {
+    //     background-color:#faf4d3;
+    //     border-radius: 30px;
+    //     color:black;
+    // }
+    .cdk-focused {
+        background-color:#f3e6ae;
+        border-bottom-right-radius: 25px;
+        border-top-right-radius: 25px;
+        }

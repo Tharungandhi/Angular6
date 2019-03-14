@@ -1,17 +1,18 @@
  
 <div fxLayout="row" fxLayoutAlign="center center">
-  <mat-toolbar color="" class="example-toolbar" fxFlex="100%;" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="100%">
+  <mat-toolbar  class="example-toolbar" fxFlex="100%;" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="100%">
     <mat-toolbar-row>
       <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="toggle()" matTooltip="Menu">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
+      &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
       <span><img src="./assets/image/index.jpeg" style="width:50px;"></span>
-      &nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
       <span>
         <font size="5" face="arial">Keep</font>
       </span>
       &nbsp;&nbsp;&nbsp;
-     
+      &nbsp;&nbsp;&nbsp;
  
 <!-- <div class="slinput" ng-init="">
     <i class="fa fa-search left-icon"></i> 
@@ -29,12 +30,12 @@
       <input matInput id="input" type="text" placeholder="Search" name="searchString" (click)="searchtest()"
         [(ngModel)]="searchString">
     </div>
-    <div>
+<div>
       <button mat-button *ngIf="searchString" matSuffix mat-icon-button class="button" (click)="clearSearch()">
         <mat-icon>close</mat-icon>
       </button>
     </div>
-    <div fxFlex="0%">
+    <div>
       <button mat-icon-button (click)="searchtest()">
         <mat-icon>search</mat-icon>
       </button>
@@ -43,7 +44,7 @@
 
 
 
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <a mat-button routerLink="/homepage" routerLinkActive="active" matTooltip="Refresh" title="Refresh">
         <mat-icon>refresh</mat-icon>
       </a>
@@ -85,10 +86,12 @@
       <mat-menu #user="matMenu">
         <button mat-menu-item>
           <mat-icon>logout</mat-icon>
-          <a mat-button routerLink="/login">
+          <a mat-button routerLink="/login" >
             <span>Logout</span>
           </a>
-          <a mat-button routerLink="/login">
+        </button>
+          <button mat-menu-item>
+          <a mat-button  (click)="openDialog()">
             <span>add_image</span>
           </a>
         </button>

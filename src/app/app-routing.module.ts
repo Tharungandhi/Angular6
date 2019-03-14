@@ -11,6 +11,7 @@ import { TrashComponent } from './component/trash/trash.component';
 import { PinNotesComponent } from './component/pin-notes/pin-notes.component';
 import { EditLabelComponent } from './component/edit-label/edit-label.component';
 import { SearchNoteComponent } from './component/search-note/search-note.component';
+import { UploadImageComponent } from './component/upload-image/upload-image.component';
 
 
 const appRoutes: Routes = [
@@ -28,6 +29,7 @@ const appRoutes: Routes = [
         { path: 'trash',component:TrashComponent},
         { path:'pin-notes',component:PinNotesComponent},
         {path:'search-note',component:SearchNoteComponent},
+        { path:'image', component:UploadImageComponent},
         {
           path: '',
           redirectTo: 'retrievenotes',

@@ -3,6 +3,8 @@ import { HttpService } from './http.service';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { HttpEvent, HttpRequest } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -61,6 +63,16 @@ export class UserService {
     );
   }
 
+  pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
 
+    const formdata: FormData = new FormData();
+    formdata.append('file', file);
+    const req = new HttpRequest('POST', 'http://localhost:8082/user/profile/uploadpicture', formdata, {
+      reportProgress: true,
+      responseType: 'text'
+    }
+    );
+    return this.http.request(req);
+  }
 
 }
