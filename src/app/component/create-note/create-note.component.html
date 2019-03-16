@@ -43,13 +43,13 @@
               <button mat-icon-button matTooltip="Remind me">
                 <mat-icon>add_alert</mat-icon>
               </button>
-              <button mat-icon-button matTooltip="Collaborator">
+              <button mat-icon-button matTooltip="Collaborator" title="Collaborator" (click)="collaborator(notes)">
                 <mat-icon>person_add</mat-icon>
               </button>
-              <button mat-icon-button matTooltip="Change color">
+              <button mat-icon-button matTooltip="Change color" title="change color">
                 <mat-icon>palette</mat-icon>
               </button>
-              <button mat-icon-button matTooltip="Add image">
+              <button mat-icon-button matTooltip="Add image" title="Add image">
                 <mat-icon>image</mat-icon>
               </button>
               <button mat-button [matMenuTriggerFor]="more_vert" matTooltip="more_vert" title="more_vert">

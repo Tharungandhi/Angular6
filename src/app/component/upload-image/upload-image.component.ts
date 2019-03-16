@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { UserService } from 'src/app/core/services/user.service';
 import { User } from 'src/app/core/model/user';
 import { HttpService } from 'src/app/core/services/http.service';
+import { Router } from '@angular/router';
+import { MAT_DIALOG_DATA, MatSnackBar, MatDialogRef } from '@angular/material';
+import { KeepHelperService } from 'src/app/core/services/keep-helper.service';
 
 
 @Component({
@@ -10,62 +13,46 @@ import { HttpService } from 'src/app/core/services/http.service';
   templateUrl: './upload-image.component.html',
   styleUrls: ['./upload-image.component.scss']
 })
-export class UploadImageComponent implements OnInit {
-  selectedFile: File
-  user: User
-  fileToUpload: File
+  export class UploadImageComponent implements OnInit {
 
-constructor(public http: HttpService) {}
+
+    selectedFiles: FileList;
+    currentFileUpload: File;
   
-ngOnInit() {
-     } 
-
-  public onFileChanged(event) {
-    this.selectedFile = event.target.files[0]
+    constructor(private router: Router,
+      private userService: UserService,
+      private helperService: KeepHelperService,
+      public dialogRef: MatDialogRef<UploadImageComponent>,
+      @Inject(MAT_DIALOG_DATA) public data,
+      private snackBar: MatSnackBar) { }
+  
+    ngOnInit() {
+    }
+  
+    onFileChanged(event) {
+      this.selectedFiles = event.target.files;
+    }
+  
+    upload() {
+      this.currentFileUpload = this.selectedFiles.item(0);
+      this.userService.uploadImage(this.currentFileUpload).subscribe(event => {
+        this.snackBar.open("image uploaded", "ok", { duration: 2000 });
+        this.dialogRef.close();
+      });
+    }
+    close() {
+      this.dialogRef.close();
+    }
+  
+    removeImage()
+    {
+      this.userService.removeImage().subscribe(event => {
+        this.snackBar.open("image removed", "ok", { duration: 2000 });
+        this.dialogRef.close();
+      });
+  }
   }
 
-  public upload() {
-
-    this.pushFileToStorage(this.selectedFile).subscribe(resp => {
-      console.log(resp), (error) => {
-        console.log(error)
-      }
-    })
-  }
-
-  pushFileToStorage(file: File) {
-    const formdata: FormData = new FormData();
-    formdata.append('file', file);
-    var token = localStorage.getItem('token')
-    return this.http.putService('http://localhost:8080/user/uploadimage/' + token, formdata, {
-      reportProgress: true,
-      responseType: 'text'
-    });
-
-}
-
-//   selectedFiles: FileList;
-
-//   currentFileUpload: File;
-
-//    constructor(private uploadService: UserService) {}
-
-//    ngOnInit() {
-//   }  
-
-//  selectFile(event) {
-//    this.selectedFiles = event.target.files;
-//  }
-
-//  upload() {
-//    this.currentFileUpload = this.selectedFiles.item(0);
-//    this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
-//     if (event instanceof HttpResponse) {
-//        console.log('File is completely uploaded!');
-//      }
-//    });
-//    this.selectedFiles = undefined;
-//  }
  
   
-}
+

@@ -67,9 +67,9 @@ public token=localStorage.getItem('token');
       return this.http.labelCreateService(`${environment.note_url}createlabel/`,labels,httpheaders);
   }
   
-    updateLabel(label, id):Observable<any> {
+    updateLabel(labels, id):Observable<any> {
       var httpheaders=this.getHeader();
-      return this.http.putService(`${environment.note_url}updatelabel/`+ id, label,httpheaders);
+      return this.http.putService(`${environment.note_url}updatelabel/`+ id, labels,httpheaders);
     }
   
     removeLabel(id):Observable<any> {

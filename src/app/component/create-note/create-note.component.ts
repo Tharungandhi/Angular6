@@ -1,10 +1,8 @@
 import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
-import { UserService } from 'src/app/core/services/user.service';
-import { HttpService } from 'src/app/core/services/http.service';
 import { NoteService } from 'src/app/core/services/note.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
+import { CollaboratorComponent } from '../collaborator/collaborator.component';
 
 
 
@@ -25,10 +23,11 @@ export class CreateNoteComponent implements OnInit {
   public mytoken = localStorage.getItem('token');
 
 
-  constructor(private NoteService: NoteService,
-    private formBuilder: FormBuilder, private route: ActivatedRoute, private http: HttpService, private userService: UserService, 
-    private router: Router, private noteService: NoteService, private snackBar: MatSnackBar
-    
+  constructor(
+    private formBuilder: FormBuilder,  
+  private noteService: NoteService, 
+  private snackBar: MatSnackBar,
+    private dialog:MatDialog
     ) { }
 
   ngOnInit() {
@@ -41,9 +40,8 @@ this.createNoteForm = this.formBuilder.group({
 
 get f() { return this.createNoteForm.controls; }
 
-onSubmit(note) {
+public onSubmit(note) {
 this.submitted = true;
-
 if (this.createNoteForm.invalid) {
   return;
 }
@@ -60,12 +58,14 @@ this.noteService.createNote(note).subscribe(response => {
 })
 }
 
-pinned(notes) {
+
+public pinned(notes) {
   notes.pinned=1;
   this.updateMethod(notes);
 }
 
-updateMethod(notes) {
+
+public updateMethod(notes) {
   this.noteService.updateNote(notes, notes.id).subscribe(response => {
     console.log(response);
   },
@@ -74,6 +74,20 @@ updateMethod(notes) {
     })
 }
 
+
+
+public collaborator(notes)
+{
+  const dialogRef = this.dialog.open(CollaboratorComponent, {
+    width: '500px',
+    data: notes
+  });
+  dialogRef.afterClosed().subscribe(result => {
+    const data = { notes }
+    this.eventEmitter.emit(data);
+    console.log('The dialog was closed');
+  });
+}
 
 }
 

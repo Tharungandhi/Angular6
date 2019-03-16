@@ -24,6 +24,10 @@ import { AddlabelNotesComponent } from './component/addlabel-notes/addlabel-note
 import { SearchNoteComponent } from './component/search-note/search-note.component';
 import { SearchFilterPipe } from './core/pipe/search-note-filter.pipe';
 import { UploadImageComponent } from './component/upload-image/upload-image.component';
+import { LabelFilterPipe } from './core/pipe/label-filter.pipe';
+import { CollaboratorComponent } from './component/collaborator/collaborator.component';
+import { ColourComponent } from './component/colour/colour.component';
+
 
 
 
@@ -50,6 +54,9 @@ import { UploadImageComponent } from './component/upload-image/upload-image.comp
     SearchNoteComponent,
     SearchFilterPipe,
     UploadImageComponent,
+    LabelFilterPipe,
+    CollaboratorComponent,
+    ColourComponent,
     
 
         
@@ -63,7 +70,8 @@ import { UploadImageComponent } from './component/upload-image/upload-image.comp
    entryComponents:[
     UpdateNoteComponent,
     EditLabelComponent,
-    AddlabelNotesComponent
+    AddlabelNotesComponent,
+    CollaboratorComponent
    ],
   providers: [],
   bootstrap: [AppComponent]

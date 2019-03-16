@@ -3,6 +3,7 @@ import { NoteService } from 'src/app/core/services/note.service';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
 import { label } from 'src/app/core/model/label';
+import { CollaboratorComponent } from '../collaborator/collaborator.component';
 
 @Component({
   selector: 'app-pin-notes',
@@ -17,6 +18,7 @@ export class PinNotesComponent implements OnInit {
   public newLabels:label[]=[];
   public mytoken: string; 
   removable = true;
+  public filter = '';
   
   
 
@@ -105,6 +107,20 @@ export class PinNotesComponent implements OnInit {
     }
   }
 
+
+  collaborator(notes)
+  {
+    const dialogRef = this.dialog.open(CollaboratorComponent, {
+      width: '500px',
+      data: notes
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      const data = { notes }
+      this.updateEvent.emit(data);
+      console.log('The dialog was closed');
+    });
+}
+
   public labelFilter(event, noteLabels) {
     event.stopPropagation();
     console.log(noteLabels);
@@ -123,7 +139,36 @@ export class PinNotesComponent implements OnInit {
         k++;
       }
     }
+  }
+    public createNewLabel(filter, note) {
+      const var1 = note.labels.some((label) => label.labelName === filter)
+      const var2 = this.newLabels.some((label) => label.labelName === filter)
+      if (var1 || var2) {
+        this.snackBar.open("label name already present", "error", { duration: 2000 });
+        return;
+      }
+      const newLabel =
+      {
+        labelName: filter
+      }
+      this.noteService.createLabels(newLabel).subscribe(label => {
+        this.noteService.mapLabelTONote(note.id, label).subscribe(response => {
+          console.log("adding check in database");
+          const data = { note };
+          this.updateEvent.emit(data);
+          this.snackBar.open("label created", "Ok", { duration: 2000 });
+        })
+      }, error => {
+        this.snackBar.open("error", "error to create labels", { duration: 2000 });
+      }
+      )
+  }
   
+
+  colour(notes){
+    const data = { notes }
+    this.updateEvent.emit(data);
+  }
 
 }
 //   public notes: Note[] = [];
@@ -194,4 +239,4 @@ export class PinNotesComponent implements OnInit {
 //       console.log(this.label)
 // });
 // }
-}
+

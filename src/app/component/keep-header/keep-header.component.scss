@@ -1,26 +1,21 @@
-/* padding left and right is for search and reset icons */
-.slinput input {
-  
+:host{
+  .slinput input {
     width:650px;
     height: 40px;
-border: none;
-border-color: floralwhite;
-background-color:#faf4d3;
+    border: none;
+    border-color: floralwhite;
+    background-color:#faf4d3;
     color:black;
     font-family: arial,sans-serif;
     font-size: 16px;
-  
+    border-radius: 10px;
+    padding: 0 10px;
   }
-  
   .example-toolbar{
     background-color: white
   }
+}
 
   
  
   
-//   .slinput input:hover {
-//     background-color:#faf4d3;
-//     border-radius: 30px;
-//     color:black;
-// }

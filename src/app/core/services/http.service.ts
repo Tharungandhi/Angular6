@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -49,11 +50,13 @@ export class HttpService {
     return this.http.post<any>(url,object,header);
 }
 
-postForImage(url,object,header){
+postForImage(url,object,header):Observable<any>{
   return this.http.post<any>(url,object,header);
 }
 
-request(req){
-  return this.http.request<any>(req);
+getUserEmail(url,header)
+{
+  return this.http.get<any>(url,header);
 }
+
 }

@@ -53,7 +53,7 @@
         <mat-card-header>
   
   
-          <button *ngIf="notes.pinned" mat-icon-button (click)="pinnedNotes('unpinned',notes)" class="pinned-icon">
+          <button *ngIf="notes.pinned" mat-icon-button (click)="pinnedNotes('unpinned',notes)" class="pinned-icon" [style.backgroundColor]="'orange'">
             <img src="./assets/image/Pin-icon.png">
           </button>
           <button *ngIf="!notes.pinned" mat-icon-button (click)="pinnedNotes('pinned',notes)">
@@ -87,13 +87,13 @@
   
         &nbsp;&nbsp;&nbsp;&nbsp;
         <div  class="hoverwrapper">
-          <button mat-icon-button matTooltip="Remind me">
+          <button mat-icon-button matTooltip="Remind me" title="Remind me">
             <mat-icon>add_alert</mat-icon>
           </button>
-          <button mat-icon-button matTooltip="Collaborator">
+          <button mat-icon-button matTooltip="Collaborator" title="Collaborator" (click)="collaborator(notes)"> 
             <mat-icon>person_add</mat-icon>
           </button>
-          <button mat-icon-button matTooltip="Change color">
+          <button mat-icon-button matTooltip="Change color" title="Change color" (click)="colour(notes)">
             <mat-icon>palette</mat-icon>
           </button>
           <button mat-icon-button matTooltip="Add image">
@@ -104,7 +104,7 @@
           <button mat-icon-button (click)="updateArchiveNote(notes)" matTooltip="Undo Archive">
             <mat-icon>archive</mat-icon>
           </button>
-          <button mat-icon-button class="icon-button" id="more" [matMenuTriggerFor]="more" matTooltip="more">
+          <button mat-icon-button class="icon-button" id="more" [matMenuTriggerFor]="more" matTooltip="more" title="more">
             <i id="accountcircle" class="material-icons">more_vert</i></button>
          
   
@@ -115,11 +115,17 @@
                 <button mat-button [matMenuTriggerFor]="menu" (click)="labelFilter($event,notes.labels)">Add Label</button>
                 <mat-menu #menu="matMenu">
                   <div fxLayout="row">
-                    <input type="input" placeholder="Seach for labels">
+                    <input matInput type="text" placeholder="Enter label name" name="filter" [(ngModel)]="filter"
+                    (click)="$event.stopPropagation()" class="input">
                   </div>
                   <div *ngFor="let label of newLabels">
                     <mat-checkbox (click)="addLabelToNote($event,label,notes)">{{label.labelName}}</mat-checkbox>
                   </div>
+                  <div>
+                    <button mat-button *ngIf="filter != ''" (click)="createNewLabel(filter,note)">
+                      <mat-icon>add</mat-icon>Create "{{filter}}"
+                    </button>
+                 </div>
                 </mat-menu>
               </div>
           </mat-menu>

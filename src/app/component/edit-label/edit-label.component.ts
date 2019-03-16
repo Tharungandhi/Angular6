@@ -41,15 +41,17 @@ public closeDailog()
 
 public updateLabel(labels,labelName)
   {
-    var name=labelName.innerHTML;
-    console.log(name);
+    var labelName=labelName.innerHTML;
+    console.log(labelName);
     var newLabel=
     {
       ...labels,
-      labelName : name
+      labelName : labelName
     }
+    
     this.noteService.updateLabel(newLabel,newLabel.id).subscribe(response => {
       this.eventEmitter.emit(true);
+      
       this.ngOnInit();
       this.snackBar.open("label updated", "Ok", { duration: 2000 });
     }, (error) => {

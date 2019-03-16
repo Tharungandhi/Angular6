@@ -3,13 +3,21 @@ import { HttpService } from './http.service';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
-import { HttpEvent, HttpRequest } from '@angular/common/http';
+import { HttpEvent, HttpRequest, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  public token = localStorage.getItem('token');
+  public httpheaders = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'token': this.token
+    })
+};
+
 
   constructor(private http: HttpService,private router: Router ,public snackBar: MatSnackBar ) { }
 
@@ -63,16 +71,44 @@ export class UserService {
     );
   }
 
-  pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
+  // pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
 
-    const formdata: FormData = new FormData();
-    formdata.append('file', file);
-    const req = new HttpRequest('POST', 'http://localhost:8082/user/profile/uploadpicture', formdata, {
+  //   const formdata: FormData = new FormData();
+  //   formdata.append('file', file);
+  //   const req = new HttpRequest('POST', environment.url+'/uploadpicture', formdata, {
+  //     reportProgress: true,
+  //     responseType: 'text'
+  //   }
+  //   );
+  //   return this.http.request(req);
+  // }
+
+//   public getUser(): Observable<any> {
+//     var token = localStorage.getItem('token')
+//     return this.http.getService(`${environment.note_url}getImage/`+ token, 1);
+// }
+
+
+  downloadImage():Observable<any> {
+    return this.http.getService(environment.url + 'uploadimage', this.httpheaders);
+  }
+
+  uploadImage(file): Observable<any> {
+    const formdata = new FormData();
+    formdata.append("file", file);
+    return this.http.postForImage(environment.url + 'uploadimage/' + this.token, formdata, {
       reportProgress: true,
       responseType: 'text'
     }
     );
-    return this.http.request(req);
-  }
+}
+removeImage()
+{
+  return this.http.deleteService(environment.url + 'uploadimage',this.httpheaders);
+}
+verifyEmail(email):Observable<any>
+{
+  return this.http.getUserEmail(environment.url + 'verifyemail/'+email,this.httpheaders)
+}
 
 }

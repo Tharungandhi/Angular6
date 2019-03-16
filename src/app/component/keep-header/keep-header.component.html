@@ -13,15 +13,6 @@
       </span>
       &nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;
- 
-<!-- <div class="slinput" ng-init="">
-    <i class="fa fa-search left-icon"></i> 
-    <input type="search" placeholder="Search here" ng-model="searchInputVal" /> 
-    <i ng-class="{'fa' : true, 'fa-close' : true, 'right-icon' : true, active : (searchInputVal.length > 0)}" ng-click="searchInputVal = ''"></i>
-    <button mat-button>
-        <mat-icon>search</mat-icon>
-      </button> 
-  </div> -->
 
   
   <div class="slinput" fxLayoutGap="2%">
@@ -80,19 +71,22 @@
         </button>
       </mat-menu>
       <button mat-button [matMenuTriggerFor]="user" matTooltip="User Details" title="User Details">
-     
-        <mat-icon>account_circle</mat-icon>
+        <i id="accountcircle" class="material-icons" *ngIf="imageData.imageSrc===null">account_circle</i>
+        <img class="image" *ngIf="imageData.imageSrc!=null" [src]="imageData.imageSrc" height="60%"
+      width="60%">
       </button>
       <mat-menu #user="matMenu">
+       
+          <button mat-menu-item>
+          <a mat-button  (click)="openDialog()">
+            <span>add_image</span>
+          </a>
+        </button>
+
         <button mat-menu-item>
           <mat-icon>logout</mat-icon>
           <a mat-button routerLink="/login" >
             <span>Logout</span>
-          </a>
-        </button>
-          <button mat-menu-item>
-          <a mat-button  (click)="openDialog()">
-            <span>add_image</span>
           </a>
         </button>
       </mat-menu>
@@ -100,4 +94,22 @@
   </mat-toolbar>
 </div>
 
+<!-- <button mat-icon-button class="icon-button" id="more" [matMenuTriggerFor]="menu">
+  <i id="accountcircle" class="material-icons" *ngIf="imageData.imageSrc===null">account_circle</i>
+  <img class="image" *ngIf="imageData.imageSrc!=null" [src]="imageData.imageSrc" height="60%"
+width="60%">
+</button> -->
 
+<!-- 
+<mat-menu #menu="matMenu" class="morecard">
+  <div>
+    <button mat-menu-item (click)="openDialog()">
+      <mat-icon>image</mat-icon>Change Picture
+    </button>
+  </div>
+  <mat-divider></mat-divider>
+  <div fxLayout="row">
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>Sign out
+    </button>
+</div> -->
