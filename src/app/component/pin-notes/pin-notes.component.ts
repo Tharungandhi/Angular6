@@ -12,8 +12,14 @@ import { CollaboratorComponent } from '../collaborator/collaborator.component';
 })
 export class PinNotesComponent implements OnInit {
   @Input() notes
+  @Input() newNote
+
   @Output() updateEvent = new EventEmitter();
   @Input() public grid = false;
+  public colors=['#FFE4C4','#F8F8FF', '#5F9EA0','#778899','#00FFFF',
+'#ADFF2F', '#FF69B4', '#F08080', '#4682B4'];
+
+
   public labels: label[]=[];
   public newLabels:label[]=[];
   public mytoken: string; 
@@ -42,6 +48,7 @@ export class PinNotesComponent implements OnInit {
     }
     )
   }
+
   public openDialog(notes): void {
     const dialogRef = this.dialog.open(UpdateNoteComponent, {
       width: '500px',
@@ -140,6 +147,7 @@ export class PinNotesComponent implements OnInit {
       }
     }
   }
+
     public createNewLabel(filter, note) {
       const var1 = note.labels.some((label) => label.labelName === filter)
       const var2 = this.newLabels.some((label) => label.labelName === filter)
@@ -164,79 +172,25 @@ export class PinNotesComponent implements OnInit {
       )
   }
   
+  updateNote(note,id) {
+    console.log(note);
+    this.noteService.updateNote(note,id).subscribe(response => {
+      console.log(response);
+    },
+      error => {
+        console.log("error");
+      })
 
-  colour(notes){
-    const data = { notes }
-    this.updateEvent.emit(data);
   }
 
+  Colourupdate(data) {
+    this.updateEvent.emit(data);
 }
-//   public notes: Note[] = [];
-//   public label:label[]=[];
-//   public mytoken=localStorage.getItem('token');
-//   constructor(private noteService: NoteService,
-//     public snackBar:MatSnackBar,public dialog: MatDialog) { }
-
-//   ngOnInit() {
-//     this.getNotes();
-//   }
 
 
-//   openDialog(notes): void {
-//     const dialogRef = this.dialog.open(UpdateNoteComponent, {
-//       width: '500px',
-//       data: notes
+changeColor(color,notes){
+  notes.color=color;
+this.updateNote(notes,notes.id);
+}
 
-//     });
-
-//     dialogRef.afterClosed().subscribe(result => {
-//       console.log('The dialog was closed');
-
-//     });
-//   }
-
-//   getNotes() {
-//     this.noteService.retrieveNotes(this.mytoken).subscribe(newNote => {
-//       this.notes = newNote;
-//     }, error => {
-//       this.snackBar.open("error", "error to retrieve notes", { duration: 2000 });
-//     }
-//     )
-//   }
-
-//   updateMethod(notes) {
-//     this.noteService.updateNote(notes, notes.id).subscribe(response => {
-//       console.log(response);
-//     },
-//       error => {
-//         console.log("error");
-//       })
-//   }
-  
-//   pinnedNotes(notes) {
-//     notes.pinned=0;
-//     this.updateMethod(notes);
-// }
-
-// moveToTrash(notes) {
-//   notes.inTrash = 1;
-//   this.updateMethod(notes);
-// }
-
-// updateArchiveNote(notes) {
-//   notes.archive=1;
-//   notes.pinned=0;
-//   this.updateMethod(notes);
-// }
-// openDialogLabels(notes): void {
-//   const dialogRef = this.dialog.open(AddlabelNotesComponent, {
-//     width: '500px',
-//     data: notes
-
-//   });
-// console.log(dialogRef)
-//     dialogRef.afterClosed().subscribe(result => {
-//       console.log(this.label)
-// });
-// }
-
+}

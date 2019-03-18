@@ -10,9 +10,10 @@
         flex-wrap: wrap;
         justify-content: space-around;
         mat-card{
-          width:350px;
+          width:300px;
           position: relative;
-        }
+          box-shadow: 0 14px 28px rgba(110, 108, 108, 0.22), 0 10px 10px rgba(110, 108, 108, 0.22);
+}
       }
       &-list-view {
         display: flex;
@@ -22,7 +23,8 @@
         mat-card{
           width:500px;
           position: relative;
-        }
+          box-shadow: 0 14px 28px rgba(110, 108, 108, 0.22), 0 10px 10px rgba(110, 108, 108, 0.22);
+}
       }
 }
 .container {
@@ -44,4 +46,18 @@
 .hoverwrapper:hover{
   box-shadow: 0 5px 15px 2px rgba(0, 0, 0, 0.1);
 }
+
+.colorMenuDiv {
+  width:136px;
+  height:110px;
+  position:absolute;
+  z-index: 2;
+  border:1px solid #e8e8e8
+  }
+  
+  .colorMenuButton {
+  height:26px;
+  width:26px;
+  margin:4px;
+  }
 }

@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter, Input } from '@angular/core';
 import { NoteService } from 'src/app/core/services/note.service';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
 import { Note } from 'src/app/core/model/note';
 import { AddlabelNotesComponent } from '../addlabel-notes/addlabel-notes.component';
 import { label } from 'src/app/core/model/label';
+import { KeepHelperService } from 'src/app/core/services/keep-helper.service';
 
 @Component({
   selector: 'app-archive',
@@ -13,17 +14,27 @@ import { label } from 'src/app/core/model/label';
 })
 export class ArchiveComponent implements OnInit {
   public mytoken = localStorage.getItem('token');
+  @Input() newNote
+  @Output() updateEvent = new EventEmitter();
+  
   public archiveList=[];
   public notes: Note[] = [];
   public label:label[]=[];
-
+  public grid = false;
+  
+  public colors=['#FFE4C4','#F8F8FF', '#5F9EA0','#778899','#00FFFF',
+  '#ADFF2F', '#FF69B4', '#F08080', '#4682B4'];
 
   constructor(private noteService: NoteService, public snackBar: MatSnackBar,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    private keepHelperService : KeepHelperService) { }
 
   
   ngOnInit() {
     this.getNotes();
+    this.keepHelperService.getTheme().subscribe((resp) =>
+    this.grid = resp
+);
   }
 
   getNotes() {
@@ -71,6 +82,7 @@ export class ArchiveComponent implements OnInit {
 
 moveToTrash(notes) {
   notes.inTrash = 1;
+  notes.archive=-0;
   this.updateMethod(notes);
 }
 openDialogLabels(notes): void {
@@ -84,6 +96,19 @@ console.log(dialogRef)
       console.log(this.label)
 });
 }
+
+Colourupdate(data) {
+  this.updateEvent.emit(data);
+}
+
+
+changeColor(color,notes){
+notes.color=color;
+this.updateMethod(notes);
+}
+
+
+
 }
 
 

@@ -1,9 +1,8 @@
 
 
 <div class="container" fxLayout="column" fxLayoutGap="10%" fxLayoutAlign="center center">
-    <div *ngFor="let notes of notes" >
-      <mat-card *ngIf="notes.archive " [style.backgroundColor]="'orange'">
-          <!-- && !note.inTrash && !note.pinned -->
+    <div *ngFor="let notes of notes" class="notegrid" [ngClass]="grid ? 'notegrid-grid-view': 'notegrid-list-view'"  >
+      <mat-card *ngIf="notes.archive "  [style.background-color]="notes.color" >
         <mat-card-header>
           <mat-card-title (click)=openDialog(notes)>
             {{notes.title}}
@@ -16,16 +15,19 @@
           {{notes.discription}}
         </mat-card-content>
         <div class="mouseover">
-          <button mat-icon-button matTooltip="Remind me">
+          <button mat-icon-button matTooltip="Remind me" title="Remind me">
             <mat-icon>add_alert</mat-icon>
           </button>
-          <button mat-icon-button matTooltip="Collaborator">
+          <button mat-icon-button matTooltip="Collaborator" title="Collaborator">
             <mat-icon>person_add</mat-icon>
           </button>
-          <button mat-icon-button matTooltip="Change color">
+
+          <app-colour [newNote]="notes" (changeColor)="Colourupdate($event)"></app-colour>
+
+          <!-- <button mat-icon-button matTooltip="Change color" title="Change color">
             <mat-icon>palette</mat-icon>
-          </button>
-          <button mat-icon-button matTooltip="Add image">
+          </button> -->
+          <button mat-icon-button matTooltip="Add image" title="Add image">
             <mat-icon>image</mat-icon>
           </button>
           <button mat-icon-button (click)="updateArchiveNote(notes)"matTooltip="Undo Archive">

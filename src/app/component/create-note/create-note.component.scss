@@ -21,7 +21,20 @@
 
     text-align: center;
   }
-  img {
-    width:25px;
-   }
+   .container {
+    .mat-card-header {
+        display: flex;
+        justify-content: space-between;
+        button {
+            &.pinned-icon {
+                // background-color:orange;
+                width:20px;
+            }
+            img {
+                width:25px;
+            }
+        }
+    }
+    
+}
 }

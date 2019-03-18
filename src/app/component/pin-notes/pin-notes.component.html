@@ -42,12 +42,11 @@
   </div> -->
 
 
-  
   <div class="container" fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
     <div class="notegrid" [ngClass]="grid ? 'notegrid-grid-view': 'notegrid-list-view'">
   
     <div *ngFor="let notes of notes">
-      <mat-card class="notegrid-container">
+      <mat-card class="notegrid-container" [style.background-color]="notes.color">
         <!-- *ngIf="!notes.archive && !notes.inTrash && notes.pinned" style="background-color: aqua">  -->
   
         <mat-card-header>
@@ -93,9 +92,9 @@
           <button mat-icon-button matTooltip="Collaborator" title="Collaborator" (click)="collaborator(notes)"> 
             <mat-icon>person_add</mat-icon>
           </button>
-          <button mat-icon-button matTooltip="Change color" title="Change color" (click)="colour(notes)">
-            <mat-icon>palette</mat-icon>
-          </button>
+
+          <app-colour [newNote]="notes" (colorChange)="Colourupdate($event)"></app-colour>
+
           <button mat-icon-button matTooltip="Add image">
             <mat-icon>image</mat-icon>
           </button>
@@ -122,7 +121,7 @@
                     <mat-checkbox (click)="addLabelToNote($event,label,notes)">{{label.labelName}}</mat-checkbox>
                   </div>
                   <div>
-                    <button mat-button *ngIf="filter != ''" (click)="createNewLabel(filter,note)">
+                    <button mat-button *ngIf="filter != ''" (click)="createNewLabel(filter,notes)">
                       <mat-icon>add</mat-icon>Create "{{filter}}"
                     </button>
                  </div>

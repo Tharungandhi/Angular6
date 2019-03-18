@@ -5,6 +5,7 @@ export interface Note {
     archive:boolean;
     inTrash:boolean;
     pinned:boolean;
+    color:string;
 
 
 }

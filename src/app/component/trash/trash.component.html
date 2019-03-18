@@ -1,7 +1,5 @@
 <div class="container" fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center" >
-   <!-- <b> Notes in the Recycle Bin are deleted after 7 days. </b>
-   <button mat-button (click)="deleteNote(notes)">Empty Bn</button> -->
-    <div *ngFor="let notes of notes | noteFilter:'inTrash'" >
+    <div *ngFor="let notes of notes | noteFilter:'inTrash'" class="notegrid" [ngClass]="grid ? 'notegrid-grid-view': 'notegrid-list-view'" >
       <mat-card  style="width:250px;">
         <mat-card-header>
           <mat-card-title (click)=openDialog(notes)>

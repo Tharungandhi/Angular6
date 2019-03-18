@@ -4,23 +4,29 @@ import { Note } from 'src/app/core/model/note';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
 import { EventEmitter } from 'events';
+import { KeepHelperService } from 'src/app/core/services/keep-helper.service';
 
 
 @Component({
   selector: 'app-trash',
   templateUrl: './trash.component.html',
-  styleUrls: ['./trash.component.css']
+  styleUrls: ['./trash.component.scss']
 })
 export class TrashComponent implements OnInit {
   @Output() eventEmitter= new EventEmitter();
   public notes: Note[] = [];
   public mytoken=localStorage.getItem('token');
+  public grid = false;
 
   constructor(private noteService: NoteService,
-    public snackBar:MatSnackBar,public dialog: MatDialog) { }
+    public snackBar:MatSnackBar,public dialog: MatDialog,
+    private keepHelperService : KeepHelperService) { }
 
   ngOnInit() {
     this.getNotes();
+    this.keepHelperService.getTheme().subscribe((resp) =>
+    this.grid = resp
+);
   }
 
 
@@ -83,6 +89,8 @@ public  getNotes() {
         console.log("error");
       })
 }
+
+
 onClickUpdate(data) {
   this.updateMethod(data.notes);
 }

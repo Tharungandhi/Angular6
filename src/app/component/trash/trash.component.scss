@@ -1,3 +1,15 @@
+.title{
+    background-color: cadetblue;
+    margin: 5px;
+  border-radius: 10px;
+}
+
+.discription{
+
+    background-color: cadetblue;
+    margin: 5px;
+  border-radius: 10px;
+}
 :host {
   .notegrid {
   &-container {
@@ -26,24 +38,5 @@
 }
     }
 }
-.container {
-  .mat-card-header {
-      display: flex;
-      justify-content: space-between;
-      button {
-          &.pinned-icon {
-              // background-color:orange;
-              width:20px;
-          }
-          img {
-              width:20px;
-          }
-      }
-  }
-  
 }
-}
-
-
-
 
