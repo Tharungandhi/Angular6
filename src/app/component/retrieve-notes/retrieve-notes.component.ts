@@ -2,10 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import {MatDialog} from '@angular/material';
 import { NoteService } from 'src/app/core/services/note.service';
 import { Note } from 'src/app/core/model/note';
-import { UpdateNoteComponent } from 'src/app/component/update-note/update-note.component';
 import { MatSnackBar } from '@angular/material';
-import { Router } from '@angular/router';
-import { AddlabelNotesComponent } from '../addlabel-notes/addlabel-notes.component';
 import { KeepHelperService } from 'src/app/core/services/keep-helper.service';
 
 export interface DialogData {

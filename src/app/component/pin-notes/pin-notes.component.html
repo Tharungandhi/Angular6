@@ -93,7 +93,8 @@
             <mat-icon>person_add</mat-icon>
           </button>
 
-          <app-colour [newNote]="notes" (colorChange)="Colourupdate($event)"></app-colour>
+          <app-colour [newNote]="notes" (changeColor)="Colourupdate($event)" (updateEvent)="onClickUpdate($event)"></app-colour>
+
 
           <button mat-icon-button matTooltip="Add image">
             <mat-icon>image</mat-icon>

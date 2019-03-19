@@ -95,6 +95,16 @@ public token=localStorage.getItem('token');
       }
       )      
     }
+    createCollaborator(noteId, userId) {
+      var httpheaders=this.getHeader();
+      return this.http.postForCollaborator(`${environment.note_url}createcollaborator/`+noteId+'/'+userId,httpheaders);
+    }
+  
+    removeCollaborateUser(noteId,userId)
+    {
+      return this.http.removeCollaborateUser(`${environment.note_url}removecollaborator/`+userId+'/'+noteId);
+    }
+  
 
 
 

@@ -4,6 +4,7 @@ import { MatSnackBar, MatDialog } from '@angular/material';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
 import { label } from 'src/app/core/model/label';
 import { CollaboratorComponent } from '../collaborator/collaborator.component';
+import { AddnotesComponent } from '../retrieve-notes/retrieve-notes.component';
 
 @Component({
   selector: 'app-pin-notes',
@@ -31,7 +32,8 @@ export class PinNotesComponent implements OnInit {
 
   constructor(private noteService: NoteService,
     public snackBar: MatSnackBar,
-    private dialog: MatDialog) {
+    private dialog: MatDialog,
+    private addNotes:AddnotesComponent) {
 
   }
   ngOnInit() {
@@ -187,10 +189,12 @@ export class PinNotesComponent implements OnInit {
     this.updateEvent.emit(data);
 }
 
-
-changeColor(color,notes){
-  notes.color=color;
-this.updateNote(notes,notes.id);
+onClickUpdate(data) {
+  this.addNotes.updateMethod(data.notes);
 }
+// changeColor(color,notes){
+//   notes.color=color;
+// this.updateNote(notes,notes.id);
+// }
 
 }

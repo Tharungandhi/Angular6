@@ -16,7 +16,9 @@ import {MatListModule} from '@angular/material/list';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatChipsModule} from '@angular/material/chips';
-import { MatDialogModule} from '@angular/material';
+import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 @NgModule({ 
   declarations: [],
@@ -43,7 +45,8 @@ import { MatDialogModule} from '@angular/material';
     MatSnackBarModule,
     MatChipsModule,
     MatDialogModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatAutocompleteModule
       ],
   exports:[
     MatFormFieldModule,
@@ -63,7 +66,8 @@ import { MatDialogModule} from '@angular/material';
     MatListModule,
     MatExpansionModule,
     MatChipsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatAutocompleteModule
     
   ]
 })

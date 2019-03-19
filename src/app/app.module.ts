@@ -27,6 +27,8 @@ import { UploadImageComponent } from './component/upload-image/upload-image.comp
 import { LabelFilterPipe } from './core/pipe/label-filter.pipe';
 import { CollaboratorComponent } from './component/collaborator/collaborator.component';
 import { ColourComponent } from './component/colour/colour.component';
+import { CollaborateSearchPipe } from './core/pipe/collaborate-search.pipe';
+
 
 
 
@@ -57,6 +59,7 @@ import { ColourComponent } from './component/colour/colour.component';
     LabelFilterPipe,
     CollaboratorComponent,
     ColourComponent,
+    CollaborateSearchPipe
     
 
         

@@ -43,8 +43,8 @@
      
       <button mat-icon-button (click)="viewGrid()"   fxHide.xs="true" fxShow.sm="false"
         fxShow.md="true" fxShow.lg="true"  >
-      <mat-icon *ngIf="!grid">view_stream</mat-icon>
-      <mat-icon  *ngIf="grid">view_module</mat-icon>
+      <mat-icon *ngIf="!grid" title="grid">view_stream</mat-icon>
+      <mat-icon  *ngIf="grid" title="list">view_module</mat-icon>
       </button>
 
       <a mat-button routerLinkActive="active" matTooltip="notification" title="notification">
@@ -85,7 +85,7 @@
 
         <button mat-menu-item>
           <mat-icon>logout</mat-icon>
-          <a mat-button routerLink="/login" >
+          <a mat-button (click)="logOut()">
             <span>Logout</span>
           </a>
         </button>

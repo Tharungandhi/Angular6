@@ -46,9 +46,12 @@
               <button mat-icon-button matTooltip="Collaborator" title="Collaborator" (click)="collaborator(notes)">
                 <mat-icon>person_add</mat-icon>
               </button>
-              <button mat-icon-button matTooltip="Change color" title="change color">
+
+              <app-colour [newNote]="note" (changeColor)="Colourupdate($event)"></app-colour>
+
+              <!-- <button mat-icon-button matTooltip="Change color" title="change color">
                 <mat-icon>palette</mat-icon>
-              </button>
+              </button> -->
               <button mat-icon-button matTooltip="Add image" title="Add image">
                 <mat-icon>image</mat-icon>
               </button>

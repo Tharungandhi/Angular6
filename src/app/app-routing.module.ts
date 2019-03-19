@@ -9,19 +9,20 @@ import { AddnotesComponent } from './component/retrieve-notes/retrieve-notes.com
 import { ArchiveComponent } from './component/archive/archive.component';
 import { TrashComponent } from './component/trash/trash.component';
 import { PinNotesComponent } from './component/pin-notes/pin-notes.component';
-import { EditLabelComponent } from './component/edit-label/edit-label.component';
 import { SearchNoteComponent } from './component/search-note/search-note.component';
 import { UploadImageComponent } from './component/upload-image/upload-image.component';
+import { AuthGardGuard } from './guard/auth-gard.guard';
 
 
 const appRoutes: Routes = [
-
+ 
   { path: 'login', component: LoginComponent },
   { path:'forgotpassword', component: ForgotpasswordComponent},
   { path:'resetpassword/:id' , component:ResetpasswordComponent},
   { path: 'registration', component: RegistrationComponent },
   {
     path: 'homepage', component: HomepageComponent,
+    canActivate: [AuthGardGuard],
     children:
       [
         { path: 'retrievenotes' , component :AddnotesComponent },

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NoteService } from 'src/app/core/services/note.service';
 import { MatSnackBar, MatDialog } from '@angular/material';
@@ -12,6 +12,7 @@ import { CollaboratorComponent } from '../collaborator/collaborator.component';
   styleUrls: ['./create-note.component.scss']
 })
 export class CreateNoteComponent implements OnInit {
+  @Input() newNote
   @Output()  eventEmitter= new EventEmitter();
   public showHeader = true;
   createNoteForm: FormGroup;
@@ -21,7 +22,8 @@ export class CreateNoteComponent implements OnInit {
   returnUrl: string;
   hide = true;
   public mytoken = localStorage.getItem('token');
-
+  public colors=['#FFE4C4','#F8F8FF', '#5F9EA0','#778899','#00FFFF',
+  '#ADFF2F', '#FF69B4', '#F08080', '#4682B4'];
 
   constructor(
     private formBuilder: FormBuilder,  
@@ -76,7 +78,7 @@ public updateMethod(notes) {
 
 
 
-public collaborator(notes)
+collaborator(notes)
 {
   const dialogRef = this.dialog.open(CollaboratorComponent, {
     width: '500px',
@@ -87,6 +89,11 @@ public collaborator(notes)
     this.eventEmitter.emit(data);
     console.log('The dialog was closed');
   });
+}
+
+
+Colourupdate(data) {
+  this.eventEmitter.emit(data);
 }
 
 }

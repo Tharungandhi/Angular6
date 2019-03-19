@@ -1,8 +1,9 @@
 
 
-<div class="container" fxLayout="column" fxLayoutGap="10%" fxLayoutAlign="center center">
-    <div *ngFor="let notes of notes" class="notegrid" [ngClass]="grid ? 'notegrid-grid-view': 'notegrid-list-view'"  >
-      <mat-card *ngIf="notes.archive "  [style.background-color]="notes.color" >
+<div class="container" fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
+    <div class="notegrid" [ngClass]="grid ? 'notegrid-grid-view': 'notegrid-list-view'">
+    <div *ngFor="let notes of notes"  >
+      <mat-card class="notegrid-container" *ngIf="notes.archive "  [style.background-color]="notes.color" >
         <mat-card-header>
           <mat-card-title (click)=openDialog(notes)>
             {{notes.title}}
@@ -24,9 +25,7 @@
 
           <app-colour [newNote]="notes" (changeColor)="Colourupdate($event)"></app-colour>
 
-          <!-- <button mat-icon-button matTooltip="Change color" title="Change color">
-            <mat-icon>palette</mat-icon>
-          </button> -->
+          
           <button mat-icon-button matTooltip="Add image" title="Add image">
             <mat-icon>image</mat-icon>
           </button>
@@ -43,4 +42,5 @@
         </div>
       </mat-card>
     </div>
+  </div>
   </div>

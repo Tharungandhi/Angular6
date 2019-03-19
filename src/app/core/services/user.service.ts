@@ -10,6 +10,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
+  getUsers(): any {
+    throw new Error("Method not implemented.");
+  }
   public token = localStorage.getItem('token');
   public httpheaders = {
     headers: new HttpHeaders({
@@ -71,17 +74,7 @@ export class UserService {
     );
   }
 
-  // pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
-
-  //   const formdata: FormData = new FormData();
-  //   formdata.append('file', file);
-  //   const req = new HttpRequest('POST', environment.url+'/uploadpicture', formdata, {
-  //     reportProgress: true,
-  //     responseType: 'text'
-  //   }
-  //   );
-  //   return this.http.request(req);
-  // }
+  
 
 //   public getUser(): Observable<any> {
 //     var token = localStorage.getItem('token')
@@ -110,5 +103,8 @@ verifyEmail(email):Observable<any>
 {
   return this.http.getUserEmail(environment.url + 'verifyemail/'+email,this.httpheaders)
 }
-
+getCollaborateUser(userId):Observable<any>
+{
+  return this.http.getCollaborateUser(environment.url + 'getcollaborateduser/'+userId);
+}
 }

@@ -10,8 +10,9 @@
         flex-wrap: wrap;
         justify-content: space-around;
         mat-card{
-          width:300px;
+          width:400px;
           position: relative;
+          border-radius: 10px;
           box-shadow: 0 14px 28px rgba(110, 108, 108, 0.22), 0 10px 10px rgba(110, 108, 108, 0.22);
 }
       }
@@ -21,8 +22,10 @@
         flex-wrap: wrap;
         justify-content: space-around;
         mat-card{
-          width:500px;
+          width:600px;
           position: relative;
+          padding: 10px;
+          border-radius: 10px;
           box-shadow: 0 14px 28px rgba(110, 108, 108, 0.22), 0 10px 10px rgba(110, 108, 108, 0.22);
 }
       }
@@ -31,6 +34,7 @@
     .mat-card-header {
         display: flex;
         justify-content: space-between;
+     
         button {
             &.pinned-icon {
                 // background-color:orange;

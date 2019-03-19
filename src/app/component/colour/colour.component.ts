@@ -11,8 +11,6 @@ export class ColourComponent implements OnInit {
   
    @Input() newNote
 
-  // @Output() colorChange=new EventEmitter();
-
   public colors=['#FFE4C4','#F8F8FF', '#5F9EA0','#778899','#00FFFF',
   '#ADFF2F', '#FF69B4', '#F08080', '#4682B4'];
 

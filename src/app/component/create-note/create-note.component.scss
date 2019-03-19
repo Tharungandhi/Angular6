@@ -25,6 +25,7 @@
     .mat-card-header {
         display: flex;
         justify-content: space-between;
+        border-radius: 10px;
         button {
             &.pinned-icon {
                 // background-color:orange;

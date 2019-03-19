@@ -95,7 +95,11 @@ export class KeepHeaderComponent implements OnInit {
     )
   }
 
-
+logOut()
+{
+  localStorage.removeItem('token');
+  this.router.navigate(['login'])
+}
 
 
 

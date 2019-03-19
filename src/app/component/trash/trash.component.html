@@ -1,6 +1,7 @@
 <div class="container" fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center" >
-    <div *ngFor="let notes of notes | noteFilter:'inTrash'" class="notegrid" [ngClass]="grid ? 'notegrid-grid-view': 'notegrid-list-view'" >
-      <mat-card  style="width:250px;">
+  <div  class="notegrid" [ngClass]="grid ? 'notegrid-grid-view': 'notegrid-list-view'" >
+  <div *ngFor="let notes of notes | noteFilter:'inTrash'" >
+      <mat-card class="notegrid-container" style="width:250px;" [style.background-color]="'#778899'" >
         <mat-card-header>
           <mat-card-title (click)=openDialog(notes)>
             {{notes.title}}
@@ -20,4 +21,5 @@
         </div>
       </mat-card>
     </div>
+  </div>
   </div>
