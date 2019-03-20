@@ -6,6 +6,10 @@
     border-radius: 30px;
     color: wheat;
   }
+  .example{
+    width: 700px;
+    height: 90px;
+  }
   .note{
       
     text-align: left;
@@ -17,6 +21,13 @@
       display: flex;
       outline: none;
   }
+  .mat-accordion{
+    margin-top: 20px;
+    padding: 20px;
+    width: 500px;
+    height: 30px;
+    }
+
   .align{
 
     text-align: center;
@@ -38,4 +49,15 @@
     }
     
 }
+  
+  .mat-expansion-panel{
+  border:0ch
+  }
+  
+  .mat-icon {
+  font-size: 20px;
+  }
+  .mat-button{
+  margin: -5x;
+  }
 }

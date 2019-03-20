@@ -3,6 +3,7 @@
     .notegrid {
     &-container {
       margin: 10px 20px;
+      font-size: 20px
     }
       &-grid-view {
         display: flex;
@@ -27,7 +28,8 @@
           padding: 10px;
           border-radius: 10px;
           box-shadow: 0 14px 28px rgba(110, 108, 108, 0.22), 0 10px 10px rgba(110, 108, 108, 0.22);
-}
+          
+        }
       }
 }
 .container {
@@ -64,4 +66,18 @@
   width:26px;
   margin:4px;
   }
+
+  @mixin display($value) {
+     .container-footer-buttons  {
+      display: $value;
+     }
+ }
+
+ &.has-hover  {
+  @include display(flex);
+  background-color: lightgrey;
+}
+ 
+
+
 }

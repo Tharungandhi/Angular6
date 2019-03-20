@@ -71,7 +71,7 @@
  -->
  <div class="container" fxLayout="column" fxLayoutGap="10%" fxLayoutAlign="center center">
   <div fxFlex="80%">
-    <app-create-note (eventCreate)="refresh($event)"></app-create-note>
+    <app-create-note  class="example" (eventCreate)="refresh($event)" ></app-create-note>
     <p class="class">Pinned Notes</p>
     <app-pin-notes class="pinnedNotes" [notes]="notes | noteFilter:'pinned'" (updateEvent)="onClickUpdate($event)" [grid]="grid" (updateNoteEvent)="updateNoteToGrid($event)" ></app-pin-notes>
     <p class="class">Others</p>

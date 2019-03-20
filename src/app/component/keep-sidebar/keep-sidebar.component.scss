@@ -6,28 +6,65 @@
                 border-bottom-right-radius: 25px;
                 border-top-right-radius: 25px;
                 }
-                .keep-sidebar-container{
-                    height: 100% ;
+
+                mat-sidenav-container, mat-sidenav-content, mat-sidenav {
+                    height: 100%;
+                    letter-spacing: .01785714em;
+                    font-family: 'Google Sans',Roboto,Arial,sans-serif;
+                    font-size: 15px;
+                     font-weight: 500;
+                    }
+                    mat-sidenav {
+                    width: 300px;
+                    height: 100%;
+                    }
+                    
+                   .labelbutton{
+                        width: 300px;
+                        border: none;          
+                        text-align: start;
+                        font-size: 17px;
                     }
                     .sidebar{
                        border-right: 5px solid rgba(235, 120, 27, 0.5);
                     }
-                    
-                    .colour_place{
-                        place-content: 5px solid rgba(235, 120, 27, 0.5);
-                        color: rgb(26, 27, 4) !important;
-                      //  background-color: rgb(202, 101, 18); 
+                    .privacy{
+                        background-color: inherit;
+                        color: #5f6368;
+                         padding: 4px 0 6px 0;
+                         text-align: start;
+                         width: 176px;
+                    }
+                    .mat-menu-item{
+                        font-size: 17px;
                     }
 
-                    .navbar{
-                        display: flex;
-                    }
-                    .labelbutton{
-                        width: 250px;
-                        border: none;
-                    }
-                    button.mat-menu-item {
-                        width: 270px;
-                    }
-                    
+
+                //     .jbl{
+                //         padding-left: 32px;
+                //   display: inline-block;
+                //    line-height: 40px;
+                //   vertical-align: top;
+                //   width: 176px;
+                //   white-space: nowrap;
+                //    overflow: hidden;
+                //  text-overflow: ellipsis;
+                //  font-size: 2px;
+                //     }
+               
+                //     }
+                //     .colour_place{
+                //         place-content: 5px solid rgba(235, 120, 27, 0.5);
+                //         color: rgb(26, 27, 4) !important;
+                //       //  background-color: rgb(202, 101, 18); 
+                //     }
+
+                //     .navbar{
+                //         display: flex;
+                //     }
+                //     .labelbutton{
+                //         width: 250px;
+                //         border: none;
+                //     }
+                   
         }

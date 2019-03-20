@@ -8,9 +8,12 @@
     <p mat-line> {{user.emailId}} </p>
   </mat-list-item>
   <mat-list-item *ngFor="let collabUser of collabUsers">
-    <mat-icon mat-list-icon *ngIf="imageData.imageSrc===null">account_circle</mat-icon> 
-     <img mat-list-icon class="image" *ngIf="imageData.imageSrc!=null" [src]="imageData.imageSrc">
-    <h4 mat-line>{{collabUser.name}}</h4>
+    <!-- <mat-icon mat-list-icon *ngIf="imageData.imageSrc===null">account_circle</mat-icon> 
+      <img mat-list-icon class="image" *ngIf="imageData.imageSrc!=null" [src]="imageData.imageSrc"> -->
+      <mat-icon mat-list-icon id="accountcircle" class="material-icons" *ngIf="ImageData.imageSrc===null">account_circle</mat-icon>
+      <img mat-list-icon class="image" *ngIf="imageData.imageSrc!=null" [src]="ImageData.imageSrc" height="60%"
+    width="60%">
+      <h4 mat-line>{{collabUser.name}}</h4>
     <p mat-line> {{collabUser.emailId}} </p>
     <mat-icon mat-list-icon (click)="removeCollaborator(collabUser)" >clear</mat-icon>
 

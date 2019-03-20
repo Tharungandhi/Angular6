@@ -14,7 +14,7 @@ import { CollaboratorComponent } from '../collaborator/collaborator.component';
 export class CreateNoteComponent implements OnInit {
   @Input() newNote
   @Output()  eventEmitter= new EventEmitter();
-  public showHeader = true;
+  public showHeader = false;
   createNoteForm: FormGroup;
   loginForm: FormGroup;
   loading = false;

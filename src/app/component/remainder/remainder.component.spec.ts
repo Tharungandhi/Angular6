@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RetrievenotesComponent } from './retrieve-notes.component';
+import { RemainderComponent } from './remainder.component';
 
-describe('AddnotesComponent', () => {
-  let component: RetrievenotesComponent;
-  let fixture: ComponentFixture<RetrievenotesComponent>;
+describe('RemainderComponent', () => {
+  let component: RemainderComponent;
+  let fixture: ComponentFixture<RemainderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RetrievenotesComponent ]
+      declarations: [ RemainderComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RetrievenotesComponent);
+    fixture = TestBed.createComponent(RemainderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

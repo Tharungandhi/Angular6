@@ -10,7 +10,7 @@ import { HomepageComponent } from './component/home-page/home-page.component';
 import { NoteComponent } from './component/note/note.component';
 import { ResetpasswordComponent } from './component/reset-password/reset-password.component';
 import { ForgotpasswordComponent } from './component/forgot-password/forgot-password.component';
-import { AddnotesComponent } from './component/retrieve-notes/retrieve-notes.component';
+import { RetrievenotesComponent } from './component/retrieve-notes/retrieve-notes.component';
 import { CreateNoteComponent } from './component/create-note/create-note.component';
 import { UpdateNoteComponent } from './component/update-note/update-note.component';
 import { ArchiveComponent } from './component/archive/archive.component';
@@ -28,6 +28,7 @@ import { LabelFilterPipe } from './core/pipe/label-filter.pipe';
 import { CollaboratorComponent } from './component/collaborator/collaborator.component';
 import { ColourComponent } from './component/colour/colour.component';
 import { CollaborateSearchPipe } from './core/pipe/collaborate-search.pipe';
+import { RemainderComponent } from './component/remainder/remainder.component';
 
 
 
@@ -42,7 +43,7 @@ import { CollaborateSearchPipe } from './core/pipe/collaborate-search.pipe';
     NoteComponent,
     ResetpasswordComponent,
     ForgotpasswordComponent,
-    AddnotesComponent,
+    RetrievenotesComponent,
     CreateNoteComponent,
     UpdateNoteComponent,
     ArchiveComponent,
@@ -59,7 +60,8 @@ import { CollaborateSearchPipe } from './core/pipe/collaborate-search.pipe';
     LabelFilterPipe,
     CollaboratorComponent,
     ColourComponent,
-    CollaborateSearchPipe
+    CollaborateSearchPipe,
+    RemainderComponent
     
 
         
@@ -76,7 +78,7 @@ import { CollaborateSearchPipe } from './core/pipe/collaborate-search.pipe';
     AddlabelNotesComponent,
     CollaboratorComponent
    ],
-  providers: [],
+  providers: [RetrievenotesComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

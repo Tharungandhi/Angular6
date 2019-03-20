@@ -76,10 +76,10 @@ export class UserService {
 
   
 
-//   public getUser(): Observable<any> {
-//     var token = localStorage.getItem('token')
-//     return this.http.getService(`${environment.note_url}getImage/`+ token, 1);
-// }
+  public getUser(): Observable<any> {
+    var token = localStorage.getItem('token')
+    return this.http.getService(`${environment.note_url}uploadimage/`+ token, 1);
+}
 
 
   downloadImage():Observable<any> {

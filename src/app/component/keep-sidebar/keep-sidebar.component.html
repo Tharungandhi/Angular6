@@ -7,7 +7,7 @@
         <mat-icon>lightbulb_outline</mat-icon>
         <span>Notes</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item [routerLink]="['/homepage/remainder']">
         <mat-icon>notifications_none</mat-icon>
         <span>Remainder</span>
       </button>
@@ -15,19 +15,19 @@
 
 
       <span>
-        <font size="1" face="arial">LABELS</font>
+        <font size="2" face="arial">LABELS</font>
       </span>
     
-      <!-- <div (updateClick)="refresh($event)"> -->
+     
 
     
      
-      <div *ngFor="let label of labels" class="mat-menu-item">
+      <div *ngFor="let label of labels" >
         <div fxLayout=row fxLayoutGap="10%">
           <button mat-button class=labelbutton >
-            <div fxFlex="5%">
-            <mat-icon>label_outline</mat-icon></div>
-            <div fxFlex="90%" class="txtt">{{label.labelName}}</div>
+           
+            <mat-icon>label_outline</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div fxFlex="90%" >{{label.labelName}}</div>
           </button>
         </div>
 </div>
@@ -50,6 +50,19 @@
         <mat-icon>delete_outline</mat-icon>
         <span>Trash</span>
       </button>
+
+      <br>
+      <br>
+      <div class="privacy">
+         
+        <a href="https://www.google.com/policies/privacy/" target="_blank"  >Privacy</a>
+        .
+        <a href="http://www.google.com/policies/terms/" target="_blank" >Terms</a>
+     <br>
+          <a href="http://ssl.gstatic.com/keep/open-source_licenses.txt" target="_blank"  >Open-source licences</a> 
+        
+      </div>
+
     </mat-nav-list>
   </mat-sidenav>
 
