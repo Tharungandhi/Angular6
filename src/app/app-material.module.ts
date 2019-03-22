@@ -18,7 +18,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
 import {MatDialogModule} from '@angular/material/dialog';
-
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 @NgModule({ 
   declarations: [],
@@ -46,7 +46,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatChipsModule,
     MatDialogModule,
     MatCheckboxModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule
       ],
   exports:[
     MatFormFieldModule,
@@ -67,7 +69,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatExpansionModule,
     MatChipsModule,
     MatCheckboxModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule
     
   ]
 })

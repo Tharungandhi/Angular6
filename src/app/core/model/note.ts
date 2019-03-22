@@ -12,5 +12,6 @@ export interface Note {
     color:string;
     labels:label[];
     collaborators:Collaborator[];
+    reminder:string;
 
 }

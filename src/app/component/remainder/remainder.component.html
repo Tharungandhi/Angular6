@@ -1,7 +1,19 @@
 
-<app-create-note></app-create-note>
-
+ <app-create-note></app-create-note>
+<!-- 
 <mat-icon>notifications_none</mat-icon>
 <div class="align">
 <h5>Notes with upcoming reminders appear here</h5>
-</div>
+</div> -->
+<div class="container" fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
+        <div fxFlex="40%">
+         
+        </div>
+        <div fxFlex="40%">
+          <app-pin-notes [notes]="notes | noteFilter:'reminder'" [grid]="grid" [message]="'reminder'"
+            (updateEvent)="onUpdateNote($event)">
+          </app-pin-notes>
+        </div>
+      </div>
+
+

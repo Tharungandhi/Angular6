@@ -6,39 +6,46 @@ import { Note } from '../model/note';
 })
 export class NoteFilterPipe implements PipeTransform {
 
-  transform(notes: Note[], valid= ''): Note[] {
-    if(!valid){
+  transform(notes: Note[], valid = ''): Note[] {
+    if (!valid) {
       return notes.filter((item) => {
         if (!item.archive && !item.inTrash && !item.pinned) {
           return item;
         }
       });
     }
-    if(valid==='archive'){
+    if (valid === 'archive') {
       return notes.filter((item) => {
         if (item.archive && !item.inTrash && !item.pinned) {
           return item;
         }
       });
     }
-    if(valid==='pinned'){
+    if (valid === 'pinned') {
       return notes.filter((item) => {
         if (!item.inTrash && item.pinned) {
           return item;
         }
       });
     }
-    if(valid==='inTrash'){
+    if (valid === 'inTrash') {
       return notes.filter((item) => {
         if (item.inTrash) {
           return item;
         }
       });
     }
-  return null;
-   
-   
-  
+    if (valid === 'reminder') {
+      return notes.filter((item) => {
+        if (!item.inTrash && item.reminder) {
+          return item;
+        }
+      });
+    }
+    return null;
+
+
+
   }
 
 }

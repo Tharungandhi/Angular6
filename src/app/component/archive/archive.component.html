@@ -1,9 +1,10 @@
 
 
-<div class="container" fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
+<!-- <div class="container" fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
+  
     <div class="notegrid" [ngClass]="grid ? 'notegrid-grid-view': 'notegrid-list-view'">
     <div *ngFor="let notes of notes"  >
-      <mat-card class="notegrid-container" *ngIf="notes.archive "  [style.background-color]="notes.color" >
+      <mat-card class="notegrid-container" *ngIf="notes.archive && !notes.inTrash "  [style.background-color]="notes.color" >
         <mat-card-header>
           <mat-card-title (click)=openDialog(notes)>
             {{notes.title}}
@@ -43,4 +44,8 @@
       </mat-card>
     </div>
   </div>
-  </div>
+  </div> -->
+
+
+  <app-pin-notes class="pinnedNotes" [notes]="notes | noteFilter:'archive'" (updateEvent)="onClickUpdate($event)" [grid]="grid" 
+  (updateNoteEvent)="updateNoteToGrid($event)" ></app-pin-notes>

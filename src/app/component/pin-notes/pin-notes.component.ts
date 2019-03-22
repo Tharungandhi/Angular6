@@ -14,21 +14,21 @@ import { RetrievenotesComponent } from '../retrieve-notes/retrieve-notes.compone
 export class PinNotesComponent implements OnInit {
   @Input() notes
   @Input() newNote
+  @Input() message;
 
   @Output() updateEvent = new EventEmitter();
   @Input() public grid = false;
   public colors=['#FFE4C4','#F8F8FF', '#5F9EA0','#778899','#00FFFF',
 '#ADFF2F', '#FF69B4', '#F08080', '#4682B4'];
 
-
   public labels: label[]=[];
   public newLabels:label[]=[];
   public mytoken: string; 
-  removable = true;
+  public min = new Date();
   public filter = '';
-  
-  
-
+  selectable = true;
+  removable = true;
+  selectedMoment =new Date();
 
   constructor(private noteService: NoteService,
     public snackBar: MatSnackBar,
@@ -51,15 +51,15 @@ export class PinNotesComponent implements OnInit {
     )
   }
 
-  public openDialog(notes): void {
+  public openDialog(note): void {
     const dialogRef = this.dialog.open(UpdateNoteComponent, {
       width: '500px',
-      data: notes
-
+      data: note
     });
-
     dialogRef.afterClosed().subscribe(result => {
-      this.noteService.updateNote(notes, notes.id)
+      const notes=note;
+      const data = { notes }
+    this.updateEvent.emit(data);
       console.log('The dialog was closed');
 
     });
@@ -95,8 +95,21 @@ export class PinNotesComponent implements OnInit {
   }
 
 
-  onAddLabel(label, note) {
-    this.noteService.mapLabelTONote(note.id, label).subscribe((resp: any) =>
+  public updateReminder(notes,selectedMoment){
+    notes.reminder=selectedMoment;
+    const data = {notes};
+    this.updateEvent.emit(data);
+  }
+
+  public removeReminder(notes){
+    notes.reminder=null;
+    console.log(notes.reminder)
+    const data = {notes};
+    this.updateEvent.emit(data);
+  }
+
+  onAddLabel(label, notes) {
+    this.noteService.mapLabelTONote(notes.id, label).subscribe((resp: any) =>
       console.log(resp)
     ), (error) => {
       console.log(error)
@@ -192,9 +205,16 @@ export class PinNotesComponent implements OnInit {
 onClickUpdate(data) {
   this.addNotes.updateMethod(data.notes);
 }
-// changeColor(color,notes){
-//   notes.color=color;
-// this.updateNote(notes,notes.id);
-// }
+
+
+changeColor(color,notes){
+  notes.color=color;
+this.updateNote(notes,notes.id);
+}
+
+reminders()
+{
+
+}
 
 }

@@ -63,7 +63,7 @@ export class RetrievenotesComponent implements OnInit {
 
 
   public updateNoteToGrid(data) {
-    this.updateMethod(data.note);
+    this.updateMethod(data.notes);
 }
 }
   

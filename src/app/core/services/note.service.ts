@@ -49,7 +49,7 @@ public token=localStorage.getItem('token');
 
   
    
-  updateNote(notes, id) {
+   updateNote(notes, id) {
     var httpheaders=this.getHeader();
     return this.http.putService(`${environment.note_url}updatenote/`+id, notes, httpheaders)
     }

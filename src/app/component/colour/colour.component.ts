@@ -27,7 +27,7 @@ export class ColourComponent implements OnInit {
   
   colorChange() {
     if (this.colorMenu)
-    this.colorMenu = false
+    this.colorMenu = false;
     else
     this.colorMenu = true;
     }
@@ -37,10 +37,14 @@ export class ColourComponent implements OnInit {
     this.fillTheColor = color;
    this.newNote.color = color;
     this.noteService.updateNote( this.newNote,  this.newNote.id).subscribe(resp => {
-    console.log(resp)
+    console.log(resp);
+    this.colorMenu = false; 
     }, (error) => {
     console.log(error)
-    })
+    }
+    
+    )
+    this.colorMenu = false;
    
     }
   
