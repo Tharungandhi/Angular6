@@ -29,6 +29,7 @@ import { CollaboratorComponent } from './component/collaborator/collaborator.com
 import { ColourComponent } from './component/colour/colour.component';
 import { CollaborateSearchPipe } from './core/pipe/collaborate-search.pipe';
 import { RemainderComponent } from './component/remainder/remainder.component';
+import { AuthGardGuard } from './guard/auth-gard.guard';
 
 
 
@@ -78,7 +79,8 @@ import { RemainderComponent } from './component/remainder/remainder.component';
     AddlabelNotesComponent,
     CollaboratorComponent
    ],
-  providers: [RetrievenotesComponent],
+  providers: [RetrievenotesComponent,
+    AuthGardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

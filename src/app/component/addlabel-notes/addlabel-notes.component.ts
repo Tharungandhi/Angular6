@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { DialogData } from '../retrieve-notes/retrieve-notes.component';
 import { NoteService } from 'src/app/core/services/note.service';
@@ -12,13 +12,15 @@ import { Note } from 'src/app/core/model/note';
 })
 export class AddlabelNotesComponent implements OnInit {
   
+@Input() note
+@Output() eventAddNoteLabel = new EventEmitter();
   public mytoken = localStorage.getItem('token'); 
   public label:label[]=[];
-  public note:Note[]=[];
+  public notes:Note[]=[];
 
   constructor(
     public dialogRef: MatDialogRef<AddlabelNotesComponent>,
-     @Inject(MAT_DIALOG_DATA) public notes,
+     @Inject(MAT_DIALOG_DATA) public newnotes,
     private noteService: NoteService,
     public snackBar: MatSnackBar
   ) { }

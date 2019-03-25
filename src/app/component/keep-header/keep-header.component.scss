@@ -18,6 +18,21 @@
     font-size: 30px;
     align-self: auto;
   }
+  .header{
+    box-sizing: border-box;
+    position: relative;
+    height: 70px;
+    width: 160px;
+    border: solid transparent;
+    border-width: 1px 1px 1px 6px;
+  //  min-height: 28px;
+   // padding: 10px 0 0;
+  
+  }
+  .image{
+    width: 65px;
+    height: 50px;
+  }
 }
 
   

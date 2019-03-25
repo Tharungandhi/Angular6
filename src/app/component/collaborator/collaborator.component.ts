@@ -38,7 +38,7 @@ ngOnInit() {
 }
 
 public getUsers() {
-  this.userService.getUsers().subscribe(({ body }) => {
+  this.userService.getUser().subscribe(({ body }) => {
     this.users = body;
     console.log(this.users)
   }
@@ -64,8 +64,8 @@ closeClick() {
 getImage() {
   this.userService.downloadImage().subscribe(resp => {
     this.user = resp
-    if (this.user.profilePicture != null) {
-      const url = `data:${this.user.contentType};base64,${this.user.profilePicture}`;
+    if (this.user.image != null) {
+      const url = `data:${this.user.contentType};base64,${this.user.image}`;
       this.imageData = {
         imageSrc: this.sanitizer.bypassSecurityTrustUrl(url)
       }

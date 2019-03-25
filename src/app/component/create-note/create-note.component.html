@@ -1,21 +1,24 @@
 
-   <div fxLayout="row" fxLayoutAlign="center center"> 
+   <div fxLayout="row" fxLayoutAlign="center center" class="createNote"> 
       <form [formGroup]="createNoteForm" >
         <mat-accordion  class="mat-accordion">
         
           
-          <mat-expansion-panel [expanded]=false (opened)="showHeader = false" (closed)="onSubmit(createNoteForm.value)"
+          <mat-expansion-panel [expanded]=true (opened)="showHeader = false" (closed)="onSubmit(createNoteForm.value)"
             (closed)="showHeader = true" hideToggle="true"  class="mainClass">
            
             <mat-expansion-panel-header class="example">
               <ng-container *ngIf="showHeader;else tempTtext" >
                 <mat-panel-title >
-                  Take a note..
+                 <b>Take a note..</b> 
                   <div style="text-align:right; width:100%;">
-                    <button mat-icon-button matTooltip="new list">
+                    <button mat-icon-button matTooltip="new list" title="new list">
                       <mat-icon>check_box</mat-icon>
                     </button>
-                    <button mat-icon-button matTooltip="new note with image">
+                    <button mat-icon-button matTooltip="new note with drawing" title="new note with drawing">
+                      <mat-icon>brush</mat-icon>
+                    </button>
+                    <button mat-icon-button matTooltip="new note with image" title="new note with image">
                       <mat-icon>image</mat-icon>
                     </button>
                   </div>
@@ -27,12 +30,12 @@
             </mat-expansion-panel-header>
             <mat-panel-description>
               <input matInput class="note" placeholder="Title" formControlName="title" 
-                [ngClass]="{ 'is-invalid': submitted && f.title.errors }" style="width: 500 px;">
-              <button mat-icon-button matTooltip="Pin_note" (click)=pinned(notes) title="Pin note" style="text-align:right;"  class="pinNotes">
-              <img src="./assets/image/Pin-icon.png">
-                   
-                
+                [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
+           
+                <button  class="pinned-icon1" mat-icon-button matTooltip="Pin_note" (click)=pinned(notes) title="Pin note" >
+              <img src="./assets/image/Pin-icon.png"   style="widows: 20px;"> 
               </button>
+
             </mat-panel-description>
             <mat-panel-description>
               <textarea matInput class="note" placeholder="Take a note.." formControlName="discription"
@@ -47,8 +50,8 @@
                 <mat-icon>person_add</mat-icon>
               </button>
 
-              <app-colour [newNote]="note" (changeColor)="Colourupdate($event)"></app-colour>
-
+              <app-colour [newNote]="notes" (changeColor)="Colourupdate($event)" (updateEvent)="onClickUpdate($event)">
+                </app-colour>
               <!-- <button mat-icon-button matTooltip="Change color" title="change color">
                 <mat-icon>palette</mat-icon>
               </button> -->

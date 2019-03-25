@@ -39,7 +39,7 @@
           <mat-chip *ngIf="notes.reminder!==null" [selectable]="selectable" [removable]="removable"
             (removed)="removeReminder(notes)" color="notes.color">
             <mat-icon>timer</mat-icon>
-            {{notes.reminder | date:'short'}}
+            {{notes.reminder | date:'long'}}
             <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
           </mat-chip>
 
@@ -64,21 +64,12 @@
             </div>
           </mat-menu>
 
-          <!-- <mat-menu #menu="matMenu">
-                <label>
-                  Date Time:
-                  <input [min]="min" [owlDateTimeTrigger]="dt5" [owlDateTime]="dt5" [(ngModel)]="selectedReminder">
-                  <owl-date-time [pickerMode]="'dialog'" #dt5></owl-date-time>
-                </label>
-                <button mat-button (click)="updateReminder(notes,selectedReminder)">Save</button>
-              </mat-menu> -->
-
 
           <button mat-icon-button matTooltip="Collaborator" title="Collaborator" (click)="collaborator(notes)">
             <mat-icon>person_add</mat-icon>
           </button>
 
-          <app-colour [newNote]="notes" (changeColor)="Colourupdate($event)" (updateEvent)="onClickUpdate($event)">
+          <app-colour [newNote]="notes" (changeColor)="colourupdate($event)" (updateEvent)="onClickUpdate($event)">
           </app-colour>
 
 

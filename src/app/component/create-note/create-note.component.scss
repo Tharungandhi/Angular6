@@ -44,6 +44,7 @@
             }
             img {
                 width:25px;
+                height: 20px;
             }
         }
     }
@@ -60,4 +61,18 @@
   .mat-button{
   margin: -5x;
   }
+.createNote{
+  letter-spacing: .01428571em;
+  font-family: Roboto,Arial,sans-serif;
+  font-size: .875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  box-sizing: border-box;
+  font-variant-ligatures: none;
+  outline: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+
 }

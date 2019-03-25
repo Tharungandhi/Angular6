@@ -198,7 +198,7 @@ export class PinNotesComponent implements OnInit {
 
   }
 
-  Colourupdate(data) {
+  colourupdate(data) {
     this.updateEvent.emit(data);
 }
 
@@ -212,9 +212,6 @@ changeColor(color,notes){
 this.updateNote(notes,notes.id);
 }
 
-reminders()
-{
 
-}
 
 }

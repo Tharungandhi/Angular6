@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NoteService } from 'src/app/core/services/note.service';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { CollaboratorComponent } from '../collaborator/collaborator.component';
+import { RetrievenotesComponent } from '../retrieve-notes/retrieve-notes.component';
 
 
 
@@ -29,7 +30,8 @@ export class CreateNoteComponent implements OnInit {
     private formBuilder: FormBuilder,  
   private noteService: NoteService, 
   private snackBar: MatSnackBar,
-    private dialog:MatDialog
+    private dialog:MatDialog,
+    private addNotes:RetrievenotesComponent
     ) { }
 
   ngOnInit() {
@@ -95,6 +97,10 @@ collaborator(notes)
 Colourupdate(data) {
   this.eventEmitter.emit(data);
 }
+
+// onClickUpdate(data) {
+// this.addNotes.updateMethod(data.notes);
+// }
 
 }
 

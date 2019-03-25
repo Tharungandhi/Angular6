@@ -114,7 +114,6 @@ export class ArchiveComponent implements OnInit {
 
   constructor(private noteService: NoteService,
     public snackBar: MatSnackBar,
-    private dialog: MatDialog,
     private keepHelperService: KeepHelperService) {
 
   }
@@ -134,11 +133,11 @@ export class ArchiveComponent implements OnInit {
     }
     )
   }
-  onClickUpdate(data) {
-    this.updateMethod(data.note);
+  public onClickUpdate(data) {
+    this.updateMethod(data.notes);
   }
 
-  refresh(event) {
+  public refresh(event) {
     if (event) {
       this.getNotes();
     }

@@ -48,7 +48,8 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
     MatCheckboxModule,
     MatAutocompleteModule,
     OwlDateTimeModule,
-    OwlNativeDateTimeModule
+    OwlNativeDateTimeModule,
+    
       ],
   exports:[
     MatFormFieldModule,
@@ -71,7 +72,8 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
     MatCheckboxModule,
     MatAutocompleteModule,
     OwlDateTimeModule,
-    OwlNativeDateTimeModule
+    OwlNativeDateTimeModule,
+    MatDialogModule
     
   ]
 })

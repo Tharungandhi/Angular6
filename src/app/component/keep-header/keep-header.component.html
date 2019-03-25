@@ -1,5 +1,5 @@
  
-<div fxLayout="row" fxLayoutAlign="center center">
+<div fxLayout="row" fxLayoutAlign="center center" class="header">
   <mat-toolbar  class="example-toolbar" fxFlex="100%;" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="100%">
     <mat-toolbar-row>
       <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="toggle()" matTooltip="Menu">
@@ -70,7 +70,7 @@
           <span>KeyBoard ShortCut</span>
         </button>
       </mat-menu>
-      <button mat-button [matMenuTriggerFor]="user" matTooltip="User Details" title="User Details">
+      <button class="image"mat-button [matMenuTriggerFor]="user" matTooltip="User Details" title="User Details">
         <i id="accountcircle" class="material-icons" *ngIf="imageData.imageSrc===null">account_circle</i>
         <img class="image" *ngIf="imageData.imageSrc!=null" [src]="imageData.imageSrc" height="60%"
       width="60%">

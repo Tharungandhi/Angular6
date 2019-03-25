@@ -10,9 +10,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  getUsers(): any {
-    throw new Error("Method not implemented.");
-  }
+  
+  
+  
   public token = localStorage.getItem('token');
   public httpheaders = {
     headers: new HttpHeaders({
