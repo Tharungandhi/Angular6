@@ -31,7 +31,6 @@ export class CreateNoteComponent implements OnInit {
   private noteService: NoteService, 
   private snackBar: MatSnackBar,
     private dialog:MatDialog,
-    private addNotes:RetrievenotesComponent
     ) { }
 
   ngOnInit() {

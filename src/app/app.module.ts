@@ -78,9 +78,9 @@ import { AuthGardGuard } from './guard/auth-gard.guard';
     EditLabelComponent,
     AddlabelNotesComponent,
     CollaboratorComponent
+   
    ],
-  providers: [RetrievenotesComponent,
-    AuthGardGuard],
+  providers: [RetrievenotesComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

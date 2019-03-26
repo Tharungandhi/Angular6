@@ -32,6 +32,11 @@ export class KeepSidebarComponent implements OnInit {
     });
 
   }
+
+  public onClickUpdate(data) {
+    this.getLabels();
+  }
+
   
   notes() {
     this.router.navigate(['homepage/retrievenotes'])
@@ -40,6 +45,7 @@ export class KeepSidebarComponent implements OnInit {
   editLabel(): void {
     const refDialog = this.dialog.open(EditLabelComponent, {
       width: '500px',
+      height:'250px',
       data: ''
     });
     refDialog.afterClosed().subscribe(result => {
@@ -60,6 +66,7 @@ export class KeepSidebarComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(EditLabelComponent, {
       width: '500px',
+      height:'300px',
       data: ''
     });
   }

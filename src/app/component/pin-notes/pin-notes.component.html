@@ -78,10 +78,14 @@
           </button>
 
 
-          <button mat-icon-button (click)="updateArchiveNote(notes)" matTooltip="Undo Archive">
+          <button mat-icon-button  *ngIf="!notes.archive" (click)="updateArchiveNote(notes)" matTooltip="Undo Archive">
             <mat-icon>archive</mat-icon>
           </button>
 
+          <button mat-icon-button *ngIf="notes.archive" (click)="updateArchiveNote(notes)"
+            matTooltip="Undo Archive">
+            <mat-icon>unarchive</mat-icon>
+           </button>
 
           <button mat-icon-button class="icon-button" id="more" [matMenuTriggerFor]="more" matTooltip="more"
             title="more">

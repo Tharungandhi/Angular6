@@ -144,12 +144,15 @@ export class ArchiveComponent implements OnInit {
   }
 
   public updateMethod(notes) {
+    notes.archive=0;
     this.noteService.updateNote(notes, notes.id).subscribe(response => {
       this.getNotes();
       console.log(response);
-    }, (error) => console.log(error));
+    },
+      (error) => {
+        console.log(error);
+      })
   }
-
 
   public updateNoteToGrid(data) {
     this.updateMethod(data.note);

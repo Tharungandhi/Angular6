@@ -79,6 +79,8 @@ export class PinNotesComponent implements OnInit {
     this.updateEvent.emit(data);
   }
 
+  
+
  public trashNote(notes) {
     notes.inTrash = 1;
     console.log(notes.inTrash)
@@ -108,7 +110,7 @@ export class PinNotesComponent implements OnInit {
     this.updateEvent.emit(data);
   }
 
-  onAddLabel(label, notes) {
+ public  onAddLabel(label, notes) {
     this.noteService.mapLabelTONote(notes.id, label).subscribe((resp: any) =>
       console.log(resp)
     ), (error) => {
@@ -116,7 +118,7 @@ export class PinNotesComponent implements OnInit {
     }
   }
 
-  addLabelToNote(event, label, notes) {
+ public  addLabelToNote(event, label, notes) {
     event.stopPropagation();
     console.log(label);
     console.log(notes);

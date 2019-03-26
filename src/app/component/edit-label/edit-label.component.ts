@@ -79,7 +79,7 @@ public updateLabel(labels,labelName)
       "labelName":labelName
     }
     this.noteService.createLabels(labels).subscribe(response => {
-      this.ngOnInit();
+      this.getLabels();
       this.snackBar.open("label created", "Ok", { duration: 2000 });
     }, (error) => {
       this.snackBar.open("error", "error to create labels", { duration: 2000 });
