@@ -5,6 +5,14 @@ import { UpdateNoteComponent } from '../update-note/update-note.component';
 import { label } from 'src/app/core/model/label';
 import { CollaboratorComponent } from '../collaborator/collaborator.component';
 import { RetrievenotesComponent } from '../retrieve-notes/retrieve-notes.component';
+import { UploadImageComponent } from '../upload-image/upload-image.component';
+import { DomSanitizer } from '@angular/platform-browser';
+import { UserService } from 'src/app/core/services/user.service';
+
+
+interface ImageData {
+  imageSrc: any;
+}
 
 @Component({
   selector: 'app-pin-notes',
@@ -14,13 +22,15 @@ import { RetrievenotesComponent } from '../retrieve-notes/retrieve-notes.compone
 export class PinNotesComponent implements OnInit {
   @Input() notes
   @Input() newNote
-  @Input() message;
-
+  @Input() message
   @Output() updateEvent = new EventEmitter();
   @Input() public grid = false;
+  public imageData = <ImageData>{};
+
+  
   public colors=['#FFE4C4','#F8F8FF', '#5F9EA0','#778899','#00FFFF',
 '#ADFF2F', '#FF69B4', '#F08080', '#4682B4'];
-
+public user
   public labels: label[]=[];
   public newLabels:label[]=[];
   public mytoken: string; 
@@ -32,7 +42,8 @@ export class PinNotesComponent implements OnInit {
 
   constructor(private noteService: NoteService,
     public snackBar: MatSnackBar,
-    private dialog: MatDialog,
+    private dialog: MatDialog, private userService: UserService,
+     private sanitizer: DomSanitizer,
     private addNotes:RetrievenotesComponent) {
 
   }
@@ -65,7 +76,7 @@ export class PinNotesComponent implements OnInit {
     });
   }
 
-  pinnedNotes(key, notes) {
+ public pinnedNotes(key, notes) {
     notes.pinned = key === 'pinned' ? 1 : 0;
     console.log(notes.pinned)
     const data = { notes }
@@ -88,11 +99,13 @@ export class PinNotesComponent implements OnInit {
     this.updateEvent.emit(data);
   }
 
-  remove(label, notes) {
-    this.noteService.deletenotelabel(label.id, notes.id).subscribe(response => {
+ public remove(notes,label) {
+    this.noteService.deletenotelabel( notes.id,label.id).subscribe(response => {
       const data = { notes }
       this.updateEvent.emit(data);
+      this.getLabels();
       console.log(response);
+      this.snackBar.open("label is removed from the note", "ok", { duration: 2000 });
     }, (error) => console.log(error));
   }
 
@@ -125,6 +138,7 @@ export class PinNotesComponent implements OnInit {
     this.noteService.mapLabelTONote(notes.id, label).subscribe((resp: any) => {
       const data = { notes }
       this.updateEvent.emit(data);
+      this.snackBar.open("label is added to the note", "ok", { duration: 2000 });
     }
     ), (error) => {
       console.log(error)
@@ -132,7 +146,7 @@ export class PinNotesComponent implements OnInit {
   }
 
 
-  collaborator(notes)
+public  collaborator(notes)
   {
     const dialogRef = this.dialog.open(CollaboratorComponent, {
       width: '500px',
@@ -189,7 +203,7 @@ export class PinNotesComponent implements OnInit {
       )
   }
   
-  updateNote(note,id) {
+ public updateNote(note,id) {
     console.log(note);
     this.noteService.updateNote(note,id).subscribe(response => {
       console.log(response);
@@ -200,20 +214,51 @@ export class PinNotesComponent implements OnInit {
 
   }
 
-  colourupdate(data) {
+ public colourupdate(data) {
     this.updateEvent.emit(data);
 }
 
-onClickUpdate(data) {
+public onClickUpdate(data) {
   this.addNotes.updateMethod(data.notes);
 }
 
 
-changeColor(color,notes){
+public changeColor(color,notes){
   notes.color=color;
 this.updateNote(notes,notes.id);
 }
 
+
+public openImageDialog(): void {
+  const dialogRef = this.dialog.open(UploadImageComponent, {
+    width: '500px',
+
+
+  });
+  dialogRef.afterClosed().subscribe(result => {
+    this.getImage();
+    console.log('The dialog was closed');
+  });
+}
+
+public getImage() {
+  this.userService.downloadImage().subscribe(resp => {
+    this.user = resp
+    console.log(this.user)
+    if (this.user.image != null) {
+      const url = `data:${this.user.contentType};base64,${this.user.image}`;
+      this.imageData = {
+        imageSrc: this.sanitizer.bypassSecurityTrustUrl(url)
+      }
+    }
+    else {
+      this.imageData.imageSrc = null;
+    }
+  }, error => {
+    this.snackBar.open("error to download image", "error", { duration: 2000 });
+  }
+  )
+}
 
 
 }

@@ -54,6 +54,7 @@ public updateLabel(labels,labelName)
       
       this.ngOnInit();
       this.snackBar.open("label updated", "Ok", { duration: 2000 });
+      this.getLabels();
     }, (error) => {
       this.snackBar.open("error", "error to update labels", { duration: 2000 });
     }

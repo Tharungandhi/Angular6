@@ -112,7 +112,7 @@
 
 
 
-        <div [ngStyle]="{'background-color':data.color}">
+        <div class="border" [ngStyle]="{'background-color':data.color}">
             <button *ngIf="data.pinned" mat-icon-button matTooltip="unpin" (click)="pinned('unpinned',data)" class="button">
               <img class="image" src="./assets/image/Pin-icon.png" height="50%" id="imgRem">
             </button>
@@ -121,10 +121,10 @@
             </button>
             <div class="notecard">
               <div>
-                <input class="noBorderAndBackground" matInput [(ngModel)]="data.title" [value]=data.title>
+                <input class="example" matInput [(ngModel)]="data.title" [value]=data.title>
               </div>
               <div>
-                <textarea class="noBorderAndBackground" matInput [(ngModel)]="data.discription"
+                <textarea class="example" matInput [(ngModel)]="data.discription"
                   [value]=data.discription></textarea>
               </div>
               <mat-chip-list #chipList>

@@ -35,7 +35,16 @@ ngOnInit() {
   this.getImage();
   this.getUsers();
   this.getCollaborateUser();
+  this.getNoteOwner();
 }
+
+
+public getNoteOwner()
+{
+this.userService.getCollaborateUser(this.note.id).subscribe(
+user => this.user=user);
+}
+
 
 public getUsers() {
   this.userService.getUser().subscribe(({ body }) => {

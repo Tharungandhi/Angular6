@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddlabelNotesComponent } from './addlabel-notes.component';
 
-describe('AddlabelNotesComponent', () => {
+fdescribe('AddlabelNotesComponent', () => {
   let component: AddlabelNotesComponent;
   let fixture: ComponentFixture<AddlabelNotesComponent>;
 

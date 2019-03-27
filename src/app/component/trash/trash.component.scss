@@ -1,4 +1,7 @@
-
+.mat-card
+{
+    width:500px;
+}
 :host {
   .notegrid {
   &-container {
@@ -27,5 +30,7 @@
 }
     }
 }
+
 }
+
 

@@ -35,7 +35,7 @@ export class RetrievenotesComponent implements OnInit {
 );
   }
 
-  getNotes() {
+ public  getNotes() {
     this.mytoken = localStorage.getItem('token')
     console.log("token", this.mytoken);
     this.noteService.retrieveNotes(this.mytoken).subscribe(newNote => {
@@ -44,11 +44,11 @@ export class RetrievenotesComponent implements OnInit {
     }
     )
   }
-  onClickUpdate(data) {
+ public onClickUpdate(data) {
     this.updateMethod(data.notes);
   }
 
-  refresh(event) {
+  public refresh(event) {
     if (event) {
       this.getNotes();
     }
@@ -58,6 +58,7 @@ export class RetrievenotesComponent implements OnInit {
     this.noteService.updateNote(notes, notes.id).subscribe(response => {
       this.getNotes();
       console.log(response);
+      
     }, (error) => console.log(error));
   }
 

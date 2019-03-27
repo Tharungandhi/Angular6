@@ -1,5 +1,5 @@
 
- <app-create-note></app-create-note>
+ 
 <!-- 
 <mat-icon>notifications_none</mat-icon>
 <div class="align">
@@ -7,7 +7,7 @@
 </div> -->
 <div class="container" fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
         <div fxFlex="40%">
-         
+         <app-create-note (createEvent)="refresh($event)"></app-create-note>
         </div>
         <div fxFlex="40%">
           <app-pin-notes [notes]="notes | noteFilter:'reminder'" [grid]="grid" [message]="'reminder'"

@@ -27,9 +27,12 @@ export class RemainderComponent implements OnInit {
     console.log(this.message)
   }
 
-  public refresh() {
-    this.getNotes();
+  refresh(event) {
+    if (event) {
+      this.getNotes();
+    }
   }
+
 
   public onUpdateNote(data) {
     this.updateMethod(data.notes);
@@ -51,5 +54,5 @@ export class RemainderComponent implements OnInit {
     }
     )
   }
-
+ 
 }

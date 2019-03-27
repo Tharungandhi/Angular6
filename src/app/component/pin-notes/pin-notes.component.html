@@ -1,6 +1,12 @@
+
+
 <div class="container" fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
   <div class="notegrid" [ngClass]="grid ? 'notegrid-grid-view': 'notegrid-list-view'">
-
+    <!-- <button class="image"mat-button [matMenuTriggerFor]="user" matTooltip="User Details" title="User Details">
+      <i id="accountcircle" class="material-icons" *ngIf="imageData.imageSrc===null">account_circle</i>
+      <img class="image" *ngIf="imageData.imageSrc!=null" [src]="imageData.imageSrc" height="60%"
+    width="60%">
+    </button> -->
     <div *ngFor="let notes of notes">
       <mat-card class="notegrid-container" [style.background-color]="notes.color">
         <!-- *ngIf="!notes.archive && !notes.inTrash && notes.pinned" style="background-color: aqua">  -->
@@ -30,9 +36,9 @@
           </mat-card-subtitle>
         </mat-card-header>
         <mat-chip-list #chipList>
-          <mat-chip *ngFor="let label of notes.labels" [removable]="removable" (removed)="remove(label,notes)">
+          <mat-chip *ngFor="let label of notes.labels" [removable]="removable" (removed)="remove(notes,label)">
             {{label.labelName}}
-            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            <mat-icon matChipRemove *ngIf="removable" title="Remove Label">cancel</mat-icon>
           </mat-chip>
 
 
@@ -73,7 +79,7 @@
           </app-colour>
 
 
-          <button mat-icon-button matTooltip="Add image">
+          <button mat-icon-button matTooltip="Add image" (click)="openImageDialog()">
             <mat-icon>image</mat-icon>
           </button>
 

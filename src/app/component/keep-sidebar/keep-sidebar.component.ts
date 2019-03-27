@@ -68,6 +68,9 @@ export class KeepSidebarComponent implements OnInit {
       width: '500px',
       height:'300px',
       data: ''
+    }); dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit();
+      console.log('The dialog was closed');
     });
   }
 }
