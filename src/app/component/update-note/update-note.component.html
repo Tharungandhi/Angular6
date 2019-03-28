@@ -168,8 +168,28 @@
                 <button mat-icon-button class="icon-button" id="more" [matMenuTriggerFor]="more">
                   <i id="accountcircle" class="material-icons">more_vert</i></button>
                 <mat-menu #more="matMenu" class="morecard">
-                  <button mat-button (click)=moveToTrash(data)>Delete Note</button>
-                  <app-addlabel-notes [note]="data" (eventAddNoteLabel)="addNoteLabel($event)"></app-addlabel-notes>
+                  <button mat-button (click)=moveToTrash(data)>Delete Note</button><br>
+                  <!-- <app-addlabel-notes [note]="data" (eventAddNoteLabel)="addNoteLabel($event)"></app-addlabel-notes> -->
+
+                  <button mat-button [matMenuTriggerFor]="menu" (click)="labelFilter($event,data.labels)">Add
+                    Label</button>
+                  <mat-menu #menu="matMenu">
+                    <div fxLayout="row">
+                      <input matInput type="text" placeholder="Enter label name" name="filter" [(ngModel)]="filter"
+                        (click)="$event.stopPropagation()" class="input">
+                    </div>
+                    <div *ngFor="let label of newLabels">
+                      <mat-checkbox (click)="addLabelToNote($event,label,data.note)">{{label.labelName}}</mat-checkbox>
+                    </div>
+                    <div>
+                      <button mat-button *ngIf="filter != ''" (click)="createNewLabel(filter,data)">
+                        <mat-icon>add</mat-icon>Create "{{filter}}"
+                      </button>
+                    </div>
+                  </mat-menu>
+
+
+
                 </mat-menu>
                 <button mat-button [mat-dialog-close]="data" (click)="closeClick(data)" style="float:right"
                   cdkFocusInitial>Close</button>

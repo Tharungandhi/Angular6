@@ -73,4 +73,10 @@ export class KeepSidebarComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
+
+
+  listOfNotes(labels,path)
+  {
+    this.router.navigate([path,labels.labelName]);
+}
 }

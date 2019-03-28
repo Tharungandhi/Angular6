@@ -30,6 +30,8 @@ import { ColourComponent } from './component/colour/colour.component';
 import { CollaborateSearchPipe } from './core/pipe/collaborate-search.pipe';
 import { RemainderComponent } from './component/remainder/remainder.component';
 import { AuthGardGuard } from './guard/auth-gard.guard';
+import { TrashDialogBoxComponent } from './component/trash-dialog-box/trash-dialog-box.component';
+import { NoteforlabelComponent } from './component/noteforlabel/noteforlabel.component';
 
 
 
@@ -62,7 +64,9 @@ import { AuthGardGuard } from './guard/auth-gard.guard';
     CollaboratorComponent,
     ColourComponent,
     CollaborateSearchPipe,
-    RemainderComponent
+    RemainderComponent,
+    TrashDialogBoxComponent,
+    NoteforlabelComponent
     
 
         
@@ -77,7 +81,8 @@ import { AuthGardGuard } from './guard/auth-gard.guard';
     UpdateNoteComponent,
     EditLabelComponent,
     AddlabelNotesComponent,
-    CollaboratorComponent
+    CollaboratorComponent,
+    TrashDialogBoxComponent
    
    ],
   providers: [RetrievenotesComponent],

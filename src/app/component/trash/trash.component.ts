@@ -5,6 +5,7 @@ import { MatSnackBar, MatDialog } from '@angular/material';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
 import { EventEmitter } from 'events';
 import { KeepHelperService } from 'src/app/core/services/keep-helper.service';
+import { TrashDialogBoxComponent } from '../trash-dialog-box/trash-dialog-box.component';
 
 
 @Component({
@@ -31,7 +32,7 @@ export class TrashComponent implements OnInit {
 
 
  public openDialog(notes): void {
-    const dialogRef = this.dialog.open(UpdateNoteComponent, {
+    const dialogRef = this.dialog.open(TrashDialogBoxComponent, {
       width: '500px',
       data: notes
     });
@@ -52,7 +53,7 @@ public  getNotes() {
   }
 
 
-  deleteNote(notes) {
+ public deleteNote(notes) {
     console.log(notes.id);
     this.noteService.removeNote(notes.id).subscribe(response => {
       this.refresh(event);
@@ -65,7 +66,7 @@ public  getNotes() {
   }
 
 
-  updateMethod(notes) {
+  public updateMethod(notes) {
     this.noteService.updateNote(notes, notes.id).subscribe(response => {
       console.log(response);
     },
@@ -76,7 +77,7 @@ public  getNotes() {
 
 
 
-  restore(notes)
+  public restore(notes)
   {
     notes.inTrash=0;
     console.log(notes);
@@ -91,12 +92,12 @@ public  getNotes() {
 }
 
 
-onClickUpdate(data) {
+public onClickUpdate(data) {
   this.updateMethod(data.notes);
 }
 
 
-refresh(event) {
+public refresh(event) {
   if (event) {
     this.getNotes();
   }

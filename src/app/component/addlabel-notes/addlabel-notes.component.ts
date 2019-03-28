@@ -36,7 +36,7 @@ export class AddlabelNotesComponent implements OnInit {
     }, (error) => console.log(error));
 }
 
-onNoClick(data, id): void {
+public onNoClick(data, id): void {
   this.dialogRef.close();
   console.log(data);
 }

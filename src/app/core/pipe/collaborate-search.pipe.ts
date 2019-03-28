@@ -8,7 +8,7 @@ export class CollaborateSearchPipe implements PipeTransform {
 
   transform(users: User[], searchValue: any): any {
     console.log(users, searchValue);
-    if (!searchValue || !users.length) {
+    if (!searchValue ) {
       return null;
     }
     else {

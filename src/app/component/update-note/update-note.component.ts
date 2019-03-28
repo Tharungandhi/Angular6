@@ -182,6 +182,9 @@ visible = true;
   addOnBlur = true;
   selectedMoment=new Date();
   min=new Date();
+  public labels: label[]=[];
+  public newLabels:label[]=[];
+  @Output() updateEvent = new EventEmitter();
 
   constructor(public dialogRef: MatDialogRef<UpdateNoteComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Note, private noteService: NoteService,
@@ -230,7 +233,7 @@ visible = true;
     }, (error) => console.log(error));
   }
 
-  addNoteLabel(data) {
+  public addNoteLabel(data) {
     this.updateNote(data.note);
   }
 
@@ -254,4 +257,60 @@ visible = true;
     });
 }
 
+public labelFilter(event, noteLabels) {
+  event.stopPropagation();
+  console.log(noteLabels);
+  console.log(this.labels);
+  this.newLabels.length = 0  ;
+  var k = 0;
+  for (var i = 0; i < this.labels.length; i++) {
+    var present = 0;
+    for (var j = 0; j < noteLabels.length; j++) {
+      if (this.labels[i].id=== noteLabels[j].id && present === 0) {
+        present = 1;
+      }
+    }
+    if (present === 0) {
+      this.newLabels[k] = this.labels[i];
+      k++;
+    }
+  }
+}
+
+  public createNewLabel(filter, note) {
+    const var1 = note.labels.some((label) => label.labelName === filter)
+    const var2 = this.newLabels.some((label) => label.labelName === filter)
+    if (var1 || var2) {
+      this.snackBar.open("label name already present", "error", { duration: 2000 });
+      return;
+    }
+    const newLabel =
+    {
+      labelName: filter
+    }
+    this.noteService.createLabels(newLabel).subscribe(label => {
+      this.noteService.mapLabelTONote(note.id, label).subscribe(response => {
+        console.log("adding check in database");
+        const data = { note };
+        this.updateEvent.emit(data);
+        this.snackBar.open("label created", "Ok", { duration: 2000 });
+      })
+    }, error => {
+      this.snackBar.open("error", "error to create labels", { duration: 2000 });
+    }
+    )
+}
+public  addLabelToNote(event, label, notes) {
+  event.stopPropagation();
+  console.log(label);
+  console.log(notes);
+  this.noteService.mapLabelTONote(notes.id, label).subscribe((resp: any) => {
+    // const data = { notes }
+    // this.updateEvent.emit(data);
+    this.snackBar.open("label is added to the note", "ok", { duration: 2000 });
+  }
+  ), (error) => {
+    console.log(error)
+  }
+}
 }

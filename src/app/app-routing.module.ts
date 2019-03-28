@@ -13,6 +13,7 @@ import { SearchNoteComponent } from './component/search-note/search-note.compone
 import { UploadImageComponent } from './component/upload-image/upload-image.component';
 import { AuthGardGuard } from './guard/auth-gard.guard';
 import { RemainderComponent } from './component/remainder/remainder.component';
+import { NoteforlabelComponent } from './component/noteforlabel/noteforlabel.component';
 
 
 const appRoutes: Routes = [
@@ -33,6 +34,7 @@ const appRoutes: Routes = [
         {path:'search-note',component:SearchNoteComponent},
         { path:'image', component:UploadImageComponent},
         {path:'remainder' ,component:RemainderComponent},
+        {path:'label',component:NoteforlabelComponent},
         {
           path: '',
           redirectTo: 'retrievenotes',

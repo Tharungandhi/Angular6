@@ -14,7 +14,7 @@ interface ImageData {
 @Component({
   selector: 'app-collaborator',
   templateUrl: './collaborator.component.html',
-  styleUrls: ['./collaborator.component.css']
+  styleUrls: ['./collaborator.component.scss']
 })
 export class CollaboratorComponent implements OnInit {
 
@@ -88,8 +88,9 @@ getImage() {
   )
 }
 
-getCollaborateUser() {
-  for (let i = 0; i < this.note.collaborators.length; i++) {
+public getCollaborateUser() {
+  const size=this.note.collaborators.length;
+  for (let i = 0; i < size; i++) {
     var k = 0;
     console.log(this.note.collaborators[i].userId);
     this.userService.getCollaborateUser(this.note.collaborators[i].userId).subscribe(
@@ -101,7 +102,7 @@ getCollaborateUser() {
   }
 }
 
-removeCollaborator(collabUser) {
+public removeCollaborator(collabUser) {
   this.noteService.removeCollaborateUser(this.note.id, collabUser.id).subscribe(resp => {
     console.log(resp)
     this.snackBar.open("collaborator removed", "ok", { duration: 2000 });

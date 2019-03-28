@@ -1,5 +1,10 @@
 
-
+<p *ngIf="notes.length > 0 && message==='note'">
+  <span><b>other notes</b></span>
+</p>
+<p *ngIf="notes.length > 0 && message==='pinned'">
+  <span><b>pinned notes</b></span>
+</p>
 <div class="container" fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
   <div class="notegrid" [ngClass]="grid ? 'notegrid-grid-view': 'notegrid-list-view'">
     <!-- <button class="image"mat-button [matMenuTriggerFor]="user" matTooltip="User Details" title="User Details">
