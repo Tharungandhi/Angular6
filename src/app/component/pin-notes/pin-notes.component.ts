@@ -21,16 +21,12 @@ interface ImageData {
 })
 export class PinNotesComponent implements OnInit {
   @Input() notes
-  @Input() newNote
+  //@Input() newNote
   @Input() message
   @Output() updateEvent = new EventEmitter();
   @Input() public grid = false;
   public imageData = <ImageData>{};
-
-  
-  public colors=['#FFE4C4','#F8F8FF', '#5F9EA0','#778899','#00FFFF',
-'#ADFF2F', '#FF69B4', '#F08080', '#4682B4'];
-public user
+  public user
   public labels: label[]=[];
   public newLabels:label[]=[];
   public mytoken: string; 
@@ -45,8 +41,8 @@ public user
     private dialog: MatDialog, private userService: UserService,
      private sanitizer: DomSanitizer,
     private addNotes:RetrievenotesComponent) {
-
   }
+  
   ngOnInit() {
     this.getLabels();
   }
@@ -83,10 +79,12 @@ public user
     this.updateEvent.emit(data);
   }
 
-  public updateArchiveNote(notes) {
-    notes.archive = 1;
+  public updateArchiveNote(key,notes) {
     notes.pinned = 0;
-    const data = { notes }
+    notes.archive=key==='archive'? 1:0;
+   
+  
+    const data = {key, notes }
     this.updateEvent.emit(data);
   }
 

@@ -33,19 +33,13 @@ export class KeepSidebarComponent implements OnInit {
 
   }
 
-  public onClickUpdate(data) {
-    this.getLabels();
-  }
-
-  
-  notes() {
+ public  notes() {
     this.router.navigate(['homepage/retrievenotes'])
   }
 
-  editLabel(): void {
+  public editLabel(): void {
     const refDialog = this.dialog.open(EditLabelComponent, {
       width: '500px',
-      height:'250px',
       data: ''
     });
     refDialog.afterClosed().subscribe(result => {
@@ -63,10 +57,10 @@ export class KeepSidebarComponent implements OnInit {
     )
   }
 
-  openDialog(): void {
+ public  openDialog(): void {
     const dialogRef = this.dialog.open(EditLabelComponent, {
-      width: '500px',
-      height:'300px',
+      width: '400px',
+      height:'250px',
       data: ''
     }); dialogRef.afterClosed().subscribe(result => {
       this.ngOnInit();
@@ -75,8 +69,8 @@ export class KeepSidebarComponent implements OnInit {
   }
 
 
-  listOfNotes(labels,path)
+  listOfNotes(labels)
   {
-    this.router.navigate([path,labels.labelName]);
+    this.router.navigate(['homepage/label',labels.labelName]);
 }
 }

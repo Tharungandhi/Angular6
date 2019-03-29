@@ -1,11 +1,11 @@
-<div class="notecard" [ngStyle]="{'background-color':note.color}">
+<div class="notecard" [ngStyle]="{'background-color':note.color}" style="width:500px; height:250px;">
   <div mat-dialog-title id="title" class="textarea" [innerHTML]=note.title></div>
   <p mat-dialog-content id="discription" class="textarea" [innerHTML]=note.discription></p>
   <div class="mouseover">
     <button mat-icon-button class="icon-button" id="more" [matMenuTriggerFor]="more">
       <i id="accountcircle" class="material-icons">more_vert</i></button>
     <mat-menu #more="matMenu" class="morecard">
-      <button mat-button (click)=deleteNote(note)>Delete Permanently</button>
+      <button mat-button (click)=deleteNote(note)>Delete Permanently</button><br>
       <button mat-button (click)=restore(note)>Restore</button>
     </mat-menu>
   </div>

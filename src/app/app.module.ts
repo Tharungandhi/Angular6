@@ -66,7 +66,8 @@ import { NoteforlabelComponent } from './component/noteforlabel/noteforlabel.com
     CollaborateSearchPipe,
     RemainderComponent,
     TrashDialogBoxComponent,
-    NoteforlabelComponent
+    NoteforlabelComponent,
+    
     
 
         

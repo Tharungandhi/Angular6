@@ -4,6 +4,7 @@ import { Collaborator } from './collaborator';
 export interface Note {
     
     id: string;
+    userId:string;
     title:string;
     discription:string;
     archive:boolean;

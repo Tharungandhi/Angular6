@@ -21,9 +21,9 @@
      
 
     
-     <div  (eventEmitter)="onClickUpdate($event)" >
+     <div >
       <div *ngFor="let label of labels" >
-        <div fxLayout=row fxLayoutGap="10%">
+        <div fxLayout=row fxLayoutGap="10%"  (click)="listOfNotes(label)">
           <button mat-button class=labelbutton  >
            
             <mat-icon>label_outline</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

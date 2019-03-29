@@ -2,6 +2,7 @@ import { Component, OnInit, Inject, EventEmitter,Output} from '@angular/core';
 import { NoteService } from 'src/app/core/services/note.service';
 import { MatSnackBar, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { label } from 'src/app/core/model/label';
+import { Note } from 'src/app/core/model/note';
 
 @Component({
   selector: 'app-edit-label',
@@ -12,6 +13,8 @@ export class EditLabelComponent implements OnInit {
   @Output() eventEmitter=new EventEmitter();
 public labels:label[]=[];
 public token=localStorage.getItem('token');
+public notes: Note[] = [];
+
 
 
   constructor( @Inject(MAT_DIALOG_DATA) public data,public refDialog: MatDialogRef<EditLabelComponent>,
@@ -20,7 +23,8 @@ public token=localStorage.getItem('token');
 
   ngOnInit() {
     this.getLabels();
-    
+    this.refresh(event);
+    this. getNotes();
   }
 
 
@@ -37,6 +41,8 @@ public token=localStorage.getItem('token');
 public closeDailog()
 {
   this.refDialog.close();
+  this.getNotes();
+  this.getLabels();
 }
 
 public updateLabel(labels,labelName)
@@ -51,20 +57,37 @@ public updateLabel(labels,labelName)
     
     this.noteService.updateLabel(newLabel,newLabel.id).subscribe(response => {
       this.eventEmitter.emit(true);
-      
+      this.refresh(event);
       this.ngOnInit();
       this.snackBar.open("label updated", "Ok", { duration: 2000 });
-      this.getLabels();
+    
     }, (error) => {
       this.snackBar.open("error", "error to update labels", { duration: 2000 });
     }
     );
   }
 
+
+  public refresh(event) {
+    if (event) {
+      this.getNotes();
+    }
+  }
+
+
+  public  getNotes() {
+    console.log("token", this.token);
+    this.noteService.retrieveNotes(this.token).subscribe(newNote => {
+      this.notes = newNote;
+
+    }
+    )
+  }
   public deleteLabel(label)
   {
     this.noteService.removeLabel(label.id).subscribe(response => {
-      this.ngOnInit();
+      this.getLabels();
+      this.refresh(event);
       this.snackBar.open("label deleted", "Ok", { duration: 2000 });
     }, (error) => {
       this.snackBar.open("error", "error to delete labels", { duration: 2000 });
@@ -81,6 +104,7 @@ public updateLabel(labels,labelName)
     }
     this.noteService.createLabels(labels).subscribe(response => {
       this.getLabels();
+      this.refresh(event);
       this.snackBar.open("label created", "Ok", { duration: 2000 });
     }, (error) => {
       this.snackBar.open("error", "error to create labels", { duration: 2000 });

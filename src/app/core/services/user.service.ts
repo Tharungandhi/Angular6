@@ -48,7 +48,7 @@ export class UserService {
     if(response.status == 200)
     {
       console.log('email send succesfully');
-      this.router.navigate(['/re'])
+      this.router.navigate(['/resetpassword'])
     }
     else {
       console.log(response.body.header);
@@ -76,35 +76,40 @@ export class UserService {
 
   
 
-  public getUser(): Observable<any> {
+  public getImage(): Observable<any> {
     var token = localStorage.getItem('token')
     return this.http.getService(`${environment.note_url}uploadimage/`+ token, 1);
 }
 
 
-  downloadImage():Observable<any> {
+  public downloadImage():Observable<any> {
     return this.http.getService(environment.url + 'uploadimage', this.httpheaders);
   }
 
-  uploadImage(file): Observable<any> {
+  public uploadImage(file): Observable<any> {
+    var token = localStorage.getItem('token')
     const formdata = new FormData();
     formdata.append("file", file);
-    return this.http.postForImage(environment.url + 'uploadimage/' + this.token, formdata, {
+    return this.http.postForImage(environment.url + 'uploadimage/' + token, formdata, {
       reportProgress: true,
       responseType: 'text'
     }
     );
 }
-removeImage()
+public removeImage()
 {
   return this.http.deleteService(environment.url + 'uploadimage',this.httpheaders);
 }
-verifyEmail(email):Observable<any>
+public verifyEmail(email):Observable<any>
 {
   return this.http.getUserEmail(environment.url + 'verifyemail/'+email,this.httpheaders)
 }
-getCollaborateUser(userId):Observable<any>
+public getCollaborateUser(userId):Observable<any>
 {
   return this.http.getCollaborateUser(environment.url + 'getcollaborateduser/'+userId);
 }
+
+public getUsers(): Observable<any> {
+  return this.http.getService(environment.url + 'allusers', { observe: 'response' })
+  }
 }

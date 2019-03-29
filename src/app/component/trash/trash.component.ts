@@ -56,8 +56,8 @@ public  getNotes() {
  public deleteNote(notes) {
     console.log(notes.id);
     this.noteService.removeNote(notes.id).subscribe(response => {
-      this.refresh(event);
       this.snackBar.open('Note deleted successfully', 'OK', { duration: 2000 });
+      this.getNotes();
     }),
       error => { 
         console.log(error);

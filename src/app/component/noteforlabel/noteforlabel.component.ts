@@ -14,7 +14,7 @@ export class NoteforlabelComponent implements OnInit {
 
   public grid = false;
   public notes: Note[] = [];
-  public newNotes: Note[] = [];
+  public labelNote: Note[] = [];
   public label;
   public token=localStorage.getItem('token');
 
@@ -36,12 +36,12 @@ export class NoteforlabelComponent implements OnInit {
   );
   }
 
-  public onUpdateNote(data) {
-    this.updateMethod(data.note);
+  public updateNote(data) {
+    this.updateMethod(data.notes);
   }
 
-  public updateMethod(note) {
-    this.noteService.updateNote(note, note.id).subscribe(response => {
+  public updateMethod(notes) {
+    this.noteService.updateNote(notes, notes.id).subscribe(response => {
       this.getNotes();
     },
       error => {
@@ -60,13 +60,16 @@ export class NoteforlabelComponent implements OnInit {
   }
 
   public filterLabel(notes) {
-    this.newNotes.length = 0;
-    notes.filter((note) => note.labels.filter((label) => {
-      if (this.label === label.labelName && !note.inTrash) {
-        this.newNotes.push(note);
+    this.labelNote.length = 0;
+    notes.filter((notes) => notes.labels.filter((label) => {
+      if (this.label === label.labelName && !notes.inTrash) {
+        this.labelNote.push(notes);
       }
     }))
+    return this.labelNote;
 }
+
+
 public updateNoteToGrid(data) {
   this.updateMethod(data.note);
 }

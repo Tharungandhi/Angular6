@@ -4,7 +4,7 @@
     <div fxFlex="10%">
         <mat-icon>clear</mat-icon>
     </div>
-    <div fxFlex=70%  contenteditable="true" class="textarea" placeholder="Create new label"
+    <div fxFlex=75% class="example" contenteditable="true" class="textarea" placeholder="Create new label"
       id="labelName" #labelName>
     </div>
     <div fxFlex="10%">
@@ -24,6 +24,6 @@
         </div>
     </div>
 </div>
+<button mat-button style="float:right" (click)="closeDailog()" (updateEvent)="onClickUpdate($event)" >Done</button>
 </div>
 
-<button mat-button style="float:right" (click)="closeDailog()">Done</button>

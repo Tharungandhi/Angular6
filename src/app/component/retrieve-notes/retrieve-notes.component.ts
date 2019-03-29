@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
 import {MatDialog} from '@angular/material';
 import { NoteService } from 'src/app/core/services/note.service';
 import { Note } from 'src/app/core/model/note';
@@ -18,12 +18,11 @@ export interface DialogData {
 export class RetrievenotesComponent implements OnInit {
   public grid = false;
   mytoken: string;
+  @Input() note
   public notes: Note[] = [];
-
 
   constructor(private noteService: NoteService,
     public snackBar: MatSnackBar,
-    private dialog: MatDialog,
     private keepHelperService : KeepHelperService) {
 
   }
@@ -35,6 +34,13 @@ export class RetrievenotesComponent implements OnInit {
 );
   }
 
+
+  public refresh(event) {
+    if (event) {
+      this.getNotes();
+    }
+  }
+  
  public  getNotes() {
     this.mytoken = localStorage.getItem('token')
     console.log("token", this.mytoken);
@@ -48,11 +54,6 @@ export class RetrievenotesComponent implements OnInit {
     this.updateMethod(data.notes);
   }
 
-  public refresh(event) {
-    if (event) {
-      this.getNotes();
-    }
-  }
 
   public updateMethod(notes) {
     this.noteService.updateNote(notes, notes.id).subscribe(response => {

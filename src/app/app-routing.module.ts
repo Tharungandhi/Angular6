@@ -34,7 +34,7 @@ const appRoutes: Routes = [
         {path:'search-note',component:SearchNoteComponent},
         { path:'image', component:UploadImageComponent},
         {path:'remainder' ,component:RemainderComponent},
-        {path:'label',component:NoteforlabelComponent},
+        {path:'label/:labelName',component:NoteforlabelComponent},
         {
           path: '',
           redirectTo: 'retrievenotes',

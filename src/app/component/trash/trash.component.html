@@ -1,13 +1,8 @@
 
-
-  <!-- <app-pin-notes class="trashNotes" [notes]="notes | noteFilter:'inTrash'" (updateEvent)="onClickUpdate($event)" [grid]="grid" 
-  (updateNoteEvent)="updateNoteToGrid($event)" ></app-pin-notes> -->
-
-
   <div class="container" fxLayout="column" fxLayoutGap="5%" fxLayoutAlign="center center">
     <div class="notegrid" [ngClass]="grid ? 'notegrid-grid-view': 'notegrid-list-view'">
     <div  *ngFor="let notes of notes | noteFilter: 'inTrash'" >
-      <mat-card class="notegrid-container" [style.background-color]="notes.color">
+      <mat-card class="notegrid-container" [style.background-color]="notes.color" >
           
         <mat-card-header>
           <mat-card-title (click)=openDialog(notes) >
@@ -18,17 +13,9 @@
             {{notes.discription}}
           </mat-card-subtitle>
         </mat-card-header>
-        
         <div class="mouseover">
-         
-
-         
-
-
           <button mat-icon-button class="icon-button"  [matMenuTriggerFor]="appMenu">
             <i id="accountcircle" class="material-icons">more_vert</i></button>
-        
-
           <mat-menu #appMenu="matMenu" class="appMenu">
             
               <button mat-button (click)= restore(notes)>Restore Note</button>
@@ -36,8 +23,6 @@
               <button mat-button (click)=deleteNote(notes)>Delete Permanently</button>
             </div>
               </mat-menu> 
-            
-           
 
         </div>
       </mat-card>
