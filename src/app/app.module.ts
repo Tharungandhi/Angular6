@@ -32,6 +32,7 @@ import { RemainderComponent } from './component/remainder/remainder.component';
 import { AuthGardGuard } from './guard/auth-gard.guard';
 import { TrashDialogBoxComponent } from './component/trash-dialog-box/trash-dialog-box.component';
 import { NoteforlabelComponent } from './component/noteforlabel/noteforlabel.component';
+import { NoteImageComponent } from './component/note-image/note-image.component';
 
 
 
@@ -67,6 +68,7 @@ import { NoteforlabelComponent } from './component/noteforlabel/noteforlabel.com
     RemainderComponent,
     TrashDialogBoxComponent,
     NoteforlabelComponent,
+    NoteImageComponent,
     
     
 

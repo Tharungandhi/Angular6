@@ -6,6 +6,7 @@ import { DialogData, RetrievenotesComponent } from '../retrieve-notes/retrieve-n
 import { CollaboratorComponent } from '../collaborator/collaborator.component';
 import { label } from 'src/app/core/model/label';
 import { Note } from 'src/app/core/model/note';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 
@@ -17,165 +18,7 @@ import { Note } from 'src/app/core/model/note';
 export class UpdateNoteComponent implements OnInit {
  
  
-//   updateNoteForm:FormGroup;
-//   @Output() updateEvent = new EventEmitter();
-//  public mytoken = localStorage.getItem('token'); 
-//  public labels: label[]=[];
-//  public newLabels:label[]=[];
-//  public min = new Date();
-//  public filter = '';
-//  selectable = true;
-//  removable = true;
-//  selectedMoment =new Date();
- 
 
-//  constructor(
-//   public dialogRef: MatDialogRef<UpdateNoteComponent>,
-//   @Inject(MAT_DIALOG_DATA) public data: DialogData,
-//   private noteService: NoteService,
-//   private formBuilder:FormBuilder,
-//     public snackBar: MatSnackBar,
-//     private dialog: MatDialog,
-//     private addNotes:RetrievenotesComponent) {}
-
-//   ngOnInit() {
-//     this.updateNoteForm=this.formBuilder.group({});
-  
-//   }
-  
-
-//   updateNote(notes,id) {
-//     console.log(notes);
-//     this.noteService.updateNote(notes,id).subscribe(response => {
-//       console.log(response);
-//     },
-//       error => {
-//         console.log("error");
-//       })
-//     this.dialogRef.close();
-//   }
-
-//   pinnedNotes(key, notes) {
-//     notes.pinned = key === 'pinned' ? 1 : 0;
-//     console.log(notes.pinned)
-//     const data = { notes }
-//     this.updateEvent.emit(data);
-//   }
-
-//   public updateArchiveNote(notes) {
-//     notes.archive = 1;
-//     notes.pinned = 0;
-//     const data = { notes }
-//     this.updateEvent.emit(data);
-//   }
-
-//  public trashNote(notes) {
-//     notes.inTrash = 1;
-//     console.log(notes.inTrash)
-//     const data = { notes }
-//     this.updateEvent.emit(data);
-//   }
-
-//   remove(label, notes) {
-//     this.noteService.deletenotelabel(label.id, notes.id).subscribe(response => {
-//       const data = { notes }
-//       this.updateEvent.emit(data);
-//       console.log(response);
-//     }, (error) => console.log(error));
-//   }
-
-
-//   public updateReminder(notes,selectedMoment){
-//     notes.reminder=selectedMoment;
-//     const data = {notes};
-//     this.updateEvent.emit(data);
-//   }
-
-//   public removeReminder(notes){
-//     notes.reminder=null;
-//     console.log(notes.reminder)
-//     const data = {notes};
-//     this.updateEvent.emit(data);
-//   }
-
-//  public onAddLabel(label, notes) {
-//     this.noteService.mapLabelTONote(notes.id, label).subscribe((resp: any) =>
-//       console.log(resp)
-//     ), (error) => {
-//       console.log(error)
-//     }
-//   }
-
-// public addLabelToNote(event, label, notes) {
-//     event.stopPropagation();
-//     console.log(label);
-//     console.log(notes);
-//     this.noteService.mapLabelTONote(notes.id, label).subscribe((resp: any) => {
-//       const data = { notes }
-//       this.updateEvent.emit(data);
-//     }
-//     ), (error) => {
-//       console.log(error)
-//     }
-//   }
-
-
-//   public collaborator(notes)
-//   {
-//     const dialogRef = this.dialog.open(CollaboratorComponent, {
-//       width: '500px',
-//       data: notes
-//     });
-//     dialogRef.afterClosed().subscribe(result => {
-//       const data = { notes }
-//       this.updateEvent.emit(data);
-//       console.log('The dialog was closed');
-//     });
-// }
-
-//   public labelFilter(event, noteLabels) {
-//     event.stopPropagation();
-//     console.log(noteLabels);
-//     console.log(this.labels);
-//     this.newLabels.length = 0 && this.newLabels.length !=null ;
-//     var k = 0;
-//     for (var i = 0; i < this.labels.length; i++) {
-//       var present = 0;
-//       for (var j = 0; j < noteLabels.length; j++) {
-//         if (this.labels[i].id=== noteLabels[j].id && present === 0) {
-//           present = 1;
-//         }
-//       }
-//       if (present === 0) {
-//         this.newLabels[k] = this.labels[i];
-//         k++;
-//       }
-//     }
-//   }
-
-//     public createNewLabel(filter, note) {
-//       const var1 = note.labels.some((label) => label.labelName === filter)
-//       const var2 = this.newLabels.some((label) => label.labelName === filter)
-//       if (var1 || var2) {
-//         this.snackBar.open("label name already present", "error", { duration: 2000 });
-//         return;
-//       }
-//       const newLabel =
-//       {
-//         labelName: filter
-//       }
-//       this.noteService.createLabels(newLabel).subscribe(label => {
-//         this.noteService.mapLabelTONote(note.id, label).subscribe(response => {
-//           console.log("adding check in database");
-//           const data = { note };
-//           this.updateEvent.emit(data);
-//           this.snackBar.open("label created", "Ok", { duration: 2000 });
-//         })
-//       }, error => {
-//         this.snackBar.open("error", "error to create labels", { duration: 2000 });
-//       }
-//       )
-//   }
 visible = true;
   selectable = true;
   removable = true;
@@ -184,11 +27,13 @@ visible = true;
   min=new Date();
   public labels: label[]=[];
   public newLabels:label[]=[];
+  selectedFiles:File;
   @Output() updateEvent = new EventEmitter();
 
   constructor(public dialogRef: MatDialogRef<UpdateNoteComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Note, private noteService: NoteService,
-    private snackBar: MatSnackBar,private dialog:MatDialog) { }
+    private snackBar: MatSnackBar,private dialog:MatDialog,
+    private sanitizer:DomSanitizer) { }
 
   ngOnInit() {
   }
@@ -312,5 +157,33 @@ public  addLabelToNote(event, label, notes) {
   ), (error) => {
     console.log(error)
   }
+}
+
+public onFileChanged(event, note) {
+  this.selectedFiles = event.target.files[0];
+  this.uploadImage(note);
+}
+
+public uploadImage(note) {
+  this.noteService.addImage(this.selectedFiles, note.noteId).subscribe((resp) => {
+    console.log("image added")
+    this.updateNote(note);
+  }
+  );
+}
+
+public getImages(image, note): any {
+  const url = `data:${note.contentType};base64,${image.images}`;
+  return this.sanitizer.bypassSecurityTrustUrl(url);
+}
+
+public deleteImage(image,note)
+{
+  console.log(image.imagesId)
+  this.noteService.removeImage(image.imagesId).subscribe((resp)=>
+  {
+    console.log("successfull")
+    this.updateNote(note);
+  })
 }
 }

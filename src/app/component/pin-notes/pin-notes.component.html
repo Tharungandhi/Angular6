@@ -15,9 +15,12 @@
     <div *ngFor="let notes of notes">
       <mat-card class="notegrid-container" [style.background-color]="notes.color">
         <!-- *ngIf="!notes.archive && !notes.inTrash && notes.pinned" style="background-color: aqua">  -->
-
         <mat-card-header>
-
+            <div *ngFor="let image of notes.images" class="image">
+                <img [src]="getImages(image,notes)" width="74%" height="40%" >
+              </div>
+        </mat-card-header>
+        <mat-card-header>
 
           <button *ngIf="notes.pinned" mat-icon-button (click)="pinnedNotes('unpinned',notes)" class="pinned-icon"
             [style.backgroundColor]="'orange'">
@@ -84,9 +87,10 @@
           </app-colour>
 
 
-          <button mat-icon-button matTooltip="Add image" (click)="openImageDialog()">
-            <mat-icon>image</mat-icon>
-          </button>
+          <button mat-icon-button matTooltip="Add image">
+            <input style="display: none" type="file" (change)="onFileChanged($event,notes)" #fileInput>
+            <mat-icon (click)="fileInput.click()">image</mat-icon>
+           </button>
 
 
           <button mat-icon-button  *ngIf="!notes.archive" (click)="updateArchiveNote('archive',notes)" matTooltip="Undo Archive">

@@ -7,6 +7,10 @@
               <img class="image" src="./assets/image/Pin-icon.png" height="50%" id="imgRem">
             </button>
             <div class="notecard">
+                <div *ngFor="let image of data.images" class="imageNote">
+                    <img [src]="getImages(image,data)"   width="74%" height="40%">
+                    <mat-icon class="delete-icon" (click)=deleteImage(image,data)>delete</mat-icon>
+              </div>
               <div>
                 <input class="example" matInput [(ngModel)]="data.title" [value]=data.title>
               </div>

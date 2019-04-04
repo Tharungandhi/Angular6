@@ -106,7 +106,7 @@ public verifyEmail(email):Observable<any>
 }
 public getCollaborateUser(userId):Observable<any>
 {
-  return this.http.getCollaborateUser(environment.url + 'getcollaborateduser/'+userId);
+  return this.http.getCollaborateUser(environment.url + 'collaborateduser/'+userId);
 }
 
 public getUsers(): Observable<any> {

@@ -96,9 +96,9 @@ public token=localStorage.getItem('token');
       )      
     }
 
-    createCollaborator(noteId, userId) {
+    createCollaborator(id, userId) {
       var httpheaders=this.getHeader();
-      return this.http.postForCollaborator(`${environment.note_url}createcollaborator/`+noteId+'/'+userId,httpheaders);
+      return this.http.postForCollaborator(`${environment.note_url}createcollaborator/`+id+'/'+userId,httpheaders);
     }
   
     removeCollaborateUser(noteId,userId)
@@ -108,7 +108,19 @@ public token=localStorage.getItem('token');
   
 
 
-
+    addImage(file, id) {
+      const formdata = new FormData();
+      formdata.append("file", file);
+      return this.http.postForAddImage(environment.note_url + 'noteimage/' + id, formdata, {
+        reportProgress: true,
+        responseType: 'text'
+      })
+    }
+  
+    removeImage(imagesId)
+    {
+      return this.http.removeImage(environment.note_url + 'noteimage/' + imagesId);
+  }
 
 
 

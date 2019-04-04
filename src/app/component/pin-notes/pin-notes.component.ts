@@ -35,6 +35,7 @@ export class PinNotesComponent implements OnInit {
   selectable = true;
   removable = true;
   selectedMoment =new Date();
+  selectedFiles: File;
 
   constructor(private noteService: NoteService,
     public snackBar: MatSnackBar,
@@ -258,5 +259,24 @@ public getImage() {
   )
 }
 
+public onFileChanged(event, note) {
+  this.selectedFiles = event.target.files[0];
+  this.uploadImage(note);
+}
 
+
+
+public uploadImage(notes) {
+  this.noteService.addImage(this.selectedFiles, notes.id).subscribe((resp) => {
+    console.log("image added")
+    const data = { notes }
+    this.updateEvent.emit(data);
+  }
+  );
+}
+
+public getImages(image, notes): any {
+  const url = `data:${notes.contentType};base64,${image.images}`;
+  return this.sanitizer.bypassSecurityTrustUrl(url);
+}
 }

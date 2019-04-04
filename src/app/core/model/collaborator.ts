@@ -1,5 +1,5 @@
 export interface Collaborator{
     
-    noteId:number;
-    userId:number;
+    id:string;
+    userId:string;
 }

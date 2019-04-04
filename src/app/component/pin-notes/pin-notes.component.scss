@@ -77,7 +77,14 @@
   @include display(flex);
   background-color: lightgrey;
 }
- 
+.image 
+{
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 2px -11px;
+  height: fit-content;
+  width: 101px;
+}
 
 
 }

@@ -55,8 +55,20 @@ height: 100%;
 min-height: inherit;
 max-height: inherit;
 }
-  
+.imageNote
+  {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0px 11px;
+    height: fit-content;
+    width: 101px;
+    display: inline-flex;
+  }
 
+.imageNote:hover .delete-icon{
+    opacity: 1;
+    visibility: visible;
+}
  
 
   

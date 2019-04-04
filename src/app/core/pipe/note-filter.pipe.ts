@@ -41,7 +41,13 @@ export class NoteFilterPipe implements PipeTransform {
           return item;
         }
       });
-    }
+    }else if (valid === 'label') {
+      return notes.filter((item) => {
+        if (!item.inTrash) {
+          return item;
+        }
+      });
+}
     return null;
 
 
